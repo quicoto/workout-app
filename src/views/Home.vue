@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js + TypeScript App"/>
+    <img alt="Workout like Thor logo" src="../assets/logo.svg">
+    <HelloWorld msg="Workout like Thor"/>
   </div>
 </template>
 
@@ -16,3 +16,9 @@ import HelloWorld from '@/components/HelloWorld.vue'; // @ is an alias to /src
 })
 export default class Home extends Vue {}
 </script>
+
+<style scoped lang="scss">
+img {
+  max-width: 150px;
+}
+</style>
