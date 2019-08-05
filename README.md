@@ -1,4 +1,6 @@
-# Workout App
+
+
+# Workout like Thor <img src="https://cldup.com/CnxsnixssB.png" width="50"/>
 
 Workout tracking app with VUE and Firebase.
 
