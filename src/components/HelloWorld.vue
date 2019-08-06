@@ -1,17 +1,31 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <ul>
+      <li v-for="(user, index) in users" :key="index">
+        {{ user.name }}
+      </li>
+    </ul>
     <b-alert show>VUE Bootstrap imported correctly</b-alert>
   </div>
 </template>
 
-<script lang="ts">
-import { Component, Prop, Vue } from 'vue-property-decorator';
+<script>
+// import firebase from 'firebase/app';
+import db from '@/db';
 
-@Component
-export default class HelloWorld extends Vue {
-  @Prop() private msg!: string;
-}
+export default {
+  name: 'HelloWorld',
+  data() {
+    return {
+      msg: 'test',
+      users: [],
+    };
+  },
+  firebase: {
+    users: db.ref('users'),
+  },
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
