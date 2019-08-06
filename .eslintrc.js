@@ -6,13 +6,17 @@ module.exports = {
   extends: [
     'plugin:vue/essential',
     '@vue/airbnb',
-    '@vue/typescript',
   ],
   rules: {
     'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    'import/no-named-as-default-member': 'off',
+    'import/no-named-as-default': 'off',
   },
+  parser: 'vue-eslint-parser',
   parserOptions: {
-    parser: '@typescript-eslint/parser',
+    parser: 'babel-eslint',
+    ecmaVersion: 8,
+    sourceType: 'module',
   },
 };
