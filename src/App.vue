@@ -1,29 +1,29 @@
 <template>
-  <div id="app">
+  <b-container fluid id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
+      <router-link to="/styleguide">Style Guide</router-link>
     </div>
     <router-view/>
-  </div>
+    <footer class="container-fluid p-5 mt-5">
+      <b-row>
+        <b-col class="text-center"><small>v1.0.0</small></b-col>
+      </b-row>
+    </footer>
+  </b-container>
 </template>
 
 <style lang="scss">
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-    &.router-link-exact-active {
-      color: #42b983;
-    }
-  }
-}
+// Overwrite the Bootstrap variables
+$primary: #2c7be5;
+$secondary: #6e84a3;
+$success: #27ae60;
+$danger: #c0392b;
+$light: white;
+$dark: #2c3e50;
+
+$body-bg: #f9fbfd;
+
+@import 'node_modules/bootstrap/scss/bootstrap';
+@import 'node_modules/bootstrap-vue/src/index.scss';
 </style>
