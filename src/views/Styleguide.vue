@@ -1,11 +1,6 @@
 <template>
   <div class="about">
     <div class="container py-5">
-    <div class="jumbotron">
-      <h1>Bootstrap 4 Styleguide</h1>
-      <p class="lead">This is a style guide showcasing Bootstrap 4 and common HTML elements, which are displayed all on a single page. <br>It is a modified version of the <a href="https://getbootstrap.com/docs/3.3/examples/theme/">Bootstrap 3 Theme</a> example.</p>
-    </div>
-
     <h2 class="pt-3 pb-1">Headings &amp; Body Text</h2>
 
     <h1>Heading 1</h1>
@@ -14,6 +9,7 @@
     <h4>Heading 4</h4>
     <h5>Heading 5</h5>
     <h6>Heading 6</h6>
+    <p class="lead">This is a lead paragraph. Bigger than the regular p</p>
     <p>Lorem ipsum Nostrud Duis minim Ut id incididunt deserunt
       consequat id irure <a href="#">nostrud voluptate</a> aliquip
       Ut eu aliqua eu sed anim aute laborum est officia consectetur
@@ -77,6 +73,120 @@
       <button type="button" class="btn btn-outline-light">Light</button>
       <button type="button" class="btn btn-outline-dark">Dark</button>
     </p>
+
+    <h2 class="pt-3 pb-1">Forms</h2>
+
+    <form>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+          placeholder="Enter email">
+        <small id="emailHelp" class="form-text text-muted">
+          We'll never share your email with anyone else.
+        </small>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input
+          type="password"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="Password">
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+        <label class="form-check-label" for="exampleCheck1">Check me out</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+    <form class="mt-5">
+      <div class="form-group">
+        <label for="exampleFormControlInput1">Email address</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleFormControlInput1"
+          placeholder="name@example.com">
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect1">Example select</label>
+        <select class="form-control" id="exampleFormControlSelect1">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlSelect2">Example multiple select</label>
+        <select multiple class="form-control" id="exampleFormControlSelect2">
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlTextarea1">Example textarea</label>
+        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+    </form>
+
+    <div class="form-check mt-5">
+      <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+      <label class="form-check-label" for="defaultCheck1">
+        Default checkbox
+      </label>
+    </div>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+      <label class="form-check-label" for="defaultCheck2">
+        Disabled checkbox
+      </label>
+    </div>
+
+    <div class="form-check mt-5">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="exampleRadios1"
+        value="option1"
+        checked>
+      <label class="form-check-label" for="exampleRadios1">
+        Default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="exampleRadios2"
+        value="option2">
+      <label class="form-check-label" for="exampleRadios2">
+        Second default radio
+      </label>
+    </div>
+    <div class="form-check">
+      <input
+        class="form-check-input"
+        type="radio"
+        name="exampleRadios"
+        id="exampleRadios3"
+        value="option3"
+        disabled>
+      <label class="form-check-label" for="exampleRadios3">
+        Disabled radio
+      </label>
+    </div>
 
     <h2 class="pt-3 pb-1">Tables</h2>
 
@@ -321,6 +431,44 @@
       <a class="dropdown-item" href="#">Separated link</a>
     </div>
   </div>
+
+
+  <h2 class="pt-3 pb-1">Pagination</h2>
+
+  <nav aria-label="Page navigation example">
+    <ul class="pagination">
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item"><a class="page-link" href="#">2</a></li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <nav aria-label="...">
+    <ul class="pagination">
+      <li class="page-item disabled">
+        <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">1</a></li>
+      <li class="page-item active" aria-current="page">
+        <a class="page-link" href="#">2 <span class="sr-only">(current)</span></a>
+      </li>
+      <li class="page-item"><a class="page-link" href="#">3</a></li>
+      <li class="page-item">
+        <a class="page-link" href="#">Next</a>
+      </li>
+    </ul>
+  </nav>
+
 
   <h2 class="pt-3 pb-1">Navs</h2>
 
@@ -675,7 +823,6 @@
       </div>
     </div>
     <div class="col-sm">
-
       <div class="card text-white bg-dark mb-3" style="max-width: 20rem;">
         <div class="card-header">Header</div>
         <div class="card-body">
@@ -688,6 +835,35 @@
       </div>
     </div>
   </div>
+
+  <hr class="bg-primary" />
+
+  <h2 class="text-warning mb-4 mt-5">Real examples</h2>
+
+  <div class="card bg-dark mb-3">
+      <h2 class="card-header">Squat</h2>
+      <div class="card-body">
+        <div class="card-text">
+          <p class="lead">
+            Squats are one of the most foundational functional movements in our lives.
+          </p>
+
+          <h3>How to do it?</h3>
+          <p>Ut irure ad dolor irure in ex sint dolor deserunt ut adipisicing est
+            pariatur Excepteur dolore ullamco pariatur in non Excepteur mollit
+            consequat laborum ullamco reprehenderit ea id ut anim ex consectetur occaecat.</p>
+
+          <h3>Don't forget</h3>
+          <p>Ut irure ad dolor irure in ex sint dolor deserunt ut adipisicing
+             est pariatur Excepteur dolore ullamco pariatur in non Excepteur
+              mollit consequat laborum ullamco reprehenderit ea id ut anim
+              ex consectetur occaecat.</p>
+
+          <button type="button" class="btn btn-primary">Go to exercice</button>
+        </div>
+      </div>
+    </div>
+
 
   </div>
 </div>
