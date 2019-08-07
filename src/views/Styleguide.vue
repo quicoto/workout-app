@@ -14,7 +14,26 @@
     <h4>Heading 4</h4>
     <h5>Heading 5</h5>
     <h6>Heading 6</h6>
-    <p>Lorem ipsum Nostrud Duis minim Ut id incididunt deserunt consequat id irure <a href="#">nostrud voluptate</a> aliquip Ut eu aliqua eu sed anim aute laborum est officia consectetur irure aliquip ex veniam laboris cillum Duis occaecat fugiat adipisicing ex in dolore ullamco ad ullamco velit nisi irure ad tempor minim fugiat fugiat aute Excepteur in id culpa id velit proident commodo enim cillum Ut quis dolor cillum enim ullamco est in eu laboris Ut Excepteur nisi aliquip occaecat deserunt incididunt eiusmod aute Excepteur Excepteur non ut ut fugiat nostrud laboris dolore Excepteur id qui eiusmod esse mollit fugiat eiusmod dolore quis quis aliquip reprehenderit sint commodo dolore proident officia Duis eiusmod esse cupidatat id consequat aliqua Excepteur dolore tempor consequat laboris dolore sit aliqua eu sed dolore laboris ad tempor et in incididunt dolore dolor irure anim adipisicing cillum dolor in laborum laboris veniam voluptate Ut irure ad dolor irure in ex sint dolor deserunt ut adipisicing est pariatur Excepteur dolore ullamco pariatur in non Excepteur mollit consequat laborum ullamco reprehenderit ea id ut anim ex consectetur occaecat.</p>
+    <p>Lorem ipsum Nostrud Duis minim Ut id incididunt deserunt
+      consequat id irure <a href="#">nostrud voluptate</a> aliquip
+      Ut eu aliqua eu sed anim aute laborum est officia consectetur
+       irure aliquip ex veniam laboris cillum Duis occaecat fugiat
+        adipisicing ex in dolore ullamco ad ullamco velit nisi irure
+         ad tempor minim fugiat fugiat aute Excepteur in id culpa
+         id velit proident commodo enim cillum Ut quis dolor cillum
+          enim ullamco est in eu laboris Ut Excepteur nisi aliquip
+          occaecat deserunt incididunt eiusmod aute Excepteur Excepteur
+           non ut ut fugiat nostrud laboris dolore Excepteur id qui
+           eiusmod esse mollit fugiat eiusmod dolore quis quis aliquip
+           reprehenderit sint commodo dolore proident officia Duis
+           eiusmod esse cupidatat id consequat aliqua Excepteur dolore
+           tempor consequat laboris dolore sit aliqua eu sed dolore
+           laboris ad tempor et in incididunt dolore dolor irure anim
+           adipisicing cillum dolor in laborum laboris veniam voluptate
+           Ut irure ad dolor irure in ex sint dolor deserunt ut
+           adipisicing est pariatur Excepteur dolore ullamco pariatur in
+           non Excepteur mollit consequat laborum ullamco reprehenderit
+           ea id ut anim ex consectetur occaecat.</p>
 
     <h2 class="pt-3 pb-1">Buttons</h2>
 
@@ -227,7 +246,12 @@
 
   <!-- Large button groups (default and split) -->
   <div class="btn-group">
-    <button class="btn btn-secondary btn-lg dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button
+      class="btn btn-secondary btn-lg dropdown-toggle"
+      type="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false">
       Large button
     </button>
     <div class="dropdown-menu">
@@ -242,7 +266,12 @@
     <button class="btn btn-secondary btn-lg" type="button">
       Large split button
     </button>
-    <button type="button" class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button
+      type="button"
+      class="btn btn-lg btn-secondary dropdown-toggle dropdown-toggle-split"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
@@ -256,7 +285,12 @@
 
   <!-- Small button groups (default and split) -->
   <div class="btn-group">
-    <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button
+      class="btn btn-secondary btn-sm dropdown-toggle"
+      type="button"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false">
       Small button
     </button>
     <div class="dropdown-menu">
@@ -271,7 +305,12 @@
     <button class="btn btn-secondary btn-sm" type="button">
       Small split button
     </button>
-    <button type="button" class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <button
+      type="button"
+      class="btn btn-sm btn-secondary dropdown-toggle dropdown-toggle-split"
+      data-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false">
       <span class="sr-only">Toggle Dropdown</span>
     </button>
     <div class="dropdown-menu">
@@ -319,7 +358,13 @@
 
   <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-light" aria-controls="navbar-light" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-light"
+      aria-controls="navbar-light"
+      aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -344,7 +389,14 @@
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <a class="navbar-brand" href="#">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-dark" aria-controls="navbar-dark" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbar-dark"
+      aria-controls="navbar-dark"
+      aria-expanded="false"
+      aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -385,27 +437,83 @@
   <h2 class="pt-3 pb-1">Progress bars</h2>
 
   <div class="progress mb-3">
-    <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"><span class="sr-only">60% Complete</span></div>
+    <div
+      class="progress-bar"
+      role="progressbar"
+      aria-valuenow="60"
+      aria-valuemin="0"
+      aria-valuemax="100"
+      style="width: 60%;">
+      <span class="sr-only">60% Complete</span>
+    </div>
   </div>
   <div class="progress mb-3">
-    <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+    <div
+      class="progress-bar bg-success"
+      role="progressbar"
+      style="width: 25%"
+      aria-valuenow="25"
+      aria-valuemin="0"
+      aria-valuemax="100"></div>
   </div>
   <div class="progress mb-3">
-    <div class="progress-bar bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
+    <div
+      class="progress-bar bg-info"
+      role="progressbar"
+      style="width: 50%"
+      aria-valuenow="50"
+      aria-valuemin="0"
+      aria-valuemax="100"></div>
   </div>
   <div class="progress mb-3">
-    <div class="progress-bar bg-warning" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+    <div
+      class="progress-bar bg-warning"
+      role="progressbar"
+      style="width: 75%"
+      aria-valuenow="75"
+      aria-valuemin="0"
+      aria-valuemax="100"></div>
   </div>
   <div class="progress mb-3">
-    <div class="progress-bar bg-danger" role="progressbar" style="width: 100%" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+    <div
+      class="progress-bar bg-danger"
+      role="progressbar"
+      style="width: 100%"
+      aria-valuenow="100"
+      aria-valuemin="0"
+      aria-valuemax="100"></div>
   </div>
   <div class="progress mb-3">
-    <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25%</div>
+    <div
+      class="progress-bar"
+      role="progressbar"
+      style="width: 25%;"
+      aria-valuenow="25"
+      aria-valuemin="0"
+      aria-valuemax="100">25%</div>
   </div>
   <div class="progress mb-3">
-    <div class="progress-bar" role="progressbar" style="width: 15%" aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"></div>
-    <div class="progress-bar bg-success p" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
-    <div class="progress-bar bg-info progress-bar-striped progress-bar-animated" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+    <div
+      class="progress-bar"
+      role="progressbar"
+      style="width: 15%"
+      aria-valuenow="15"
+      aria-valuemin="0"
+      aria-valuemax="100"></div>
+    <div
+      class="progress-bar bg-success p"
+      role="progressbar"
+      style="width: 30%"
+      aria-valuenow="30"
+      aria-valuemin="0"
+      aria-valuemax="100"></div>
+    <div
+      class="progress-bar bg-info progress-bar-striped progress-bar-animated"
+      role="progressbar"
+      style="width: 20%"
+      aria-valuenow="20"
+      aria-valuemin="0"
+      aria-valuemax="100"></div>
   </div>
 
   <h2 class="pt-3 pb-1">List groups</h2>
@@ -438,8 +546,12 @@
       <ul class="list-group">
         <li class="list-group-item">Dapibus ac facilisis in</li>
         <li class="list-group-item list-group-item-primary">This is a primary list group item</li>
-        <li class="list-group-item list-group-item-secondary">This is a secondary list group item</li>
-        <li class="list-group-item list-group-item-success">This is a success list group item</li>
+        <li class="list-group-item list-group-item-secondary">
+          This is a secondary list group item
+        </li>
+        <li class="list-group-item list-group-item-success">
+          This is a success list group item
+        </li>
         <li class="list-group-item list-group-item-danger">This is a danger list group item</li>
         <li class="list-group-item list-group-item-warning">This is a warning list group item</li>
         <li class="list-group-item list-group-item-info">This is a info list group item</li>
@@ -449,12 +561,18 @@
     </div><!-- /.col-md -->
     <div class="col-md">
       <div class="list-group">
-        <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+        <a href="#"
+          class="list-group-item
+          list-group-item-action
+          flex-column
+          align-items-start
+          active">
           <div class="d-flex w-100 justify-content-between">
             <h5 class="mb-1">List group item heading</h5>
             <small>3 days ago</small>
           </div>
-          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+          <p class="mb-1">Donec id elit non mi porta gravida at
+             eget metus. Maecenas sed diam eget risus varius blandit.</p>
           <small>Donec id elit non mi porta.</small>
         </a>
         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -462,7 +580,8 @@
             <h5 class="mb-1">List group item heading</h5>
             <small class="text-muted">3 days ago</small>
           </div>
-          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+          <p class="mb-1">Donec id elit non mi porta gravida at
+             eget metus. Maecenas sed diam eget risus varius blandit.</p>
           <small class="text-muted">Donec id elit non mi porta.</small>
         </a>
         <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
@@ -470,14 +589,17 @@
             <h5 class="mb-1">List group item heading</h5>
             <small class="text-muted">3 days ago</small>
           </div>
-          <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+          <p class="mb-1">Donec id elit non mi porta gravida at
+             eget metus. Maecenas sed diam eget risus varius blandit.</p>
           <small class="text-muted">Donec id elit non mi porta.</small>
         </a>
       </div>
     </div><!-- /.col-md -->
   </div>
 
-  <h2 class="pt-3 pb-1">Cards <small class="text-muted">Replacing panels, wells and thumbnails</small></h2>
+  <h2 class="pt-3 pb-1">Cards
+    <small class="text-muted">Replacing panels, wells and thumbnails</small>
+  </h2>
 
   <div class="row">
     <div class="col-sm">
@@ -485,7 +607,8 @@
         <div class="card-header">Header</div>
         <div class="card-body">
           <h4 class="card-title">Primary card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to build
+            on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
     </div>
@@ -494,7 +617,8 @@
         <div class="card-header">Header</div>
         <div class="card-body">
           <h4 class="card-title">Secondary card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to build
+             on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
     </div>
@@ -503,7 +627,8 @@
         <div class="card-header">Header</div>
         <div class="card-body">
           <h4 class="card-title">Success card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to build
+             on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
     </div>
@@ -512,7 +637,8 @@
         <div class="card-header">Header</div>
         <div class="card-body">
           <h4 class="card-title">Danger card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to build
+            on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
     </div>
@@ -523,7 +649,8 @@
         <div class="card-header">Header</div>
         <div class="card-body">
           <h4 class="card-title">Warning card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to build
+             on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
     </div>
@@ -532,7 +659,8 @@
         <div class="card-header">Header</div>
         <div class="card-body">
           <h4 class="card-title">Info card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to build
+            on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
     </div>
@@ -541,7 +669,8 @@
         <div class="card-header">Header</div>
         <div class="card-body">
           <h4 class="card-title">Light card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">Some quick example text to
+            build on the card title and make up the bulk of the card's content.</p>
         </div>
       </div>
     </div>
@@ -551,7 +680,10 @@
         <div class="card-header">Header</div>
         <div class="card-body">
           <h4 class="card-title">Dark card title</h4>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p class="card-text">
+            Some quick example text to build on the
+            card title and make up the bulk of the card's content.
+          </p>
         </div>
       </div>
     </div>
