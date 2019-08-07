@@ -20,9 +20,18 @@ $secondary: #6e84a3;
 $success: #27ae60;
 $danger: #c0392b;
 $light: white;
-$dark: #2c3e50;
+$dark: #152e4d;
 
-$body-bg: #f9fbfd;
+$body-color: #ffffff;
+$body-bg: #12263f;
+
+$link-color: $primary;
+$link-hover-color: darken($link-color, 15%);
+
+$list-group-bg: $dark;
+$list-group-action-color: $body-color;
+$list-group-action-hover-color: $link-hover-color;
+$list-group-hover-bg: $dark;
 
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap-vue/src/index.scss';

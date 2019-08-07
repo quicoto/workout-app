@@ -530,15 +530,15 @@
       <ul class="list-group">
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Cras justo odio
-          <span class="badge badge-primary badge-pill">14</span>
+          <span class="badge badge-secondary badge-pill">141</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Dapibus ac facilisis in
-          <span class="badge badge-primary badge-pill">2</span>
+          <span class="badge badge-secondary badge-pill">2</span>
         </li>
         <li class="list-group-item d-flex justify-content-between align-items-center">
           Morbi leo risus
-          <span class="badge badge-primary badge-pill">1</span>
+          <span class="badge badge-secondary badge-pill">1</span>
         </li>
       </ul>
     </div><!-- /.col-md -->
@@ -665,7 +665,7 @@
       </div>
     </div>
     <div class="col-sm">
-      <div class="card bg-light mb-3" style="max-width: 20rem;">
+      <div class="card bg-light text-dark mb-3" style="max-width: 20rem;">
         <div class="card-header">Header</div>
         <div class="card-body">
           <h4 class="card-title">Light card title</h4>
