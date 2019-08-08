@@ -1,7 +1,7 @@
 <template>
   <div class="home">
-    <img alt="Workout like Thor logo" src="../assets/logo.svg">
-    <HelloWorld msg="Workout like Thor"/>
+    <h1 class="text-center">Workout like Thor</h1>
+    <HelloWorld />
   </div>
 </template>
 
@@ -20,9 +20,3 @@ export default {
 };
 
 </script>
-
-<style scoped lang="scss">
-img {
-  max-width: 150px;
-}
-</style>
