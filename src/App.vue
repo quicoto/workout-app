@@ -4,7 +4,7 @@
       toggleable="md"
       type="dark"
       variant="dark"
-      sticky="true">
+      sticky>
       <b-container>
         <b-navbar-brand href="#">
           Workout
@@ -112,6 +112,9 @@ $pagination-disabled-bg: $secondary;
 
 // Cards
 $card-border-color: $dark_secondary;
+
+// HR
+$hr-border-color: $light;
 
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap-vue/src/index.scss';
