@@ -1,12 +1,11 @@
 <template>
   <div class="hello">
-    <h1>{{ msg }}</h1>
+    <h2 class="text-muted text-center">{{ msg }}</h2>
     <ul>
       <li v-for="(user, index) in users" :key="index">
         {{ user.name }}
       </li>
     </ul>
-    <b-alert show>VUE Bootstrap imported correctly</b-alert>
   </div>
 </template>
 
@@ -18,7 +17,7 @@ export default {
   name: 'HelloWorld',
   data() {
     return {
-      msg: 'test',
+      msg: 'Hello world component to test the DB connection',
       users: [],
     };
   },
