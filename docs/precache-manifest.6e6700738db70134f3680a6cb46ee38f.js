@@ -8,15 +8,15 @@ self.__precacheManifest = [
     "url": "/workout-app/js/chunk-vendors.fdc827d5.js"
   },
   {
-    "revision": "0f8bacc0bec1f52e183a",
-    "url": "/workout-app/js/app.69fa22d9.js"
+    "revision": "17361aabe906313d1706",
+    "url": "/workout-app/js/app.13f4fee1.js"
   },
   {
-    "revision": "1545e24952f0f925e550",
-    "url": "/workout-app/js/about.70841863.js"
+    "revision": "ee3535ee16beaca457e1",
+    "url": "/workout-app/js/about.eccccffc.js"
   },
   {
-    "revision": "f623f6faf7af5b0551aed4b42cabdbfe",
+    "revision": "b4aac3d4ff1f72ebc6a3de83b97ad978",
     "url": "/workout-app/index.html"
   },
   {
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/workout-app/img/logo.f3257d6b.svg"
   },
   {
-    "revision": "0f8bacc0bec1f52e183a",
+    "revision": "17361aabe906313d1706",
     "url": "/workout-app/css/app.beba60d6.css"
   }
 ];
