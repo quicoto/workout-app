@@ -1,0 +1,18 @@
+{
+  "exercices": [
+    {
+      "id": 1,
+      "name": "Push up",
+      "description": "Bring yourself into a high plank position, with your feet to a bit wider than hip-width apart. This will give you more stability. Think about wrapping your shoulders back, but keeping your ribcage knit together. Everything is super engaged in your core. ",
+      "youtube": "https://www.youtube.com/watch?v=IODxDxX7oi4",
+      "image": true
+    },
+    {
+      "id": 2,
+      "name": "Squat",
+      "description": "Squats are one of the most foundational functional movements in our lives.",
+      "youtube": "https://www.youtube.com/watch?v=IODxDxX7oi4",
+      "image": true
+    }
+  ]
+}

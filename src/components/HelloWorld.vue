@@ -2,7 +2,7 @@
   <div class="hello">
     <h2 class="text-muted text-center">{{ msg }}</h2>
     <ul>
-      <li v-for="(user, index) in users" :key="index">
+      <li v-for="user in users" :key="user.id">
         {{ user.name }}
       </li>
     </ul>
