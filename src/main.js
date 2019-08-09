@@ -18,6 +18,9 @@ import {
   BNavItemDropdown,
   BDropdownItem,
   BCollapse,
+  BCard,
+  BCardText,
+  BCardImg,
 } from 'bootstrap-vue';
 
 import App from './App.vue';
@@ -45,6 +48,9 @@ Vue.component('b-form-input', BFormInput);
 Vue.component('b-nav-item-dropdown', BNavItemDropdown);
 Vue.component('b-dropdown-item', BDropdownItem);
 Vue.component('b-collapse', BCollapse);
+Vue.component('b-card', BCard);
+Vue.component('b-card-text', BCardText);
+Vue.component('b-card-img', BCardImg);
 
 new Vue({
   router,
