@@ -35,7 +35,10 @@ export default {
       .then((data) => {
         this.exercises = data.exercises;
       })
-      .catch(error => console.error(error));
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error(error)
+      });
   },
 };
 
