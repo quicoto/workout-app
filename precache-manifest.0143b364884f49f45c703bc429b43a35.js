@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/workout-app/img/logo.f3257d6b.svg"
   },
   {
-    "revision": "bbb3186ca083b593fa6c8a8d8d3d7467",
+    "revision": "45f46a61ae1943120d11c1e3e98fcadd",
     "url": "/workout-app/index.html"
   },
   {
