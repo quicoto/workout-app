@@ -1,6 +1,12 @@
 <template>
   <div class="about">
     <div class="container py-5">
+
+    <h2 class="pt-3 pb-1">View loader</h2>
+    <Loader />
+
+    <hr>
+
     <h2 class="pt-3 pb-1">Headings &amp; Body Text</h2>
 
     <h1>Heading 1</h1>
@@ -836,7 +842,7 @@
     </div>
   </div>
 
-  <hr class="bg-primary" />
+  <hr />
 
   <h2 class="text-warning mb-4 mt-5">Real examples</h2>
 
@@ -868,3 +874,13 @@
   </div>
 </div>
 </template>
+
+<script>
+import Loader from '@/components/Loader.vue';
+
+export default {
+  components: {
+    Loader,
+  },
+};
+</script>
