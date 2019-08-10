@@ -2,7 +2,7 @@
 <browserconfig>
     <msapplication>
         <tile>
-            <square150x150logo src="/workout-app/mstile-150x150.png"/>
+            <square150x150logo src="/img/icons/mstile-150x150.png"/>
             <TileColor>#12263f</TileColor>
         </tile>
     </msapplication>
