@@ -2,11 +2,19 @@
 
 # Workout like Thor <img src="https://cldup.com/CnxsnixssB.png" width="50"/>
 
+
+## Mission 
+
+Don't worry about your workout rutines anymore, let the app work for you.
+
+## Development
+
 Workout tracking app with VUE and Firebase.
 
 [![Build Status](https://travis-ci.org/quicoto/workout-app.svg?branch=master)](https://travis-ci.org/quicoto/workout-app)
 ![Dependencies](https://img.shields.io/david/quicoto/workout-app?color=#4bc51d)
 ![Last commit](https://img.shields.io/github/last-commit/quicoto/workout-app)
+
 
 ## Milestones
 
