@@ -6,7 +6,7 @@
       variant="dark"
       sticky>
       <b-container>
-        <b-navbar-brand href="#">
+        <b-navbar-brand to="/">
           Workout
           <img
             alt="Workout like Thor logo"
