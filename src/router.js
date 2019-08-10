@@ -15,7 +15,17 @@ export default new Router({
     {
       path: '/styleguide',
       name: 'styleguide',
-      component: () => import(/* webpackChunkName: "about" */ './views/Styleguide.vue'),
+      component: () => import(/* webpackChunkName: "styleguide" */ './views/Styleguide.vue'),
+    },
+    {
+      path: '/exercises',
+      name: 'exercises',
+      component: () => import(/* webpackChunkName: "excercises" */ './views/Exercises.vue'),
+    },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import(/* webpackChunkName: "search" */ './views/SearchResults.vue'),
     },
   ],
 });
