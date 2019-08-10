@@ -8,12 +8,12 @@ self.__precacheManifest = [
     "url": "/workout-app/js/about.101a9de5.js"
   },
   {
-    "revision": "01ceb12ae39bd74b28a9",
+    "revision": "ef2a2fce05139a3eceb0",
     "url": "/workout-app/css/app.28a58b1b.css"
   },
   {
-    "revision": "01ceb12ae39bd74b28a9",
-    "url": "/workout-app/js/app.08795c01.js"
+    "revision": "ef2a2fce05139a3eceb0",
+    "url": "/workout-app/js/app.2791656b.js"
   },
   {
     "revision": "e586d2f90ce9e7698922",
@@ -24,7 +24,7 @@ self.__precacheManifest = [
     "url": "/workout-app/img/logo.f3257d6b.svg"
   },
   {
-    "revision": "f71888e704e38a81e6b1bad44cbe143f",
+    "revision": "6fdcdd7d6526a8513bcab1ee662fb8f3",
     "url": "/workout-app/index.html"
   },
   {
