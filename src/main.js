@@ -21,6 +21,7 @@ import {
   BCard,
   BCardText,
   BCardImg,
+  BImg,
 } from 'bootstrap-vue';
 
 import App from './App.vue';
@@ -51,6 +52,7 @@ Vue.component('b-collapse', BCollapse);
 Vue.component('b-card', BCard);
 Vue.component('b-card-text', BCardText);
 Vue.component('b-card-img', BCardImg);
+Vue.component('b-img', BImg);
 
 new Vue({
   router,
