@@ -110,6 +110,94 @@
       <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 
+    <h2 class="pt-3 pb-1">Forms fields states</h2>
+
+    <b-form>
+      <b-form-group
+        id="input-group-1"
+        label="Email address:"
+        label-for="input-1"
+        description="We'll never share your email with anyone else."
+      >
+        <b-form-input
+          id="input-1"
+          type="email"
+          required
+          placeholder="Disabled email"
+          disabled
+        ></b-form-input>
+      </b-form-group>
+
+      <b-form-group
+        id="input-group-2"
+        label="Ok email with message"
+        label-for="input-2"
+        description="We'll never share your email with anyone else."
+      >
+        <b-form-input
+          id="input-2"
+          type="email"
+          required
+          placeholder=""
+          value="test@test.com"
+          :state="true"
+        ></b-form-input>
+        <b-form-valid-feedback :state="true">
+          Looks Good.
+        </b-form-valid-feedback>
+      </b-form-group>
+
+      <b-form-group
+        id="input-group-3"
+        label="Wrong email with message"
+        label-for="input-3"
+        description="We'll never share your email with anyone else."
+      >
+        <b-form-input
+          id="input-3"
+          type="email"
+          required
+          placeholder=""
+          value="test@test.com"
+          :state="false"
+        ></b-form-input>
+        <b-form-invalid-feedback :state="false">
+          Something went wrong!
+        </b-form-invalid-feedback>
+      </b-form-group>
+
+      <b-form-group
+        id="input-group-4"
+        label="Wrong email"
+        label-for="input-4"
+      >
+        <b-form-input
+          id="input-4"
+          type="email"
+          required
+          placeholder=""
+          value="test@test.com"
+          :state="false"
+        ></b-form-input>
+      </b-form-group>
+
+      <b-form-group
+        id="input-group-4"
+        label="OK email"
+        label-for="input-5"
+      >
+        <b-form-input
+          id="input-5"
+          type="email"
+          required
+          placeholder=""
+          value="test@test.com"
+          :state="true"
+        ></b-form-input>
+      </b-form-group>
+
+    </b-form>
+
     <form class="mt-5">
       <div class="form-group">
         <label for="exampleFormControlInput1">Email address</label>
