@@ -19,30 +19,44 @@
     <title>Workout like Thor</title>
 
     <style>
-        .site-loading {
-          width: 400px;
-          height: 400px;
-          margin: 100px auto;
-          background-color: #ffffff;
-          border-radius: 100%;
-          animation: pulsate 1.5s infinite ease-in-out;
-        }
+      body {
+        background: #12263f;
+      }
+      .site-loading {
+        color: #ffffff;
+        text-align: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .site-loading h2 {
+        padding: 0 20px;
+      }
+      .loader {
+        width: 100px;
+        height: 100px;
+        margin: 100px auto 0 auto;
+        background-color: #ffffff;
+        border-radius: 100%;
+        animation: pulsate 1.5s infinite ease-in-out;
+      }
 
-        @keyframes pulsate {
-          0% {
-            transform: scale(0);
-          } 100% {
-            transform: scale(1.0);
-            opacity: 0;
-          }
+      @keyframes pulsate {
+        0% {
+          transform: scale(0);
+        } 100% {
+          transform: scale(1.0);
+          opacity: 0;
         }
+      }
       </style>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but workout-app doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
-    <div class="site-loading"></div>
+    <div class="site-loading">
+      <h2>One moment please, we're calling Thor...</h2>
+      <div class="loader"></div>
+    </div>
     <div id="app" v-cloak></div>
     <script>
       document.addEventListener("DOMContentLoaded", function(event) {

@@ -19,6 +19,7 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item to="/">Home</b-nav-item>
+            <b-nav-item to="/exercises">Exercises</b-nav-item>
             <b-nav-item to="/styleguide">Styleguide</b-nav-item>
           </b-navbar-nav>
 
@@ -47,11 +48,10 @@
       </b-container>
     </b-navbar>
 
-    <b-container
-      fluid
+    <section
       class="pt-4">
       <router-view/>
-    </b-container>
+    </section>
 
     <footer class="container-fluid p-5 mt-5">
       <b-row>
@@ -76,7 +76,7 @@ $dark_secondary: #1e3a5c;
 
 // Body
 $body-color: #ffffff;
-$body-bg: #12263f;
+$body-bg: #12263f; // Also set in index.html
 
 // Links
 $link-color: $primary;
@@ -126,5 +126,10 @@ $hr-border-color: $light;
 // Buttns
 .btn-outline-dark {
   color: #ffffff;
+}
+
+// Headers
+.view-header {
+  margin-bottom: 15px;
 }
 </style>

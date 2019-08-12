@@ -1,5 +1,5 @@
 <template>
-  <div class="about">
+  <div>
     <div class="container py-5">
 
     <h2 class="pt-3 pb-1">View loader</h2>

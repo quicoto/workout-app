@@ -7,7 +7,7 @@
 .loader {
   width: 100px;
   height: 100px;
-  margin: 100px auto;
+  margin: 0 auto;
   background-color: #ffffff;
   border-radius: 100%;
   animation: pulsate 1s infinite ease-in-out;
