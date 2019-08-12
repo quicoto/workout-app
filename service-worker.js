@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.d61e321e35718cb20c9fe8e34c9bbb33.js"
+  "/precache-manifest.cf616f97f14f0e982803be3fb51c54f1.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "workout-app"});
+workbox.core.setCacheNameDetails({prefix: "thorkout"});
 
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
