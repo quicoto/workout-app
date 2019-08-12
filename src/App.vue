@@ -6,7 +6,7 @@
       variant="dark"
       sticky>
       <b-container>
-        <b-navbar-brand href="#">
+        <b-navbar-brand to="/">
           Thorkout
           <img
             alt="Workout like Thor logo"
@@ -19,6 +19,7 @@
         <b-collapse id="nav-collapse" is-nav>
           <b-navbar-nav>
             <b-nav-item to="/">Home</b-nav-item>
+            <b-nav-item to="/exercises">Exercises</b-nav-item>
             <b-nav-item to="/styleguide">Styleguide</b-nav-item>
           </b-navbar-nav>
 
@@ -47,15 +48,14 @@
       </b-container>
     </b-navbar>
 
-    <b-container
-      fluid
+    <section
       class="pt-4">
       <router-view/>
-    </b-container>
+    </section>
 
     <footer class="container-fluid p-5 mt-5">
       <b-row>
-        <b-col class="text-center"><small>v1.0.0</small></b-col>
+        <b-col class="text-center"><a href="https://github.com/quicoto/workout-app" title="Workout App Github"><small>v1.0.0</small></a></b-col>
       </b-row>
     </footer>
   </main>
@@ -76,7 +76,7 @@ $dark_secondary: #1e3a5c;
 
 // Body
 $body-color: #ffffff;
-$body-bg: #12263f;
+$body-bg: #12263f; // Also set in index.html
 
 // Links
 $link-color: $primary;
@@ -137,5 +137,10 @@ $hr-border-color: $light;
 // Buttns
 .btn-outline-dark {
   color: #ffffff;
+}
+
+// Headers
+.view-header {
+  margin-bottom: 15px;
 }
 </style>

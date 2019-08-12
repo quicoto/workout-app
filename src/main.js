@@ -25,6 +25,7 @@ import {
   BCard,
   BCardText,
   BCardImg,
+  BBadge,
 } from 'bootstrap-vue';
 
 import App from './App.vue';
@@ -59,6 +60,7 @@ Vue.component('b-card-text', BCardText);
 Vue.component('b-card-img', BCardImg);
 Vue.component('b-form-invalid-feedback', BFormInvalidFeedback);
 Vue.component('b-form-valid-feedback', BFormValidFeedback);
+Vue.component('b-badge', BBadge);
 
 new Vue({
   router,
