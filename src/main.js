@@ -14,7 +14,11 @@ import {
   BNavItem,
   BNavForm,
   BButton,
+  BForm,
+  BFormGroup,
   BFormInput,
+  BFormInvalidFeedback,
+  BFormValidFeedback,
   BNavItemDropdown,
   BDropdownItem,
   BCollapse,
@@ -22,6 +26,7 @@ import {
   BCardText,
   BCardImg,
   BImg,
+  BBadge,
 } from 'bootstrap-vue';
 
 import App from './App.vue';
@@ -45,6 +50,8 @@ Vue.component('b-navbar-nav', BNavbarNav);
 Vue.component('b-nav-item', BNavItem);
 Vue.component('b-nav-form', BNavForm);
 Vue.component('b-button', BButton);
+Vue.component('b-form', BForm);
+Vue.component('b-form-group', BFormGroup);
 Vue.component('b-form-input', BFormInput);
 Vue.component('b-nav-item-dropdown', BNavItemDropdown);
 Vue.component('b-dropdown-item', BDropdownItem);
@@ -53,6 +60,9 @@ Vue.component('b-card', BCard);
 Vue.component('b-card-text', BCardText);
 Vue.component('b-card-img', BCardImg);
 Vue.component('b-img', BImg);
+Vue.component('b-form-invalid-feedback', BFormInvalidFeedback);
+Vue.component('b-form-valid-feedback', BFormValidFeedback);
+Vue.component('b-badge', BBadge);
 
 new Vue({
   router,
