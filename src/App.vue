@@ -7,7 +7,7 @@
       sticky>
       <b-container>
         <b-navbar-brand to="/">
-          Workout
+          Thorkout
           <img
             alt="Workout like Thor logo"
             src="./assets/logo.svg"
@@ -122,6 +122,17 @@ $hr-border-color: $light;
 .navbar .logo {
   width: 25px;
 }
+
+// Forms
+.form-control {
+  &.is-valid,
+  &.is-invalid {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}
+
 
 // Buttns
 .btn-outline-dark {
