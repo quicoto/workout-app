@@ -2,11 +2,15 @@
   "users": [
     {
       "id": 1,
-      "name": "Ricard"
+      "name": "Ricard",
+      "lastname": "Torres",
+      "gravatar": "3b6f2d380f8fcf8cd6f61031d2ff8e8b"
     },
     {
       "id": 2,
-      "name": "Roger"
+      "name": "Roger",
+      "lastname": "Cornet",
+      "gravatar": "d3c128285ac9aa295aa87776d3f18114"
     }
   ]
 }

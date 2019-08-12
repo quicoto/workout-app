@@ -25,6 +25,7 @@ import {
   BCard,
   BCardText,
   BCardImg,
+  BImg,
   BBadge,
 } from 'bootstrap-vue';
 
@@ -58,6 +59,7 @@ Vue.component('b-collapse', BCollapse);
 Vue.component('b-card', BCard);
 Vue.component('b-card-text', BCardText);
 Vue.component('b-card-img', BCardImg);
+Vue.component('b-img', BImg);
 Vue.component('b-form-invalid-feedback', BFormInvalidFeedback);
 Vue.component('b-form-valid-feedback', BFormValidFeedback);
 Vue.component('b-badge', BBadge);

@@ -4,7 +4,7 @@ import Home from './views/Home.vue';
 
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
   linkExactActiveClass: 'active',
   routes: [
     {
@@ -27,5 +27,16 @@ export default new Router({
       name: 'search',
       component: () => import(/* webpackChunkName: "search" */ './views/SearchResults.vue'),
     },
+    {
+      path: '/profile/:user_id',
+      name: 'profile',
+      component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
+    },
   ],
 });
+
+router.afterEach(() => {
+  window.scrollTo(0, 0);
+});
+
+export default router;
