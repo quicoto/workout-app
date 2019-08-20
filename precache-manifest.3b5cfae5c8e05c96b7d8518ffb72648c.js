@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "b351a8b24b4e18814e45",
-    "url": "/css/app.c436422d.css"
+    "revision": "d505a2c26125b22d9765",
+    "url": "/css/app.c3451ce4.css"
   },
   {
-    "revision": "b351a8b24b4e18814e45",
-    "url": "/js/app.5bc9fb17.js"
+    "revision": "d505a2c26125b22d9765",
+    "url": "/js/app.37360c57.js"
   },
   {
     "revision": "923eaf69fd95653122ce",
@@ -44,11 +44,51 @@ self.__precacheManifest = [
     "url": "/js/styleguide.7a490e74.js"
   },
   {
+    "revision": "b4d2c4c39853ee244272c04999b230ba",
+    "url": "/fonts/lato-v16-latin-regular.b4d2c4c3.woff2"
+  },
+  {
+    "revision": "b8ee546acd6cc0c49f42ad3d48ef244f",
+    "url": "/fonts/lato-v16-latin-regular.b8ee546a.woff"
+  },
+  {
+    "revision": "1efbd38aa76ddae2580fedf378276333",
+    "url": "/fonts/lato-v16-latin-700.1efbd38a.woff2"
+  },
+  {
+    "revision": "874b8e7bc7e8d1507b50f56bc6c9b536",
+    "url": "/fonts/lato-v16-latin-700.874b8e7b.woff"
+  },
+  {
+    "revision": "6fb1b5623e528e27c18658fecf5ee0ee",
+    "url": "/fonts/montserrat-v14-latin-600.6fb1b562.woff2"
+  },
+  {
+    "revision": "7c839d15a6f54e7025ba8c0c4b333e8f",
+    "url": "/fonts/montserrat-v14-latin-600.7c839d15.woff"
+  },
+  {
+    "revision": "39d93cf678c740f9f6b2b1cfde34bee3",
+    "url": "/fonts/montserrat-v14-latin-700.39d93cf6.woff2"
+  },
+  {
+    "revision": "80f10bd382f0df1cd650fec59f3c9394",
+    "url": "/fonts/montserrat-v14-latin-700.80f10bd3.woff"
+  },
+  {
+    "revision": "58cd789700850375b834e8b6776002eb",
+    "url": "/fonts/montserrat-v14-latin-900.58cd7897.woff2"
+  },
+  {
+    "revision": "26d42c9428780e545a540bbb50c84bce",
+    "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
+  },
+  {
     "revision": "f3257d6bac0d2f59ca84f14514ab85f4",
     "url": "/img/logo.f3257d6b.svg"
   },
   {
-    "revision": "50748e1f5c4e6ce24964ba00addc565b",
+    "revision": "d1b111a8adaae947da9629b3bd20928e",
     "url": "/index.html"
   },
   {
