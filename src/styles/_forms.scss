@@ -1,0 +1,8 @@
+.form-control {
+  &.is-valid,
+  &.is-invalid {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+}

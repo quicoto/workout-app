@@ -1,0 +1,57 @@
+// Fonts
+$enable-responsive-font-sizes: true;
+
+// Colors
+$primary: #2c7be5;
+$secondary: #6e84a3;
+$success: #27ae60;
+$danger: #c0392b;
+$light: white;
+$dark: #152e4d;
+$dark_secondary: #1e3a5c;
+
+// Body
+$body-color: #ffffff;
+$body-bg: #12263f; // Also set in index.html
+
+// Links
+$link-color: $primary;
+$link-hover-color: darken($link-color, 15%);
+
+// Lists
+$list-group-bg: $dark;
+$list-group-action-color: $body-color;
+$list-group-action-hover-color: $link-hover-color;
+$list-group-hover-bg: $dark;
+
+// Inputs
+$input-bg: $dark_secondary;
+$input-disabled-bg: $input-bg;
+
+$input-color: #ffffff;
+$input-border-color: $body-bg;
+$input-box-shadow: none;
+$input-focus-box-shadow: none;
+
+// $input-focus-bg:                        $input-bg !default;
+$input-focus-border-color: $primary;
+$input-placeholder-color: #95aac9;
+$input-plaintext-color: $input-color;
+
+// Pagination
+$pagination-bg: $dark;
+$pagination-border-width: 0;
+$pagination-hover-color: #ffffff;
+$pagination-hover-bg: $primary;
+$pagination-disabled-color: $dark;
+$pagination-disabled-bg: $secondary;
+
+// Cards
+$card-border-color: $dark_secondary;
+
+// Thumbnails
+$thumbnail-border-color: $dark_secondary;
+$thumbnail-bg: $dark_secondary;
+
+// HR
+$hr-border-color: $light;
