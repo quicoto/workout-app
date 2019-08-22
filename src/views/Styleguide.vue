@@ -965,7 +965,7 @@
       All icons that need to be used have to be added to the <code>library.add()</code>
       in <code>main.js</code>
     </p>
-    <font-awesome-icon icon="user"></font-awesome-icon>
+    <font-awesome-icon :icon="['far', 'frown']" />
 
   </div>
 </div>

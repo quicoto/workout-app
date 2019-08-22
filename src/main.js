@@ -1,7 +1,9 @@
 // https://github.com/FortAwesome/vue-fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { faFrown } from '@fortawesome/free-regular-svg-icons';
+import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import firebase from 'firebase/app';
 
 import Vue from 'vue';
 import { rtdbPlugin } from 'vuefire';
@@ -39,7 +41,8 @@ import './registerServiceWorker';
 import router from './router';
 
 // Font Awesome configuration
-library.add(faUser);
+library.add(faFrown);
+library.add(faSignOutAlt);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
@@ -72,7 +75,16 @@ Vue.component('b-form-invalid-feedback', BFormInvalidFeedback);
 Vue.component('b-form-valid-feedback', BFormValidFeedback);
 Vue.component('b-badge', BBadge);
 
-new Vue({
-  router,
-  render: h => h(App),
-}).$mount('#app');
+let app = '';
+
+// Make sure Firebase has finished its calls before initiating our app
+// Otherwise we have an incomplete authentication check.
+// It is fine if the user is not authenticated, the app will init in any case.
+firebase.auth().onAuthStateChanged(() => {
+  if (!app) {
+    app = new Vue({
+      router,
+      render: h => h(App),
+    }).$mount('#app');
+  }
+});
