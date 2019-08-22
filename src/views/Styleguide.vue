@@ -958,6 +958,14 @@
       </div>
     </div>
 
+    <hr />
+    <!-- Icons from Font Awesome -->
+    <h2>Implementation of icons from Font Awesome</h2>
+    <p>
+      All icons that need to be used have to be added to the <code>library.add()</code>
+      in <code>main.js</code>
+    </p>
+    <font-awesome-icon icon="user"></font-awesome-icon>
 
   </div>
 </div>

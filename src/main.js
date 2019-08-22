@@ -1,3 +1,8 @@
+// https://github.com/FortAwesome/vue-fontawesome
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { faUser } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+
 import Vue from 'vue';
 import { rtdbPlugin } from 'vuefire';
 
@@ -33,6 +38,9 @@ import App from './App.vue';
 import './registerServiceWorker';
 import router from './router';
 
+// Font Awesome configuration
+library.add(faUser);
+Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = false;
 
 // Firebase
