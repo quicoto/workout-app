@@ -47,7 +47,7 @@ import router from './router';
 library.add(faFrown);
 library.add(faSignOutAlt);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
-Vue.config.productionTip = false;
+Vue.config.productionTip = true;
 
 // Firebase
 Vue.use(rtdbPlugin);
