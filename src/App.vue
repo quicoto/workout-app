@@ -117,16 +117,23 @@ export default {
     }
 
     // When user has just logged in, populate the current user.
+    // Event listener
     firebase.auth().onAuthStateChanged((user) => {
-      if (user) this.currentUser = user;
+      if (user) {
+        this.currentUser = user;
+        this.updateCurrentDBUser();
+      }
     });
 
-    // Search our Firebase users data and set it.
-    firebase.database().ref('users').once('value').then((snapshot) => {
-      this.currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
-    });
+    this.updateCurrentDBUser();
   },
   methods: {
+    updateCurrentDBUser() {
+      // Search our Firebase users data and set it.
+      firebase.database().ref('users').once('value').then((snapshot) => {
+        this.currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
+      });
+    },
     onSubmit() {
       if (this.$router.history.current.path === 'search') {
         // Somehow perform a search again in the search component?
