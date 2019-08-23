@@ -10,7 +10,17 @@
     <h3>List</h3>
     <b-row>
       <b-col>
-        <b-table striped hover :items="items"></b-table>
+        <Loader v-show="exercises.length === 0" />
+        <b-table
+          v-if="exercises.length > 0"
+          striped
+          hover
+          :items="exercises"
+          :fields="fields">
+          <template slot="areas" slot-scope="data">
+            <AreasBadges :areas="data.item.areas" />
+          </template>
+        </b-table>
       </b-col>
     </b-row>
 
@@ -19,19 +29,24 @@
 
 <script>
 // import firebase from 'firebase/app';
-// import db from '@/db';
+import db from '@/db';
+import Loader from '@/components/Loader.vue';
+import AreasBadges from '@/components/AreasBadges.vue';
 
 export default {
   name: 'Exercises',
+  components: {
+    Loader,
+    AreasBadges,
+  },
   data() {
     return {
-      items: [
-        { age: 40, first_name: 'Dickerson', last_name: 'Macdonald' },
-        { age: 21, first_name: 'Larsen', last_name: 'Shaw' },
-        { age: 89, first_name: 'Geneva', last_name: 'Wilson' },
-        { age: 38, first_name: 'Jami', last_name: 'Carney' },
-      ],
+      exercises: [],
+      fields: ['id', 'name', 'description', 'areas'],
     };
+  },
+  firebase: {
+    exercises: db.ref('exercises'),
   },
 };
 </script>

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Loader />
     <b-container>
       <b-row>
         <b-col>
@@ -25,12 +24,10 @@
 
 <script>
 import Exercises from '@/components/admin/Exercises.vue';
-import Loader from '@/components/Loader.vue';
 
 export default {
   components: {
     Exercises,
-    Loader,
   },
   data() {
     return {

@@ -12,15 +12,7 @@
   >
     <b-card-text>
       <div class="pb-3">
-        <b-badge
-          v-for="areaId in exercise.areas"
-          :key="areaId"
-          class="mr-1"
-          pill
-          variant="info"
-          :to="`search?query=${encodeURI(getAreaName(areaId))}`">
-          {{ getAreaName(areaId) }}
-        </b-badge>
+        <AreasBadges :areas="exercise.areas" />
       </div>
 
       {{ exercise.description }}
@@ -38,8 +30,13 @@
 </template>
 
 <script>
+import AreasBadges from '@/components/AreasBadges.vue';
+
 export default {
   name: 'ExerciseCard',
+  components: {
+    AreasBadges,
+  },
   props: {
     areas: Array,
     exercise: Object,
@@ -48,17 +45,6 @@ export default {
     return {
       publicPath: process.env.BASE_URL,
     };
-  },
-  methods: {
-    getAreaName(areaId) {
-      const area = this.areas.find(obj => obj.id === areaId);
-
-      if (area) {
-        return area.name;
-      }
-
-      return 'Error';
-    },
   },
 };
 </script>
