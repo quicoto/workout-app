@@ -146,7 +146,6 @@ export default {
     logout() {
       firebase.auth().signOut().then(() => {
         this.currentUser = {};
-
         this.$router.replace({ path: '/login' });
       }).catch((error) => {
         // eslint-disable-next-line no-console
