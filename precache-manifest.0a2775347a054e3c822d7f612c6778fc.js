@@ -1,51 +1,59 @@
 self.__precacheManifest = [
   {
-    "revision": "9f8d9abab01d94742226",
-    "url": "/css/app.9a42ceb2.css"
+    "revision": "ab3edf2b6ada703eb230",
+    "url": "/css/app.16637428.css"
   },
   {
-    "revision": "9f8d9abab01d94742226",
-    "url": "/js/app.588b5e2d.js"
+    "revision": "ab3edf2b6ada703eb230",
+    "url": "/js/app.78562dbb.js"
   },
   {
-    "revision": "41cd40a7cd2d73ab21e9",
-    "url": "/js/chunk-vendors.7af703ea.js"
+    "revision": "89b110cce22f3dff7bcd",
+    "url": "/js/chunk-vendors.59890958.js"
   },
   {
-    "revision": "0d3d0493952f84c03126",
+    "revision": "251cae1a9caab04951b7",
+    "url": "/css/dashboard.41f7941c.css"
+  },
+  {
+    "revision": "251cae1a9caab04951b7",
+    "url": "/js/dashboard.030bba99.js"
+  },
+  {
+    "revision": "b9b4719ee87f396be6f6",
     "url": "/css/excercises.41f7941c.css"
   },
   {
-    "revision": "0d3d0493952f84c03126",
-    "url": "/js/excercises.868e9024.js"
+    "revision": "b9b4719ee87f396be6f6",
+    "url": "/js/excercises.2b7f77af.js"
   },
   {
-    "revision": "0a3416708636e7994265",
-    "url": "/js/login.a186c45a.js"
+    "revision": "057263ac3e35cfe75500",
+    "url": "/js/login.6bc0ad3d.js"
   },
   {
-    "revision": "a26205e6e6722d860239",
-    "url": "/css/profile.3e436796.css"
+    "revision": "79333761755448ae9bee",
+    "url": "/css/profile.b3aab9de.css"
   },
   {
-    "revision": "a26205e6e6722d860239",
-    "url": "/js/profile.ad0adac4.js"
+    "revision": "79333761755448ae9bee",
+    "url": "/js/profile.32bc4e6a.js"
   },
   {
-    "revision": "3ebdd8081f507f806e03",
+    "revision": "cc82c438eddc612d1adf",
     "url": "/css/search.41f7941c.css"
   },
   {
-    "revision": "3ebdd8081f507f806e03",
-    "url": "/js/search.2571a25e.js"
+    "revision": "cc82c438eddc612d1adf",
+    "url": "/js/search.15e2cb36.js"
   },
   {
-    "revision": "9c1124e69319786a40a9",
+    "revision": "ee669770f6156923797f",
     "url": "/css/styleguide.41f7941c.css"
   },
   {
-    "revision": "9c1124e69319786a40a9",
-    "url": "/js/styleguide.6525979b.js"
+    "revision": "ee669770f6156923797f",
+    "url": "/js/styleguide.ebca1269.js"
   },
   {
     "revision": "f3257d6bac0d2f59ca84f14514ab85f4",
@@ -58,6 +66,10 @@ self.__precacheManifest = [
   {
     "revision": "b8ee546acd6cc0c49f42ad3d48ef244f",
     "url": "/fonts/lato-v16-latin-regular.b8ee546a.woff"
+  },
+  {
+    "revision": "1efbd38aa76ddae2580fedf378276333",
+    "url": "/fonts/lato-v16-latin-700.1efbd38a.woff2"
   },
   {
     "revision": "874b8e7bc7e8d1507b50f56bc6c9b536",
@@ -88,11 +100,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "1efbd38aa76ddae2580fedf378276333",
-    "url": "/fonts/lato-v16-latin-700.1efbd38a.woff2"
-  },
-  {
-    "revision": "b214025c044693fbdbf02268c87326de",
+    "revision": "26bcd62dbea15a527f623520902aed9a",
     "url": "/index.html"
   },
   {
@@ -142,17 +150,5 @@ self.__precacheManifest = [
   {
     "revision": "d04a7f94fd2bd1baf9258229bfb51b49",
     "url": "/img/favicons/safari-pinned-tab.svg"
-  },
-  {
-    "revision": "b2192b0fbbd3b991f74892108848607b",
-    "url": "/mocks/exercise-areas.json"
-  },
-  {
-    "revision": "09933dc345a41ef03d0f642fd047bda6",
-    "url": "/mocks/exercises.json"
-  },
-  {
-    "revision": "0accfaa16619f6128c88e4acf7dc7a2a",
-    "url": "/mocks/users.json"
   }
 ];
