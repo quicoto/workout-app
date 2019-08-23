@@ -59,9 +59,9 @@ export default {
   data() {
     return {
       login: {
-        email: 'torres.rick@gmail.com',
+        email: '',
         error: {},
-        password: 'Oq75-_8M70$$7v!6EE5481K_E25lS5',
+        password: '',
       },
     };
   },
