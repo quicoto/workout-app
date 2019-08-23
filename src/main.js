@@ -36,7 +36,7 @@ import {
   BBadge,
   BTab,
   BTabs,
-  BTable
+  BTable,
 } from 'bootstrap-vue';
 
 import App from './App.vue';
