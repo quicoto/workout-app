@@ -4,25 +4,24 @@
       toggleable="md"
       type="dark"
       variant="dark"
-      sticky>
+      sticky
+      v-if="currentUser && currentUser.uid">
       <b-container>
         <b-navbar-brand to="/">
-          Thorkout
-          <img
-            alt="Workout like Thor logo"
-            src="./assets/logo.svg"
-            class="d-inline-block align-top logo">
+          <siteName variant="short" :image="true" />
         </b-navbar-brand>
 
         <b-navbar-nav
           class="d-block d-md-none ml-auto mr-3">
-          <b-nav-item :to="`/profile/${user.id}`">
+          <b-nav-item
+            :to="`/profile/${currentDBUser.id}`"
+            :title="`${currentDBUser.name} ${currentDBUser.lastname} Profile`">
             <b-img
               thumbnail
               fluid
               rounded="circle"
-              :src="`https://www.gravatar.com/avatar/${user.gravatar}?s=200`"
-              alt="Profile"
+              :src="`https://www.gravatar.com/avatar/${currentDBUser.gravatar}?s=200`"
+              :alt="`${currentDBUser.name} ${currentDBUser.lastname} Profile`"
               class="nav-avatar"></b-img>
           </b-nav-item>
         </b-navbar-nav>
@@ -55,15 +54,28 @@
             </b-nav-form>
 
             <b-nav-item
-            :to="`/profile/${user.id}`"
-            class="d-none d-md-block">
+            :to="`/profile/${currentDBUser.id}`"
+            class="d-none d-md-block"
+            :title="`${currentDBUser.name} ${currentDBUser.lastname} Profile`">
               <b-img
                 thumbnail
                 fluid
                 rounded="circle"
-                :src="`https://www.gravatar.com/avatar/${user.gravatar}?s=200`"
-                alt="Profile"
+                :src="`https://www.gravatar.com/avatar/${currentDBUser.gravatar}?s=200`"
+                :alt="`${currentDBUser.name} ${currentDBUser.lastname} Profile`"
                 class="nav-avatar"></b-img>
+            </b-nav-item>
+
+            <b-nav-item
+              @click="logout">
+              <span class="d-none d-md-block">
+                <font-awesome-icon
+                  :icon="['fas', 'sign-out-alt']"
+                  size="lg"
+                  title="Logout"
+                  class="mt-2" />
+              </span>
+              <span class="d-md-none">Logout</span>
             </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
@@ -84,17 +96,44 @@
 </template>
 
 <script>
+import firebase from 'firebase/app';
+import siteName from '@/components/siteName.vue';
+
 export default {
+  components: {
+    siteName,
+  },
   data() {
     return {
-      user: {
-        id: 1,
-        gravatar: '3b6f2d380f8fcf8cd6f61031d2ff8e8b',
-      },
+      currentUser: firebase.auth().currentUser,
+      currentDBUser: {},
       query: '',
     };
   },
+  mounted() {
+    // If user is not authenticated redirect
+    if (!firebase.auth().currentUser) {
+      this.$router.replace({ path: 'login' });
+    }
+
+    // When user has just logged in, populate the current user.
+    // Event listener
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        this.currentUser = user;
+        this.updateCurrentDBUser();
+      }
+    });
+
+    this.updateCurrentDBUser();
+  },
   methods: {
+    updateCurrentDBUser() {
+      // Search our Firebase users data and set it.
+      firebase.database().ref('users').once('value').then((snapshot) => {
+        this.currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
+      });
+    },
     onSubmit() {
       if (this.$router.history.current.path === 'search') {
         // Somehow perform a search again in the search component?
@@ -102,6 +141,15 @@ export default {
         // Go to the search with the query
         this.$router.push({ name: 'search', query: { query: this.query } });
       }
+    },
+    logout() {
+      firebase.auth().signOut().then(() => {
+        this.currentUser = {};
+        this.$router.replace({ path: 'login' });
+      }).catch((error) => {
+        // eslint-disable-next-line no-console
+        console.log(error);
+      });
     },
   },
 };

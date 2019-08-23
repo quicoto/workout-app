@@ -13,6 +13,11 @@ const router = new Router({
       component: Home,
     },
     {
+      path: '/login',
+      name: 'login',
+      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue'),
+    },
+    {
       path: '/styleguide',
       name: 'styleguide',
       component: () => import(/* webpackChunkName: "styleguide" */ './views/Styleguide.vue'),
