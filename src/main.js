@@ -34,6 +34,9 @@ import {
   BCardImg,
   BImg,
   BBadge,
+  BTab,
+  BTabs,
+  BTable,
 } from 'bootstrap-vue';
 
 import App from './App.vue';
@@ -74,6 +77,9 @@ Vue.component('b-img', BImg);
 Vue.component('b-form-invalid-feedback', BFormInvalidFeedback);
 Vue.component('b-form-valid-feedback', BFormValidFeedback);
 Vue.component('b-badge', BBadge);
+Vue.component('b-tab', BTab);
+Vue.component('b-tabs', BTabs);
+Vue.component('b-table', BTable);
 
 let app = '';
 
