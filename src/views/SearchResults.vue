@@ -20,6 +20,7 @@
 </template>
 
 <script>
+import firebase from 'firebase/app';
 import Loader from '@/components/Loader.vue';
 import ExerciseCard from '@/components/ExerciseCard.vue';
 
@@ -49,25 +50,13 @@ export default {
   mounted() {
     this.query = this.getQueryParam();
 
-    fetch('mocks/exercises.json')
-      .then(stream => stream.json())
-      .then((data) => {
-        this.exercises = data.exercises;
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.error(error);
-      });
+    firebase.database().ref('exercises').once('value').then((snapshot) => {
+      this.exercises = snapshot.val();
+    });
 
-    fetch('mocks/exercise-areas.json')
-      .then(stream => stream.json())
-      .then((data) => {
-        this.areas = data['exercise-areas'];
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.error(error);
-      });
+    firebase.database().ref('exercise-areas').once('value').then((snapshot) => {
+      this.areas = snapshot.val();
+    });
   },
 };
 </script>

@@ -18,6 +18,11 @@ const router = new Router({
       component: () => import(/* webpackChunkName: "login" */ './views/Login.vue'),
     },
     {
+      path: '/dashboard',
+      name: 'dashboard',
+      component: () => import(/* webpackChunkName: "dashboard" */ './views/Dashboard.vue'),
+    },
+    {
       path: '/styleguide',
       name: 'styleguide',
       component: () => import(/* webpackChunkName: "styleguide" */ './views/Styleguide.vue'),

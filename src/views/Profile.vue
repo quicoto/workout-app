@@ -1,18 +1,18 @@
 <template>
   <div>
-    <Loader v-show="!user" />
-    <b-container v-if="user">
+    <Loader v-show="!currentDBUser" />
+    <b-container v-if="currentDBUser">
       <b-row>
         <b-col class="text-center mb-3">
           <b-img
             thumbnail
             fluid
             rounded="circle"
-            :src="`https://www.gravatar.com/avatar/${user.gravatar}?s=200`"
+            :src="`https://www.gravatar.com/avatar/${currentDBUser.gravatar}?s=200`"
             alt="Profile"
             class="mb-4 avatar"></b-img>
 
-            <h4>{{ user.name }} {{ user.lastname }}</h4>
+            <h4>{{ currentDBUser.name }} {{ currentDBUser.lastname }}</h4>
             <small class="text-muted">Last workout: today</small>
         </b-col>
       </b-row>
@@ -69,6 +69,7 @@
 </template>
 
 <script>
+import firebase from 'firebase/app';
 import Loader from '@/components/Loader.vue';
 
 export default {
@@ -78,19 +79,15 @@ export default {
   data() {
     return {
       publicPath: process.env.BASE_URL,
-      user: {},
+      currentUser: firebase.auth().currentUser,
+      currentDBUser: {},
     };
   },
   mounted() {
-    fetch('mocks/users.json')
-      .then(stream => stream.json())
-      .then((data) => {
-        this.user = data.users.find(obj => obj.id === +this.$route.params.user_id);
-      })
-      .catch((error) => {
-        // eslint-disable-next-line no-console
-        console.error(error);
-      });
+    // Search our Firebase users data and set it.
+    firebase.database().ref('users').once('value').then((snapshot) => {
+      this.currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
+    });
   },
 };
 </script>
