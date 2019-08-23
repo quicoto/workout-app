@@ -1,47 +1,55 @@
 self.__precacheManifest = [
   {
-    "revision": "a02e81b22a85c621cc4a",
-    "url": "/css/app.c3451ce4.css"
+    "revision": "9f8d9abab01d94742226",
+    "url": "/css/app.9a42ceb2.css"
   },
   {
-    "revision": "a02e81b22a85c621cc4a",
-    "url": "/js/app.1659009e.js"
+    "revision": "9f8d9abab01d94742226",
+    "url": "/js/app.588b5e2d.js"
   },
   {
-    "revision": "3ca1ab9348382e6d50d5",
-    "url": "/js/chunk-vendors.76181a65.js"
+    "revision": "41cd40a7cd2d73ab21e9",
+    "url": "/js/chunk-vendors.7af703ea.js"
   },
   {
-    "revision": "62a69aaac5557dac6676",
-    "url": "/css/excercises.bb28d7d3.css"
+    "revision": "0d3d0493952f84c03126",
+    "url": "/css/excercises.41f7941c.css"
   },
   {
-    "revision": "62a69aaac5557dac6676",
-    "url": "/js/excercises.57915911.js"
+    "revision": "0d3d0493952f84c03126",
+    "url": "/js/excercises.868e9024.js"
   },
   {
-    "revision": "ffc5f7dc9c1956f235f3",
-    "url": "/css/profile.f1d5a717.css"
+    "revision": "0a3416708636e7994265",
+    "url": "/js/login.a186c45a.js"
   },
   {
-    "revision": "ffc5f7dc9c1956f235f3",
-    "url": "/js/profile.baf55b20.js"
+    "revision": "a26205e6e6722d860239",
+    "url": "/css/profile.3e436796.css"
   },
   {
-    "revision": "bd792d5246407b05eee0",
-    "url": "/css/search.bb28d7d3.css"
+    "revision": "a26205e6e6722d860239",
+    "url": "/js/profile.ad0adac4.js"
   },
   {
-    "revision": "bd792d5246407b05eee0",
-    "url": "/js/search.d0eefe75.js"
+    "revision": "3ebdd8081f507f806e03",
+    "url": "/css/search.41f7941c.css"
   },
   {
-    "revision": "52b4b77a846186681789",
-    "url": "/css/styleguide.bb28d7d3.css"
+    "revision": "3ebdd8081f507f806e03",
+    "url": "/js/search.2571a25e.js"
   },
   {
-    "revision": "52b4b77a846186681789",
-    "url": "/js/styleguide.12e381a9.js"
+    "revision": "9c1124e69319786a40a9",
+    "url": "/css/styleguide.41f7941c.css"
+  },
+  {
+    "revision": "9c1124e69319786a40a9",
+    "url": "/js/styleguide.6525979b.js"
+  },
+  {
+    "revision": "f3257d6bac0d2f59ca84f14514ab85f4",
+    "url": "/img/logo.f3257d6b.svg"
   },
   {
     "revision": "b4d2c4c39853ee244272c04999b230ba",
@@ -50,10 +58,6 @@ self.__precacheManifest = [
   {
     "revision": "b8ee546acd6cc0c49f42ad3d48ef244f",
     "url": "/fonts/lato-v16-latin-regular.b8ee546a.woff"
-  },
-  {
-    "revision": "1efbd38aa76ddae2580fedf378276333",
-    "url": "/fonts/lato-v16-latin-700.1efbd38a.woff2"
   },
   {
     "revision": "874b8e7bc7e8d1507b50f56bc6c9b536",
@@ -84,11 +88,11 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "f3257d6bac0d2f59ca84f14514ab85f4",
-    "url": "/img/logo.f3257d6b.svg"
+    "revision": "1efbd38aa76ddae2580fedf378276333",
+    "url": "/fonts/lato-v16-latin-700.1efbd38a.woff2"
   },
   {
-    "revision": "da79c65161388b681baec1528ada37f4",
+    "revision": "b214025c044693fbdbf02268c87326de",
     "url": "/index.html"
   },
   {
@@ -148,7 +152,7 @@ self.__precacheManifest = [
     "url": "/mocks/exercises.json"
   },
   {
-    "revision": "0265f27b93e63cd2601b442f08210d05",
+    "revision": "0accfaa16619f6128c88e4acf7dc7a2a",
     "url": "/mocks/users.json"
   }
 ];
