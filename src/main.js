@@ -1,7 +1,15 @@
 // https://github.com/FortAwesome/vue-fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faFrown } from '@fortawesome/free-regular-svg-icons';
-import { faSignOutAlt } from '@fortawesome/free-solid-svg-icons';
+import {
+  faFrown,
+  faImage,
+  faTrashAlt,
+  faEdit,
+} from '@fortawesome/free-regular-svg-icons';
+import {
+  faSignOutAlt,
+  faVideo,
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import firebase from 'firebase/app';
 
@@ -24,6 +32,7 @@ import {
   BForm,
   BFormGroup,
   BFormInput,
+  BFormTextarea,
   BFormInvalidFeedback,
   BFormValidFeedback,
   BNavItemDropdown,
@@ -37,6 +46,7 @@ import {
   BTab,
   BTabs,
   BTable,
+  BFormCheckbox,
 } from 'bootstrap-vue';
 
 import App from './App.vue';
@@ -46,6 +56,10 @@ import router from './router';
 // Font Awesome configuration
 library.add(faFrown);
 library.add(faSignOutAlt);
+library.add(faVideo);
+library.add(faImage);
+library.add(faTrashAlt);
+library.add(faEdit);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = true;
 
@@ -67,6 +81,8 @@ Vue.component('b-button', BButton);
 Vue.component('b-form', BForm);
 Vue.component('b-form-group', BFormGroup);
 Vue.component('b-form-input', BFormInput);
+Vue.component('b-form-textarea', BFormTextarea);
+Vue.component('b-form-checkbox', BFormCheckbox);
 Vue.component('b-nav-item-dropdown', BNavItemDropdown);
 Vue.component('b-dropdown-item', BDropdownItem);
 Vue.component('b-collapse', BCollapse);
