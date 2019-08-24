@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "ab3edf2b6ada703eb230",
+    "revision": "cc15100217317ba31d4e",
     "url": "/css/app.16637428.css"
   },
   {
-    "revision": "ab3edf2b6ada703eb230",
-    "url": "/js/app.78562dbb.js"
+    "revision": "cc15100217317ba31d4e",
+    "url": "/js/app.f6aa694d.js"
   },
   {
     "revision": "89b110cce22f3dff7bcd",
@@ -20,12 +20,12 @@ self.__precacheManifest = [
     "url": "/js/dashboard.030bba99.js"
   },
   {
-    "revision": "b9b4719ee87f396be6f6",
+    "revision": "04d63e3a878cc57d6291",
     "url": "/css/excercises.41f7941c.css"
   },
   {
-    "revision": "b9b4719ee87f396be6f6",
-    "url": "/js/excercises.2b7f77af.js"
+    "revision": "04d63e3a878cc57d6291",
+    "url": "/js/excercises.d2b6638a.js"
   },
   {
     "revision": "057263ac3e35cfe75500",
@@ -40,12 +40,12 @@ self.__precacheManifest = [
     "url": "/js/profile.32bc4e6a.js"
   },
   {
-    "revision": "cc82c438eddc612d1adf",
+    "revision": "137d67ba9a00f5579a5d",
     "url": "/css/search.41f7941c.css"
   },
   {
-    "revision": "cc82c438eddc612d1adf",
-    "url": "/js/search.15e2cb36.js"
+    "revision": "137d67ba9a00f5579a5d",
+    "url": "/js/search.bd835a65.js"
   },
   {
     "revision": "ee669770f6156923797f",
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "26bcd62dbea15a527f623520902aed9a",
+    "revision": "8b981135e317f12fff6942db77650644",
     "url": "/index.html"
   },
   {
@@ -112,12 +112,28 @@ self.__precacheManifest = [
     "url": "/img/exercises/1.jpg"
   },
   {
-    "revision": "7e0d07809eeecae588caffc0a9bc0dae",
+    "revision": "09f6b6f6a8e8722d568af78325103787",
     "url": "/img/exercises/2.jpg"
   },
   {
     "revision": "e7843242fba095e4cc842f0669411f52",
     "url": "/img/exercises/3.jpg"
+  },
+  {
+    "revision": "b07f833de24fe29d74d95f90ae33a88b",
+    "url": "/img/exercises/4.jpg"
+  },
+  {
+    "revision": "62a25fa5b1f67ee1814ad0102959a1f3",
+    "url": "/img/exercises/5.jpg"
+  },
+  {
+    "revision": "45348c31723978b2116c57c96ed0e323",
+    "url": "/img/exercises/6.jpg"
+  },
+  {
+    "revision": "6e478fbf32a58d4d3e9d35d49cd1459f",
+    "url": "/img/exercises/7.jpg"
   },
   {
     "revision": "e62d67c0294d87075a338d415e9d5ff9",
