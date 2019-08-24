@@ -33,7 +33,7 @@
             <b-nav-item to="/">Home</b-nav-item>
             <b-nav-item to="/exercises">Exercises</b-nav-item>
             <b-nav-item to="/styleguide">Styleguide</b-nav-item>
-            <b-nav-item to="/dashboard">Dashboard</b-nav-item>
+            <b-nav-item to="/admin">Admin</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->

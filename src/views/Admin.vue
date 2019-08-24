@@ -1,10 +1,9 @@
 <template>
   <div>
-    <Loader />
     <b-container>
       <b-row>
         <b-col>
-          <h2>Dashboard</h2>
+          <h2 class="view-header">Admin</h2>
 
           <b-tabs content-class="mt-3">
             <b-tab title="Exercises" active>
@@ -13,7 +12,7 @@
             <b-tab title="Areas">
 
             </b-tab>
-            <b-tab title="Menus">
+            <b-tab title="Workouts">
 
             </b-tab>
           </b-tabs>
@@ -25,12 +24,10 @@
 
 <script>
 import Exercises from '@/components/admin/Exercises.vue';
-import Loader from '@/components/Loader.vue';
 
 export default {
   components: {
     Exercises,
-    Loader,
   },
   data() {
     return {
