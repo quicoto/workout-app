@@ -23,7 +23,7 @@
         </b-badge>
       </div>
 
-      {{ exercise.description }}
+      <span v-html="exerciseDescription"></span>
     </b-card-text>
 
     <b-button
@@ -43,6 +43,11 @@ export default {
   props: {
     areas: Array,
     exercise: Object,
+  },
+  computed: {
+    exerciseDescription() {
+      return this.exercise.description.replace(/\n/g, '<br />');
+    },
   },
   data() {
     return {
