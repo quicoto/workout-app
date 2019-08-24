@@ -1,51 +1,51 @@
 self.__precacheManifest = [
   {
-    "revision": "cc15100217317ba31d4e",
-    "url": "/css/app.16637428.css"
+    "revision": "9cc2056caacbe8837be0",
+    "url": "/css/admin.9d311ac2.css"
   },
   {
-    "revision": "cc15100217317ba31d4e",
-    "url": "/js/app.f6aa694d.js"
+    "revision": "9cc2056caacbe8837be0",
+    "url": "/js/admin.2639d625.js"
   },
   {
-    "revision": "89b110cce22f3dff7bcd",
-    "url": "/js/chunk-vendors.59890958.js"
+    "revision": "3c1d6cd72477c7d0b56b",
+    "url": "/css/app.383c63e1.css"
   },
   {
-    "revision": "251cae1a9caab04951b7",
-    "url": "/css/dashboard.41f7941c.css"
+    "revision": "3c1d6cd72477c7d0b56b",
+    "url": "/js/app.89d9790c.js"
   },
   {
-    "revision": "251cae1a9caab04951b7",
-    "url": "/js/dashboard.030bba99.js"
+    "revision": "bbe948fe743caab168f6",
+    "url": "/js/chunk-vendors.b440c51b.js"
   },
   {
-    "revision": "04d63e3a878cc57d6291",
+    "revision": "062cb201778b802c4db9",
     "url": "/css/excercises.41f7941c.css"
   },
   {
-    "revision": "04d63e3a878cc57d6291",
-    "url": "/js/excercises.d2b6638a.js"
+    "revision": "062cb201778b802c4db9",
+    "url": "/js/excercises.b55e55bb.js"
   },
   {
-    "revision": "057263ac3e35cfe75500",
-    "url": "/js/login.6bc0ad3d.js"
+    "revision": "80fab6e0fc62807f4a15",
+    "url": "/js/login.0f85d8e5.js"
   },
   {
-    "revision": "79333761755448ae9bee",
+    "revision": "000e46eef0533da66fde",
     "url": "/css/profile.b3aab9de.css"
   },
   {
-    "revision": "79333761755448ae9bee",
-    "url": "/js/profile.32bc4e6a.js"
+    "revision": "000e46eef0533da66fde",
+    "url": "/js/profile.a1206775.js"
   },
   {
-    "revision": "137d67ba9a00f5579a5d",
+    "revision": "6c0094b65cc57a0531fa",
     "url": "/css/search.41f7941c.css"
   },
   {
-    "revision": "137d67ba9a00f5579a5d",
-    "url": "/js/search.bd835a65.js"
+    "revision": "6c0094b65cc57a0531fa",
+    "url": "/js/search.108c22b2.js"
   },
   {
     "revision": "ee669770f6156923797f",
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "8b981135e317f12fff6942db77650644",
+    "revision": "980381d36229f3926adcce1030c3e2ec",
     "url": "/index.html"
   },
   {
