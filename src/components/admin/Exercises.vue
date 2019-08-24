@@ -96,10 +96,15 @@
             </a>
           </template>
           <template slot="edit" slot-scope="data">
-            <font-awesome-icon size="lg" :icon="['far', 'edit']"/>
+            <font-awesome-icon
+              size="lg"
+              :icon="['far', 'edit']"
+              class="cursor--pointer"/>
           </template>
           <template slot="delete" slot-scope="data">
-            <font-awesome-icon size="lg" :icon="['far', 'trash-alt']" />
+            <ConfirmDelete
+              :exercise="data.item"
+              v-on:confirm-delete="onConfirmDelete" />
           </template>
         </b-table>
       </b-col>
@@ -112,19 +117,18 @@ import Vue from 'vue';
 import db from '@/db';
 import Loader from '@/components/Loader.vue';
 import AreasBadges from '@/components/AreasBadges.vue';
+import ConfirmDelete from '@/components/admin/ConfirmDelete.vue';
 
 export default {
   name: 'Exercises',
   components: {
     Loader,
     AreasBadges,
+    ConfirmDelete,
   },
   data() {
     return {
-      form: {
-        name: 'test',
-        description: 'delete this',
-      },
+      form: {},
       publicPath: process.env.BASE_URL,
       exercises: [],
       fields: {
@@ -150,10 +154,13 @@ export default {
           tdClass: 'text-center',
         },
         edit: {
-          label: '',
+          label: 'Edit',
+          tdClass: 'text-center',
         },
         delete: {
-          label: '',
+          label: 'Delete',
+          tdClass: 'text-center',
+          thClass: 'delete text-center',
         },
       },
     };
@@ -180,6 +187,17 @@ export default {
       this.form = {};
       this.$refs.form.reset();
     },
+    onConfirmDelete(exerciseId) {
+      // Create a shallow copy, without the bindings
+      const updates = Vue.util.extend([], this.exercises);
+
+      // Find by the id propierty and remove it from the array
+      updates.splice(updates.findIndex(i => i.id === exerciseId), 1);
+
+      // Update firebase with the copy
+      // It will automatically push it to our this.exercises
+      db.ref('exercises').set(updates);
+    },
   },
 };
 </script>
@@ -187,5 +205,9 @@ export default {
 <style lang="scss">
 .description {
   width: 400px;
+}
+
+.delete {
+  width: 200px;
 }
 </style>
