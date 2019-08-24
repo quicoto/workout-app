@@ -3,7 +3,7 @@
     <b-container>
       <b-row>
         <b-col>
-          <h2>Dashboard</h2>
+          <h2 class="view-header">Admin</h2>
 
           <b-tabs content-class="mt-3">
             <b-tab title="Exercises" active>
