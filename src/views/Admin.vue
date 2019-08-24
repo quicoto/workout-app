@@ -12,7 +12,7 @@
             <b-tab title="Areas">
 
             </b-tab>
-            <b-tab title="Menus">
+            <b-tab title="Workouts">
 
             </b-tab>
           </b-tabs>
