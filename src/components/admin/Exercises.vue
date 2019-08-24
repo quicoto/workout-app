@@ -41,7 +41,11 @@
               v-model="form.image"
               name="image"
               switch>
-              <span v-b-tooltip.hover title="File must be committed to public/img/exercises as a JPG with the exercise ID as filename.">Image</span>
+              <span
+                v-b-tooltip.hover title="File must be committed to public/img/exercises as
+                a JPG with the exercise ID as filename.">
+                Image
+              </span>
 
             </b-form-checkbox>
           </b-form-group>

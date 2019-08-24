@@ -48,7 +48,7 @@ import {
   BTable,
   BFormCheckbox,
   BFormCheckboxGroup,
-  VBTooltip
+  VBTooltip,
 } from 'bootstrap-vue';
 
 import App from './App.vue';
@@ -100,7 +100,7 @@ Vue.component('b-tab', BTab);
 Vue.component('b-tabs', BTabs);
 Vue.component('b-table', BTable);
 
-Vue.directive('b-tooltip', VBTooltip)
+Vue.directive('b-tooltip', VBTooltip);
 
 let app = '';
 
