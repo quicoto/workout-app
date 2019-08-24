@@ -47,6 +47,8 @@ import {
   BTabs,
   BTable,
   BFormCheckbox,
+  BFormCheckboxGroup,
+  VBTooltip
 } from 'bootstrap-vue';
 
 import App from './App.vue';
@@ -83,6 +85,7 @@ Vue.component('b-form-group', BFormGroup);
 Vue.component('b-form-input', BFormInput);
 Vue.component('b-form-textarea', BFormTextarea);
 Vue.component('b-form-checkbox', BFormCheckbox);
+Vue.component('b-form-checkbox-group', BFormCheckboxGroup);
 Vue.component('b-nav-item-dropdown', BNavItemDropdown);
 Vue.component('b-dropdown-item', BDropdownItem);
 Vue.component('b-collapse', BCollapse);
@@ -96,6 +99,8 @@ Vue.component('b-badge', BBadge);
 Vue.component('b-tab', BTab);
 Vue.component('b-tabs', BTabs);
 Vue.component('b-table', BTable);
+
+Vue.directive('b-tooltip', VBTooltip)
 
 let app = '';
 

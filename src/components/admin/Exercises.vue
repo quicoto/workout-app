@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h3>Create</h3>
+    <h3 class="text-capitalize">{{ action }}</h3>
     <b-form @submit="onSubmit" ref="form">
       <b-row>
         <b-col>
@@ -41,7 +41,8 @@
               v-model="form.image"
               name="image"
               switch>
-                Image
+              <span v-b-tooltip.hover title="File must be committed to public/img/exercises as a JPG with the exercise ID as filename.">Image</span>
+
             </b-form-checkbox>
           </b-form-group>
         </b-col>
@@ -63,9 +64,36 @@
             ></b-form-textarea>
           </b-form-group>
         </b-col>
+        <b-col>
+           <b-form-group label="Areas">
+            <b-form-checkbox-group
+              id="checkbox-group-1"
+              v-model="form.areas"
+              :options="areas"
+              name="areas"
+            ></b-form-checkbox-group>
+          </b-form-group>
+        </b-col>
       </b-row>
 
-      <b-button type="submit" variant="primary">Create Exercise</b-button>
+      <b-button
+        type="submit"
+        :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
+        :disabled="form.areas.length === 0 || !form.name || !form.description"
+        >
+          <span v-show="action === 'create'">Create Exercise</span>
+          <span v-if="action !== 'create' && form.id">Update Exercise</span>
+        </b-button>
+
+
+      <b-button
+        type="reset"
+        variant="secondary"
+        v-if="action !== 'create' && form.id"
+        @click="resetForm()"
+        class="ml-2">
+          Cancel
+        </b-button>
     </b-form>
 
     <h3 class="mt-4">List</h3>
@@ -99,6 +127,7 @@
           </template>
           <template slot="edit" slot-scope="data">
             <font-awesome-icon
+              @click="action = 'edit'; form = data.item "
               size="lg"
               :icon="['far', 'edit']"
               class="cursor--pointer"
@@ -117,6 +146,7 @@
 
 <script>
 import Vue from 'vue';
+import firebase from 'firebase/app';
 import db from '@/db';
 import Loader from '@/components/Loader.vue';
 import AreasBadges from '@/components/AreasBadges.vue';
@@ -131,8 +161,8 @@ export default {
   },
   data() {
     return {
-      form: {},
-      publicPath: process.env.BASE_URL,
+      action: 'create',
+      areas: [],
       exercises: [],
       fields: {
         id: {
@@ -166,29 +196,52 @@ export default {
           thClass: 'delete text-center',
         },
       },
+      form: {
+        areas: [],
+        image: false,
+      },
+      publicPath: process.env.BASE_URL,
     };
   },
   firebase: {
     exercises: db.ref('exercises'),
   },
+  mounted() {
+    firebase.database().ref('exercise-areas').once('value').then((snapshot) => {
+      this.areas = snapshot.val().map(item => ({
+        value: item.id,
+        text: item.name,
+      }));
+    });
+  },
   methods: {
+    resetForm() {
+      this.action = 'create';
+      this.form = {};
+      this.form.areas = [];
+      this.form.image = false;
+
+      this.$refs.form.reset();
+    },
     onSubmit(event) {
       event.preventDefault();
 
       // Create a shallow copy, without the bindings
       const updates = Vue.util.extend([], this.exercises);
 
-      // Create the incremental id based on the last id
-      this.form.id = parseInt(this.exercises[0].id, 10) + 1;
-      updates.unshift(this.form);
+      // Check if it's Create action
+      if (this.action === 'create' && !this.form.id) {
+        // Create the incremental id based on the last id
+        this.form.id = parseInt(this.exercises[0].id, 10) + 1;
+        updates.unshift(this.form);
+      }
 
       // Update firebase with the copy
       // It will automatically push it to our this.exercises
       db.ref('exercises').set(updates);
 
       // Clean the form
-      this.form = {};
-      this.$refs.form.reset();
+      this.resetForm();
     },
     onConfirmDelete(exerciseId) {
       // Create a shallow copy, without the bindings
@@ -200,6 +253,9 @@ export default {
       // Update firebase with the copy
       // It will automatically push it to our this.exercises
       db.ref('exercises').set(updates);
+
+      // Clean the form
+      this.resetForm();
     },
   },
 };
