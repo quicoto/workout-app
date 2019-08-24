@@ -84,14 +84,16 @@
           <template slot="video" slot-scope="data">
             <a v-if="data.item.video"
               :href="data.item.video"
-              target="_blank">
+              target="_blank"
+              title="View video">
                 <font-awesome-icon size="lg" :icon="['fas', 'video']" />
             </a>
           </template>
           <template slot="image" slot-scope="data">
             <a v-if="data.item.image"
               :href="`${publicPath}img/exercises/${data.item.id}.jpg`"
-              target="_blank">
+              target="_blank"
+              title="View image">
                 <font-awesome-icon size="lg" :icon="['far', 'image']" />
             </a>
           </template>
@@ -99,7 +101,8 @@
             <font-awesome-icon
               size="lg"
               :icon="['far', 'edit']"
-              class="cursor--pointer"/>
+              class="cursor--pointer"
+              title="Edit"/>
           </template>
           <template slot="delete" slot-scope="data">
             <ConfirmDelete

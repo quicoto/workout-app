@@ -3,6 +3,7 @@
     <b-button
       v-show="showConfirmation"
       variant="danger"
+      size="sm"
       class="mr-1"
       @click="emitMessage">
         Yes
@@ -10,6 +11,7 @@
     <b-button
       v-show="showConfirmation"
       variant="success"
+      size="sm"
       @click="showConfirmation = false">
         No
       </b-button>
@@ -19,7 +21,8 @@
       v-on:click="showConfirmation = !showConfirmation"
       v-show="!showConfirmation"
       size="lg"
-      :icon="['far', 'trash-alt']" />
+      :icon="['far', 'trash-alt']"
+      title="Delete?" />
   </div>
 </template>
 
