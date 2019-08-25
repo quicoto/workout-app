@@ -10,7 +10,7 @@
               <exercises />
             </b-tab>
             <b-tab title="Areas">
-
+              <exerciseAreas />
             </b-tab>
             <b-tab title="Workouts">
 
@@ -24,10 +24,12 @@
 
 <script>
 import Exercises from '@/components/admin/Exercises.vue';
+import ExerciseAreas from '@/components/admin/ExerciseAreas.vue';
 
 export default {
   components: {
     Exercises,
+    ExerciseAreas,
   },
   data() {
     return {
