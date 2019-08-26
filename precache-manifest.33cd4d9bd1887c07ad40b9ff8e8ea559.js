@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "9cc2056caacbe8837be0",
+    "revision": "0cf9f8f6b129759da21d",
     "url": "/css/admin.9d311ac2.css"
   },
   {
-    "revision": "9cc2056caacbe8837be0",
-    "url": "/js/admin.2639d625.js"
+    "revision": "0cf9f8f6b129759da21d",
+    "url": "/js/admin.3b05f24f.js"
   },
   {
-    "revision": "3c1d6cd72477c7d0b56b",
+    "revision": "5cf2ec25828b0f74883d",
     "url": "/css/app.383c63e1.css"
   },
   {
-    "revision": "3c1d6cd72477c7d0b56b",
-    "url": "/js/app.89d9790c.js"
+    "revision": "5cf2ec25828b0f74883d",
+    "url": "/js/app.f04c335f.js"
   },
   {
-    "revision": "bbe948fe743caab168f6",
-    "url": "/js/chunk-vendors.b440c51b.js"
+    "revision": "5380078db215a44dfff8",
+    "url": "/js/chunk-vendors.919dcf88.js"
   },
   {
     "revision": "062cb201778b802c4db9",
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "980381d36229f3926adcce1030c3e2ec",
+    "revision": "1b0639d2b3cfe3fb979bf986711b4cb5",
     "url": "/index.html"
   },
   {
