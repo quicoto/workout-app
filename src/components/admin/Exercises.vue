@@ -110,6 +110,9 @@
           hover
           :items="exercises"
           :fields="fields">
+          <template slot="description" slot-scope="data">
+            <span v-html="exerciseDescription(data.item.description)"></span>
+          </template>
           <template slot="areas" slot-scope="data">
             <AreasBadges :areas="data.item.areas" />
           </template>
@@ -131,7 +134,7 @@
           </template>
           <template slot="edit" slot-scope="data">
             <font-awesome-icon
-              @click="action = 'edit'; form = data.item "
+              @click="action = 'edit'; form = data.item"
               size="lg"
               :icon="['far', 'edit']"
               class="cursor--pointer"
@@ -219,6 +222,9 @@ export default {
     });
   },
   methods: {
+    exerciseDescription(description) {
+      return description.replace(/\n/g, '<br />');
+    },
     resetForm() {
       this.action = 'create';
       this.form = {};
