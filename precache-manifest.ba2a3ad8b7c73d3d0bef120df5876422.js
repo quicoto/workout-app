@@ -8,11 +8,11 @@ self.__precacheManifest = [
     "url": "/js/admin.3b05f24f.js"
   },
   {
-    "revision": "5cf2ec25828b0f74883d",
-    "url": "/css/app.383c63e1.css"
+    "revision": "f7cf4d8acf5abd641875",
+    "url": "/css/app.1bd3fcef.css"
   },
   {
-    "revision": "5cf2ec25828b0f74883d",
+    "revision": "f7cf4d8acf5abd641875",
     "url": "/js/app.f04c335f.js"
   },
   {
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "1b0639d2b3cfe3fb979bf986711b4cb5",
+    "revision": "857170bf995920d92c8f63f620324057",
     "url": "/index.html"
   },
   {
