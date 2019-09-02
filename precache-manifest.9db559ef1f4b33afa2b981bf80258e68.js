@@ -1,59 +1,59 @@
 self.__precacheManifest = [
   {
-    "revision": "617e0065f9e0f1d4b11d",
+    "revision": "dde9e5b33b5fb2fb03f6",
     "url": "/css/admin.9d311ac2.css"
   },
   {
-    "revision": "617e0065f9e0f1d4b11d",
-    "url": "/js/admin.8bbb0d53.js"
+    "revision": "dde9e5b33b5fb2fb03f6",
+    "url": "/js/admin.fec622af.js"
   },
   {
-    "revision": "a08b3aa17a6444759349",
+    "revision": "6479d1fa82a165faff95",
     "url": "/css/app.1bd3fcef.css"
   },
   {
-    "revision": "a08b3aa17a6444759349",
-    "url": "/js/app.6f14a694.js"
+    "revision": "6479d1fa82a165faff95",
+    "url": "/js/app.2191c7f6.js"
   },
   {
     "revision": "3730012b7824c0a6387e",
     "url": "/js/chunk-vendors.4d45bba1.js"
   },
   {
-    "revision": "4cab5bf7e7cbb713e565",
+    "revision": "8bf512b64afafdca0ebd",
     "url": "/css/excercises.41f7941c.css"
   },
   {
-    "revision": "4cab5bf7e7cbb713e565",
-    "url": "/js/excercises.e75d55d5.js"
+    "revision": "8bf512b64afafdca0ebd",
+    "url": "/js/excercises.53d26149.js"
   },
   {
-    "revision": "2c8d35bdd524fc272d61",
-    "url": "/js/login.17e3b6fa.js"
+    "revision": "cde1fb498bccca6f6a67",
+    "url": "/js/login.11f568b6.js"
   },
   {
-    "revision": "d96cbd7e87d9de6a7b9b",
+    "revision": "d558058f2ce553880966",
     "url": "/css/profile.b3aab9de.css"
   },
   {
-    "revision": "d96cbd7e87d9de6a7b9b",
-    "url": "/js/profile.409197e2.js"
+    "revision": "d558058f2ce553880966",
+    "url": "/js/profile.a97c042e.js"
   },
   {
-    "revision": "6ff632bcf3f8e956e67c",
+    "revision": "0479c5afe4452a0a03c4",
     "url": "/css/search.41f7941c.css"
   },
   {
-    "revision": "6ff632bcf3f8e956e67c",
-    "url": "/js/search.b05d81d4.js"
+    "revision": "0479c5afe4452a0a03c4",
+    "url": "/js/search.d2741ee1.js"
   },
   {
-    "revision": "61e2dfe865261aec74dd",
+    "revision": "8370e9a4cff0a814935a",
     "url": "/css/styleguide.41f7941c.css"
   },
   {
-    "revision": "61e2dfe865261aec74dd",
-    "url": "/js/styleguide.3201535a.js"
+    "revision": "8370e9a4cff0a814935a",
+    "url": "/js/styleguide.39004cd1.js"
   },
   {
     "revision": "f3257d6bac0d2f59ca84f14514ab85f4",
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "2b056d998a9661137ba735d7d3801899",
+    "revision": "68756d156510fa35c7e15364ed029a70",
     "url": "/index.html"
   },
   {
