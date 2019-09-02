@@ -69,12 +69,12 @@
           </b-form-group>
         </b-col>
         <b-col>
-           <b-form-group label="Areas">
+           <b-form-group label="Tags">
             <b-form-checkbox-group
               id="checkbox-group-1"
-              v-model="form.areas"
-              :options="areas"
-              name="areas"
+              v-model="form.tags"
+              :options="tags"
+              name="tags"
             ></b-form-checkbox-group>
           </b-form-group>
         </b-col>
@@ -83,7 +83,7 @@
       <b-button
         type="submit"
         :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
-        :disabled="form.areas.length === 0 || !form.name || !form.description"
+        :disabled="form.tags.length === 0 || !form.name || !form.description"
         >
           <span v-show="action === 'create'">Create Exercise</span>
           <span v-if="action !== 'create' && form.id">Update Exercise</span>
@@ -113,8 +113,8 @@
           <template slot="description" slot-scope="data">
             <span v-html="exerciseDescription(data.item.description)"></span>
           </template>
-          <template slot="areas" slot-scope="data">
-            <AreasBadges :areas="data.item.areas" />
+          <template slot="tags" slot-scope="data">
+            <TagsBadges :tags="data.item.tags" />
           </template>
           <template slot="video" slot-scope="data">
             <a v-if="data.item.video"
@@ -156,20 +156,20 @@ import Vue from 'vue';
 import firebase from 'firebase/app';
 import db from '@/db';
 import Loader from '@/components/Loader.vue';
-import AreasBadges from '@/components/AreasBadges.vue';
+import TagsBadges from '@/components/TagsBadges.vue';
 import ConfirmDelete from '@/components/admin/ConfirmDelete.vue';
 
 export default {
   name: 'Exercises',
   components: {
     Loader,
-    AreasBadges,
+    TagsBadges,
     ConfirmDelete,
   },
   data() {
     return {
       action: 'create',
-      areas: [],
+      tags: [],
       exercises: [],
       fields: {
         id: {
@@ -178,8 +178,8 @@ export default {
         name: {
           label: 'Name',
         },
-        areas: {
-          label: 'Areas',
+        tags: {
+          label: 'Tags',
         },
         description: {
           label: 'Description',
@@ -204,7 +204,7 @@ export default {
         },
       },
       form: {
-        areas: [],
+        tags: [],
         image: false,
       },
       publicPath: process.env.BASE_URL,
@@ -214,8 +214,8 @@ export default {
     exercises: db.ref('exercises'),
   },
   mounted() {
-    firebase.database().ref('exercise-areas').once('value').then((snapshot) => {
-      this.areas = snapshot.val().map(item => ({
+    firebase.database().ref('exercise-tags').once('value').then((snapshot) => {
+      this.tags = snapshot.val().map(item => ({
         value: item.id,
         text: item.name,
       }));
@@ -228,7 +228,7 @@ export default {
     resetForm() {
       this.action = 'create';
       this.form = {};
-      this.form.areas = [];
+      this.form.tags = [];
       this.form.image = false;
 
       this.$refs.form.reset();

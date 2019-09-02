@@ -12,7 +12,7 @@
   >
     <b-card-text>
       <div class="pb-3">
-        <AreasBadges :areas="exercise.areas" />
+        <TagsBadges :tags="exercise.tags" />
       </div>
 
       <span v-html="exerciseDescription"></span>
@@ -30,15 +30,15 @@
 </template>
 
 <script>
-import AreasBadges from '@/components/AreasBadges.vue';
+import TagsBadges from '@/components/TagsBadges.vue';
 
 export default {
   name: 'ExerciseCard',
   components: {
-    AreasBadges,
+    TagsBadges,
   },
   props: {
-    areas: Array,
+    tags: Array,
     exercise: Object,
   },
   computed: {

@@ -12,7 +12,7 @@
 
       <b-row>
         <b-col cols="12" md="6" v-for="exercice in exercises" :key="exercice.id">
-          <ExerciseCard :exercise="exercice" :areas="areas" />
+          <ExerciseCard :exercise="exercice" :tags="tags" />
         </b-col>
       </b-row>
     </b-container>
@@ -31,7 +31,7 @@ export default {
   },
   data() {
     return {
-      areas: [],
+      tags: [],
       exercises: [],
       query: '',
     };
@@ -54,8 +54,8 @@ export default {
       this.exercises = snapshot.val();
     });
 
-    firebase.database().ref('exercise-areas').once('value').then((snapshot) => {
-      this.areas = snapshot.val();
+    firebase.database().ref('exercise-tags').once('value').then((snapshot) => {
+      this.tags = snapshot.val();
     });
   },
 };

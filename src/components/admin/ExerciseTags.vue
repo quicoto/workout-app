@@ -5,7 +5,7 @@
         <h3 class="text-capitalize">{{ action }}</h3>
         <b-alert show variant="warning">
           <font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="mr-1" />
-          Areas can not be deleted as their ID could be assigned to an exercise.
+          Tags can not be deleted as their ID could be assigned to an exercise.
           Instead of delete, rename it if needed.
         </b-alert>
         <b-form @submit="onSubmit" ref="form">
@@ -31,8 +31,8 @@
             :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
             :disabled="!form.name"
             >
-              <span v-show="action === 'create'">Create Area</span>
-              <span v-if="action !== 'create' && form.id">Update Area</span>
+              <span v-show="action === 'create'">Create Tag</span>
+              <span v-if="action !== 'create' && form.id">Update Tag</span>
             </b-button>
 
 
@@ -46,14 +46,14 @@
             </b-button>
         </b-form>
       </b-col>
-      <b-col v-if="areas">
+      <b-col v-if="tags">
         <h3 class="mt-4">List</h3>
-        <Loader v-show="areas.length === 0" />
+        <Loader v-show="tags.length === 0" />
         <b-table
-          v-if="areas.length > 0"
+          v-if="tags.length > 0"
           striped
           hover
-          :items="areas"
+          :items="tags"
           :fields="fields">
           <template slot="edit" slot-scope="data">
             <font-awesome-icon
@@ -75,13 +75,13 @@ import db from '@/db';
 import Loader from '@/components/Loader.vue';
 
 export default {
-  name: 'ExerciseAreas',
+  name: 'ExerciseTags',
   components: {
     Loader,
   },
   data() {
     return {
-      areas: [],
+      tags: [],
       action: 'create',
       fields: {
         id: {
@@ -102,7 +102,7 @@ export default {
     };
   },
   firebase: {
-    areas: db.ref('exercise-areas'),
+    tags: db.ref('exercise-tags'),
   },
   methods: {
     resetForm() {
@@ -114,18 +114,18 @@ export default {
       event.preventDefault();
 
       // Create a shallow copy, without the bindings
-      const updates = Vue.util.extend([], this.areas);
+      const updates = Vue.util.extend([], this.tags);
 
       // Check if it's Create action
       if (this.action === 'create' && !this.form.id) {
         // Create the incremental id based on the last id
-        this.form.id = parseInt(this.areas[0].id, 10) + 1;
+        this.form.id = parseInt(this.tags[0].id, 10) + 1;
         updates.unshift(this.form);
       }
 
       // Update firebase with the copy
-      // It will automatically push it to our this.areas
-      db.ref('exercise-areas').set(updates);
+      // It will automatically push it to our this.tags
+      db.ref('exercise-tags').set(updates);
 
       // Clean the form
       this.resetForm();
