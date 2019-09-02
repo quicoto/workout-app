@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
+import db from '@/db';
 
 export default {
   name: 'AreasBadges',
@@ -25,10 +25,8 @@ export default {
       areasDB: [],
     };
   },
-  mounted() {
-    firebase.database().ref('exercise-areas').once('value').then((snapshot) => {
-      this.areasDB = snapshot.val();
-    });
+  firebase: {
+    areasDB: db.ref('exercise-areas'),
   },
   methods: {
     getAreaName(areaId) {
