@@ -112,11 +112,6 @@ export default {
     };
   },
   mounted() {
-    // If user is not authenticated redirect
-    if (!firebase.auth().currentUser) {
-      this.$router.replace({ path: 'login' });
-    }
-
     // When user has just logged in, populate the current user.
     // Event listener
     firebase.auth().onAuthStateChanged((user) => {
