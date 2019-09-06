@@ -29,7 +29,7 @@ export default {
   },
   mounted() {
     firebase.database().ref('exercises').once('value').then((snapshot) => {
-      this.exercises = snapshot.val();
+      this.exercises = snapshot.val().sort((a, b) => ((a.name > b.name) ? 1 : -1));
     });
   },
 };
