@@ -7,7 +7,9 @@
       sticky
       v-if="currentUser && currentUser.uid">
       <b-container>
-        <b-navbar-brand to="/">
+        <b-navbar-brand
+          to="/"
+          @click="hideNavigation()">
           <siteName variant="short" :image="true" />
         </b-navbar-brand>
 
@@ -15,7 +17,8 @@
           class="d-block d-md-none ml-auto mr-3">
           <b-nav-item
             :to="`/profile/${currentDBUser.id}`"
-            :title="`${currentDBUser.name} ${currentDBUser.lastname} Profile`">
+            :title="`${currentDBUser.name} ${currentDBUser.lastname} Profile`"
+            @click="hideNavigation()">
             <b-img
               thumbnail
               fluid
@@ -26,9 +29,12 @@
           </b-nav-item>
         </b-navbar-nav>
 
-        <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+        <b-navbar-toggle target="mobile-navigation"></b-navbar-toggle>
 
-        <b-collapse id="nav-collapse" is-nav>
+        <b-collapse
+          id="mobile-navigation"
+          ref="mobileNavigation"
+          is-nav>
           <b-navbar-nav>
             <b-nav-item to="/">Home</b-nav-item>
             <b-nav-item to="/exercises">Exercises</b-nav-item>
@@ -129,6 +135,9 @@ export default {
     this.updateCurrentDBUser();
   },
   methods: {
+    hideNavigation() {
+      this.$refs.mobileNavigation.show = false;
+    },
     updateCurrentDBUser() {
       // Search our Firebase users data and set it.
       firebase.database().ref('users').once('value').then((snapshot) => {
