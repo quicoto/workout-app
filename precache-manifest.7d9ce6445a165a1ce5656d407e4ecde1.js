@@ -1,31 +1,31 @@
 self.__precacheManifest = [
   {
-    "revision": "dde9e5b33b5fb2fb03f6",
+    "revision": "16a19afefda71ed62e7c",
     "url": "/css/admin.9d311ac2.css"
   },
   {
-    "revision": "dde9e5b33b5fb2fb03f6",
-    "url": "/js/admin.fec622af.js"
+    "revision": "16a19afefda71ed62e7c",
+    "url": "/js/admin.ddfdf3d2.js"
   },
   {
-    "revision": "6479d1fa82a165faff95",
+    "revision": "31d9aafc8da6fa203938",
     "url": "/css/app.1bd3fcef.css"
   },
   {
-    "revision": "6479d1fa82a165faff95",
-    "url": "/js/app.2191c7f6.js"
+    "revision": "31d9aafc8da6fa203938",
+    "url": "/js/app.2d58eaf7.js"
   },
   {
-    "revision": "3730012b7824c0a6387e",
-    "url": "/js/chunk-vendors.4d45bba1.js"
+    "revision": "91f1e2e756b8c93c11de",
+    "url": "/js/chunk-vendors.7ff0a738.js"
   },
   {
-    "revision": "8bf512b64afafdca0ebd",
+    "revision": "663e95c4a8ed1ab1a612",
     "url": "/css/excercises.41f7941c.css"
   },
   {
-    "revision": "8bf512b64afafdca0ebd",
-    "url": "/js/excercises.53d26149.js"
+    "revision": "663e95c4a8ed1ab1a612",
+    "url": "/js/excercises.cec06556.js"
   },
   {
     "revision": "cde1fb498bccca6f6a67",
@@ -40,12 +40,12 @@ self.__precacheManifest = [
     "url": "/js/profile.a97c042e.js"
   },
   {
-    "revision": "0479c5afe4452a0a03c4",
+    "revision": "b755a70451a6b721c8d1",
     "url": "/css/search.41f7941c.css"
   },
   {
-    "revision": "0479c5afe4452a0a03c4",
-    "url": "/js/search.d2741ee1.js"
+    "revision": "b755a70451a6b721c8d1",
+    "url": "/js/search.9b8dd8a3.js"
   },
   {
     "revision": "8370e9a4cff0a814935a",
@@ -100,7 +100,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "68756d156510fa35c7e15364ed029a70",
+    "revision": "5d70b9a58b7646c2fc8670d4b414e08c",
     "url": "/index.html"
   },
   {

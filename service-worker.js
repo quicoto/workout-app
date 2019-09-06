@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.9db559ef1f4b33afa2b981bf80258e68.js"
+  "/precache-manifest.7d9ce6445a165a1ce5656d407e4ecde1.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "thorkout"});
