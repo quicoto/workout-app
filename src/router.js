@@ -1,4 +1,5 @@
 import Vue from 'vue';
+import firebase from 'firebase/app';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 
@@ -67,11 +68,21 @@ const router = new Router({
 });
 
 router.beforeEach((to, from, next) => {
-  document.title = `${to.meta.title} - Workout like Thor`;
-  next();
+  // Is the user logged in?
+  if (to.name !== 'login' && !firebase.auth().currentUser) {
+    // eslint-disable-next-line no-console
+    console.log('redirecting....');
+
+    // No, redirect to login
+    next('login');
+  } else {
+    next();
+  }
 });
 
-router.afterEach(() => {
+router.afterEach((to) => {
+  document.title = `${to.meta.title} - Workout like Thor`;
+
   window.scrollTo(0, 0);
 });
 
