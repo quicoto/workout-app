@@ -142,7 +142,7 @@ export default {
       currentUser: firebase.auth().currentUser,
       currentDBUser: {},
       workoutGoals: [],
-      workoutLevels: []
+      workoutLevels: [],
     };
   },
   firebase: {
