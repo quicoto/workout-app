@@ -51,6 +51,7 @@ import {
   BFormCheckboxGroup,
   VBTooltip,
   BFormSelect,
+  ToastPlugin,
 } from 'bootstrap-vue';
 
 import App from './App.vue';
@@ -70,6 +71,9 @@ Vue.config.productionTip = true;
 
 // Firebase
 Vue.use(rtdbPlugin);
+
+// VUE Bootrap Toast
+Vue.use(ToastPlugin);
 
 // Init the Bootstrap Components previously imported
 Vue.component('b-alert', BAlert);
