@@ -160,7 +160,7 @@ export default {
       return '';
     },
     saveProfile() {
-      const users = firebase.database().ref('users');
+      // const users = firebase.database().ref('users');
       this.pushProfileSavedMessage();
     },
   },
