@@ -1,6 +1,5 @@
 <template>
   <div>
-    {{ currentDBUser }}
     <Loader v-show="!currentDBUser.id" />
     <b-container v-if="currentDBUser && currentDBUser.id">
       <b-row>
@@ -15,7 +14,7 @@
             class="mb-4 avatar"></b-img>
 
             <h4>{{ currentDBUser.name }} {{ currentDBUser.lastname }}</h4>
-            <small class="text-muted">Last workout: today</small>
+            <small class="text-muted">Last workout: TODO</small>
         </b-col>
       </b-row>
 
@@ -37,10 +36,9 @@
 
               <h4 class="mb-4">Goals</h4>
 
-              <b-form
-                @submit="onGoalSubmit()">
+              <b-form>
                 <b-form-group
-                  label="Your current goal"
+                  :label="`I will become ${goalName(currentDBUser.goal)}` "
                 >
                   <b-form-input id="goal-range"
                     v-model="currentDBUser.goal"
@@ -69,8 +67,7 @@
 
                 <h4 class="mb-4">{{ levelName(currentDBUser.level) }}</h4>
 
-                <b-form
-                  @submit="onLevelSubmit()">
+                <b-form>
                   <b-form-group
                     label="Your current level">
                     <b-form-input id="level-range"
@@ -80,29 +77,6 @@
                       :max="workoutLevels[workoutLevels.length - 1].id"></b-form-input>
                   </b-form-group>
                 </b-form>
-            </b-card-text>
-          </b-card>
-        </b-col>
-
-        <b-col class="mt-3 col-12 col-sm-6 col-lg-4">
-          <b-card
-            tag="article"
-            bg-variant="dark"
-            class="mb-3 text-center"
-          >
-
-            <b-card-text>
-              <img
-                class="icon mt-2 mb-4"
-                :src="`${publicPath}img/icons/stats.svg`"
-                alt="">
-
-              <h4 class="mb-4">Stats</h4>
-
-              <ul class="text-left">
-                <li>Squats: 100 times</li>
-                <li>Pushups: 1200 times</li>
-              </ul>
             </b-card-text>
           </b-card>
         </b-col>
@@ -133,10 +107,14 @@ export default {
     };
   },
   firebase: {
-    currentDBUser: db.ref('users').find(o => o.email === this.currentUser.email),
     users: db.ref('users'),
     workoutGoals: db.ref('workout-goals'),
     workoutLevels: db.ref('workout-levels'),
+  },
+  mounted() {
+    firebase.database().ref('users').once('value').then((snapshot) => {
+      this.currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
+    });
   },
   methods: {
     pushProfileSavedMessage() {
@@ -147,6 +125,17 @@ export default {
         autoHideDelay: 2000,
         noCloseButton: true,
       });
+    },
+    goalName(id) {
+      if (this.workoutGoals) {
+        const goal = this.workoutGoals.find(o => o.id === parseInt(id, 10));
+
+        if (goal) {
+          return goal.name;
+        }
+      }
+
+      return '';
     },
     levelName(id) {
       if (this.workoutLevels) {
@@ -160,17 +149,21 @@ export default {
       return '';
     },
     saveProfile() {
-      // const users = firebase.database().ref('users');
+      // Can't think of a better way to do this
+      // Since there's only 2 users, might not be so bad performance wise
+      for (let i = 0, len = this.users.length; i < len; i++) {
+        if (this.users[i].id === this.currentDBUser.id) {
+          this.users[i] = this.currentDBUser;
+        }
+      }
+
+      // Save the data to the server
+      firebase.database().ref('users/').set(this.users);
+
       this.pushProfileSavedMessage();
     },
   },
   watch: {
-    users(val, oldVal) {
-      // Only the first time
-      if (oldVal.length === 0) {
-        this.currentDBUser = this.users.find(o => o.email === this.currentUser.email);
-      }
-    },
     'currentDBUser.level': function (val, oldVal) {
       // Prevent from firing when Firebase populates de object
       // for the firs time.
@@ -196,6 +189,6 @@ export default {
 }
 
 .icon {
-  max-width: 50px;
+  height: 50px;
 }
 </style>
