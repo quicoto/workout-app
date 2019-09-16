@@ -50,7 +50,6 @@ import {
   BFormCheckbox,
   BFormCheckboxGroup,
   VBTooltip,
-  BFormSelect,
   ToastPlugin,
 } from 'bootstrap-vue';
 
@@ -106,7 +105,6 @@ Vue.component('b-badge', BBadge);
 Vue.component('b-tab', BTab);
 Vue.component('b-tabs', BTabs);
 Vue.component('b-table', BTable);
-Vue.component('b-form-select', BFormSelect);
 
 Vue.directive('b-tooltip', VBTooltip);
 
