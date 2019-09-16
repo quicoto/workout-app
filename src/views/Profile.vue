@@ -159,7 +159,7 @@ export default {
       }
 
       // Save the data to the server
-      firebase.database().ref('users/').set(this.users);
+      firebase.database().ref('users').set(this.users);
 
       this.pushProfileSavedMessage();
     },
