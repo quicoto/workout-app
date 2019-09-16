@@ -32,7 +32,8 @@
                 <img
                   class="icon mt-2 mb-4"
                   :src="`${publicPath}img/icons/goals/${currentDBUser.goal}.svg`"
-                  alt="Goal">
+                  :alt="`Goal: ${goalName(currentDBUser.goal)}`"
+                  :title="`Goal: ${goalName(currentDBUser.goal)}`">
 
               <h4 class="mb-4">Goals</h4>
 
@@ -63,7 +64,8 @@
               <img
                 class="icon mt-2 mb-4"
                 :src="`${publicPath}img/icons/levels/${currentDBUser.level}.svg`"
-                alt="Level">
+                :alt="`Level: ${levelName(currentDBUser.level)}`"
+                :title="`Level: ${levelName(currentDBUser.level)}`">
 
                 <h4 class="mb-4">{{ levelName(currentDBUser.level) }}</h4>
 
