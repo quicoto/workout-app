@@ -96,8 +96,6 @@ export default {
   },
   data() {
     return {
-      disableLevelButton: true,
-      disableGoalButton: true,
       publicPath: process.env.BASE_URL,
       currentUser: firebase.auth().currentUser,
       currentDBUser: {},
@@ -112,6 +110,7 @@ export default {
     workoutLevels: db.ref('workout-levels'),
   },
   mounted() {
+    // Search our Firebase users data and set it.
     firebase.database().ref('users').once('value').then((snapshot) => {
       this.currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
     });
