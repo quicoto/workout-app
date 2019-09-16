@@ -152,11 +152,11 @@ export default {
     saveProfile() {
       // Can't think of a better way to do this
       // Since there's only 2 users, might not be so bad performance wise
-      for (let i = 0, len = this.users.length; i < len; i++) {
-        if (this.users[i].id === this.currentDBUser.id) {
-          this.users[i] = this.currentDBUser;
+      this.users.forEach((user, index) => {
+        if (user.id === this.currentDBUser.id) {
+          this.users[index] = this.currentDBUser;
         }
-      }
+      });
 
       // Save the data to the server
       firebase.database().ref('users').set(this.users);
