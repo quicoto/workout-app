@@ -124,7 +124,7 @@ export default {
     workoutLevels: db.ref('workout-levels'),
   },
   mounted() {
-    const requestedUserId = parseInt(this.$route.params.user_id, 10)
+    const requestedUserId = parseInt(this.$route.params.user_id, 10);
     // Search our Firebase users data and set it.
     firebase.database().ref('users').once('value').then((snapshot) => {
       this.users = snapshot.val();
