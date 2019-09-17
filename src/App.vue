@@ -91,7 +91,7 @@
 
     <section
       class="pt-4">
-      <router-view/>
+      <router-view :key="$route.fullPath"/>
     </section>
 
     <footer class="container-fluid p-5 mt-5">
