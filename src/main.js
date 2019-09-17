@@ -36,8 +36,6 @@ import {
   BFormTextarea,
   BFormInvalidFeedback,
   BFormValidFeedback,
-  BNavItemDropdown,
-  BDropdownItem,
   BCollapse,
   BCard,
   BCardText,
@@ -92,8 +90,6 @@ Vue.component('b-form-input', BFormInput);
 Vue.component('b-form-textarea', BFormTextarea);
 Vue.component('b-form-checkbox', BFormCheckbox);
 Vue.component('b-form-checkbox-group', BFormCheckboxGroup);
-Vue.component('b-nav-item-dropdown', BNavItemDropdown);
-Vue.component('b-dropdown-item', BDropdownItem);
 Vue.component('b-collapse', BCollapse);
 Vue.component('b-card', BCard);
 Vue.component('b-card-text', BCardText);

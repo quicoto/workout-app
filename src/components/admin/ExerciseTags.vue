@@ -55,7 +55,7 @@
           hover
           :items="tags"
           :fields="fields">
-          <template slot="edit" slot-scope="data">
+          <template v-slot:cell(edit)="data">
             <font-awesome-icon
               @click="action = 'edit'; form = data.item"
               size="lg"
@@ -83,19 +83,22 @@ export default {
     return {
       tags: [],
       action: 'create',
-      fields: {
-        id: {
+      fields: [
+        {
+          key: 'id',
           label: 'Id',
         },
-        name: {
+        {
+          key: 'name',
           label: 'Name',
         },
-        edit: {
+        {
+          key: 'edit',
           label: 'Edit',
           tdClass: 'text-center',
           thClass: 'text-center',
         },
-      },
+      ],
       form: {
         name: '',
       },

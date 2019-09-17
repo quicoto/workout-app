@@ -110,13 +110,13 @@
           hover
           :items="exercises"
           :fields="fields">
-          <template slot="description" slot-scope="data">
+          <template v-slot:cell(description)="data">
             <span v-html="exerciseDescription(data.item.description)"></span>
           </template>
-          <template slot="tags" slot-scope="data">
+          <template v-slot:cell(tags)="data">
             <TagsBadges :tags="data.item.tags" />
           </template>
-          <template slot="video" slot-scope="data">
+          <template v-slot:cell(video)="data">
             <a v-if="data.item.video"
               :href="data.item.video"
               target="_blank"
@@ -124,7 +124,7 @@
                 <font-awesome-icon size="lg" :icon="['fas', 'video']" />
             </a>
           </template>
-          <template slot="image" slot-scope="data">
+          <template v-slot:cell(image)="data">
             <a v-if="data.item.image"
               :href="`${publicPath}img/exercises/${data.item.id}.jpg`"
               target="_blank"
@@ -132,7 +132,7 @@
                 <font-awesome-icon size="lg" :icon="['far', 'image']" />
             </a>
           </template>
-          <template slot="edit" slot-scope="data">
+          <template v-slot:cell(edit)="data">
             <font-awesome-icon
               @click="action = 'edit'; form = data.item"
               size="lg"
@@ -140,7 +140,7 @@
               class="cursor--pointer"
               title="Edit"/>
           </template>
-          <template slot="delete" slot-scope="data">
+          <template v-slot:cell(delete)="data">
             <ConfirmDelete
               :exercise="data.item"
               v-on:confirm-delete="onConfirmDelete" />
@@ -171,38 +171,46 @@ export default {
       action: 'create',
       tags: [],
       exercises: [],
-      fields: {
-        id: {
+      fields: [
+        {
+          key: 'id',
           label: 'Id',
         },
-        name: {
+        {
+          key: 'name',
           label: 'Name',
         },
-        tags: {
+        {
+          key: 'tags',
           label: 'Tags',
         },
-        description: {
+        {
+          key: 'description',
           label: 'Description',
           thClass: 'description',
         },
-        video: {
+        {
+          key: 'video',
           label: 'Video',
           tdClass: 'text-center',
         },
-        image: {
+        {
+          key: 'image',
           label: 'Image',
           tdClass: 'text-center',
         },
-        edit: {
+        {
+          key: 'edit',
           label: 'Edit',
           tdClass: 'text-center',
         },
-        delete: {
+        {
+          key: 'delete',
           label: 'Delete',
           tdClass: 'text-center',
           thClass: 'delete text-center',
         },
-      },
+      ],
       form: {
         tags: [],
         image: false,
