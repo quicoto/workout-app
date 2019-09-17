@@ -37,17 +37,22 @@
 
               <h4 class="mb-4">Goals</h4>
 
-              <b-form>
+              <b-form v-if="!viewOnlyProfile">
                 <b-form-group
-                  :label="`I will become ${goalName(currentDBUser.goal)}` "
+                  :label="`I will become ${goalName(currentDBUser.goal)}`"
                 >
                   <b-form-input id="goal-range"
+                    number
                     v-model="currentDBUser.goal"
                     type="range"
                     :min="workoutGoals[0].id"
                     :max="workoutGoals[workoutGoals.length - 1].id"></b-form-input>
                 </b-form-group>
               </b-form>
+
+              <div v-show="viewOnlyProfile">
+                {{ currentDBUser.name }}? No, call me {{ goalName(currentDBUser.goal) }}
+              </div>
             </b-card-text>
           </b-card>
         </b-col>
@@ -68,17 +73,23 @@
                 :title="`Level: ${levelName(currentDBUser.level)}`">
 
                 <h4 class="mb-4">{{ levelName(currentDBUser.level) }}</h4>
-
-                <b-form>
+                <b-form v-if="!viewOnlyProfile">
                   <b-form-group
                     label="Your current level">
                     <b-form-input id="level-range"
+                      number
                       v-model="currentDBUser.level"
                       type="range"
                       :min="workoutLevels[0].id"
                       :max="workoutLevels[workoutLevels.length - 1].id"></b-form-input>
                   </b-form-group>
                 </b-form>
+
+                <div v-show="viewOnlyProfile">
+                  <span v-show="+currentDBUser.level === 1">Just getting started</span>
+                  <span v-show="+currentDBUser.level === 2">Above average</span>
+                  <span v-show="+currentDBUser.level === 3">Unstoppable</span>
+                </div>
             </b-card-text>
           </b-card>
         </b-col>
@@ -101,20 +112,34 @@ export default {
       publicPath: process.env.BASE_URL,
       currentUser: firebase.auth().currentUser,
       currentDBUser: {},
+      updating: false,
       users: [],
+      viewOnlyProfile: false,
       workoutGoals: [],
       workoutLevels: [],
     };
   },
   firebase: {
-    users: db.ref('users'),
     workoutGoals: db.ref('workout-goals'),
     workoutLevels: db.ref('workout-levels'),
   },
   mounted() {
+    const requestedUserId = parseInt(this.$route.params.user_id, 10)
     // Search our Firebase users data and set it.
     firebase.database().ref('users').once('value').then((snapshot) => {
-      this.currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
+      this.users = snapshot.val();
+
+      let currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
+
+      if (requestedUserId !== currentDBUser.id) {
+        // The requested profile is not the logged in user
+        this.viewOnlyProfile = true;
+
+        // Find the requested user
+        currentDBUser = snapshot.val().find(o => o.id === requestedUserId);
+      }
+
+      this.currentDBUser = currentDBUser;
     });
   },
   methods: {
@@ -159,9 +184,9 @@ export default {
       });
 
       // Save the data to the server
-      firebase.database().ref('users').set(this.users);
-
-      this.pushProfileSavedMessage();
+      firebase.database().ref('users').set(this.users).then(() => {
+        this.pushProfileSavedMessage();
+      });
     },
   },
   watch: {
