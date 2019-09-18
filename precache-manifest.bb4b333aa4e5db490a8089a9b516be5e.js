@@ -112,6 +112,18 @@ self.__precacheManifest = [
     "url": "/img/exercises/1.jpg"
   },
   {
+    "revision": "c04450bf730746c4211449b37590ba10",
+    "url": "/img/exercises/13.jpg"
+  },
+  {
+    "revision": "07967f1598c063bec50d0aeb68cbfb51",
+    "url": "/img/exercises/14.jpg"
+  },
+  {
+    "revision": "07967f1598c063bec50d0aeb68cbfb51",
+    "url": "/img/exercises/15.jpg"
+  },
+  {
     "revision": "09f6b6f6a8e8722d568af78325103787",
     "url": "/img/exercises/2.jpg"
   },
@@ -134,6 +146,10 @@ self.__precacheManifest = [
   {
     "revision": "6e478fbf32a58d4d3e9d35d49cd1459f",
     "url": "/img/exercises/7.jpg"
+  },
+  {
+    "revision": "9b579019c67d97ff7c4505d9da419759",
+    "url": "/img/exercises/9.jpg"
   },
   {
     "revision": "e62d67c0294d87075a338d415e9d5ff9",
