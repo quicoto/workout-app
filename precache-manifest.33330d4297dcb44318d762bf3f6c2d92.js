@@ -8,16 +8,16 @@ self.__precacheManifest = [
     "url": "/js/admin.95be54cb.js"
   },
   {
-    "revision": "f98238e64f72c95b3876",
+    "revision": "b70b2e9a4ad399cae837",
     "url": "/css/app.ee0204b8.css"
   },
   {
-    "revision": "f98238e64f72c95b3876",
-    "url": "/js/app.d974536b.js"
+    "revision": "b70b2e9a4ad399cae837",
+    "url": "/js/app.93e8b681.js"
   },
   {
-    "revision": "10b817b9e0c386c900ab",
-    "url": "/js/chunk-vendors.dcac415e.js"
+    "revision": "33398f02e69f19e049ee",
+    "url": "/js/chunk-vendors.630504be.js"
   },
   {
     "revision": "287e83aac6a3799ad1a6",
@@ -46,14 +46,6 @@ self.__precacheManifest = [
   {
     "revision": "2e72f9af9c20e039aabe",
     "url": "/js/search.66b59bbf.js"
-  },
-  {
-    "revision": "29c504a875853a5e3400",
-    "url": "/css/styleguide.41f7941c.css"
-  },
-  {
-    "revision": "29c504a875853a5e3400",
-    "url": "/js/styleguide.fd9be40a.js"
   },
   {
     "revision": "f3257d6bac0d2f59ca84f14514ab85f4",
@@ -100,7 +92,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "d1249505a1be31eb6f31e8e1e0a7d85f",
+    "revision": "e415690f4cc4048f0564a3b0f333970d",
     "url": "/index.html"
   },
   {
