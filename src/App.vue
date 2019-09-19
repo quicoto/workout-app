@@ -36,15 +36,19 @@
           ref="mobileNavigation"
           is-nav>
           <b-navbar-nav>
-            <b-nav-item to="/">Home</b-nav-item>
+            <b-nav-item
+              class="d-none d-lg-block"
+              to="/">Home</b-nav-item>
             <b-nav-item to="/exercises">Exercises</b-nav-item>
-            <b-nav-item to="/styleguide">Styleguide</b-nav-item>
-            <b-nav-item to="/admin">Admin</b-nav-item>
+            <b-nav-item
+              class="d-none d-md-block"
+              to="/admin">Admin</b-nav-item>
           </b-navbar-nav>
 
           <!-- Right aligned nav items -->
           <b-navbar-nav class="mt-2 mt-md-0 ml-auto">
             <b-nav-form
+              inline
               class="mr-4"
               @submit.prevent="onSubmit">
               <b-form-input
@@ -55,9 +59,11 @@
                 required></b-form-input>
               <b-button
                 size="sm"
-                class="my-2 my-sm-0"
+                class="d-none d-md-block my-2 my-sm-0"
                 type="submit"
-                variant="primary">Search</b-button>
+                variant="primary">
+                  <font-awesome-icon :icon="['fas', 'search']" />
+                </b-button>
             </b-nav-form>
 
             <b-nav-item
@@ -96,7 +102,9 @@
 
     <footer class="container-fluid p-5 mt-5">
       <b-row>
-        <b-col class="text-center"><a href="https://github.com/quicoto/workout-app" title="Workout App Github"><small>v1.0.0</small></a></b-col>
+        <b-col class="text-center">
+          <a href="https://github.com/quicoto/workout-app" title="Thorkout on Github"><small>v1.0.0</small></a>
+        </b-col>
       </b-row>
     </footer>
   </main>
