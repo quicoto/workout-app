@@ -56,6 +56,14 @@ const router = new Router({
         title: 'Profile',
       },
     },
+    {
+      path: '/start',
+      name: 'start',
+      component: () => import(/* webpackChunkName: "start" */ './views/Start.vue'),
+      meta: {
+        title: 'Start',
+      },
+    },
   ],
 });
 
