@@ -92,7 +92,6 @@ export default {
   methods: {
     resume() {
       this.timer.paused = false;
-      this.timer.start = new Date();
       this.timer.timerId = window.setTimeout(() => {
         if (this.timer.remaining > 0) {
           this.resume();
