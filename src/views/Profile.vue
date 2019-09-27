@@ -109,8 +109,8 @@ export default {
   },
   firebase: {
     users: db.ref(ENDPOINTS.users),
-    workoutGoals: db.ref('ENDPOINTS.workoutGoals'),
-    workoutLevels: db.ref('ENDPOINTS.workoutLevels'),
+    workoutGoals: db.ref(ENDPOINTS.workoutGoals),
+    workoutLevels: db.ref(ENDPOINTS.workoutLevel),
   },
   mounted() {
     // Search our Firebase users data and set it.
