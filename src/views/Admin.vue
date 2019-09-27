@@ -12,6 +12,9 @@
             <b-tab title="Tags">
               <exerciseTags />
             </b-tab>
+            <b-tab title="Levels">
+              <workoutLevels />
+            </b-tab>
             <b-tab title="Workouts">
 
             </b-tab>
@@ -25,11 +28,13 @@
 <script>
 import Exercises from '@/components/admin/Exercises.vue';
 import ExerciseTags from '@/components/admin/ExerciseTags.vue';
+import WorkoutLevels from '@/components/admin/WorkoutLevels.vue';
 
 export default {
   components: {
     Exercises,
     ExerciseTags,
+    WorkoutLevels,
   },
   data() {
     return {

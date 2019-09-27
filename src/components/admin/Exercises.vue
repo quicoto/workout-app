@@ -158,6 +158,7 @@ import db from '@/db';
 import Loader from '@/components/Loader.vue';
 import TagsBadges from '@/components/TagsBadges.vue';
 import ConfirmDelete from '@/components/admin/ConfirmDelete.vue';
+import ENDPOINTS from '@/endpoints';
 
 export default {
   name: 'Exercises',
@@ -219,10 +220,10 @@ export default {
     };
   },
   firebase: {
-    exercises: db.ref('exercises'),
+    exercises: db.ref(ENDPOINTS.exercises),
   },
   mounted() {
-    firebase.database().ref('exercise-tags').once('value').then((snapshot) => {
+    firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
       this.tags = snapshot.val().map(item => ({
         value: item.id,
         text: item.name,
@@ -256,7 +257,7 @@ export default {
 
       // Update firebase with the copy
       // It will automatically push it to our this.exercises
-      db.ref('exercises').set(updates);
+      db.ref(ENDPOINTS.exercises).set(updates);
 
       // Clean the form
       this.resetForm();
@@ -270,7 +271,7 @@ export default {
 
       // Update firebase with the copy
       // It will automatically push it to our this.exercises
-      db.ref('exercises').set(updates);
+      db.ref(ENDPOINTS.exercises).set(updates);
 
       // Clean the form
       this.resetForm();

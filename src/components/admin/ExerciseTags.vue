@@ -73,6 +73,7 @@
 import Vue from 'vue';
 import db from '@/db';
 import Loader from '@/components/Loader.vue';
+import ENDPOINTS from '@/endpoints';
 
 export default {
   name: 'ExerciseTags',
@@ -105,7 +106,7 @@ export default {
     };
   },
   firebase: {
-    tags: db.ref('exercise-tags'),
+    tags: db.ref(ENDPOINTS.exerciseTags),
   },
   methods: {
     resetForm() {
@@ -128,7 +129,7 @@ export default {
 
       // Update firebase with the copy
       // It will automatically push it to our this.tags
-      db.ref('exercise-tags').set(updates);
+      db.ref(ENDPOINTS.exerciseTags).set(updates);
 
       // Clean the form
       this.resetForm();
