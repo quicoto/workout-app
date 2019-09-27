@@ -186,15 +186,9 @@ export default {
       });
 
       // Save the data to the server
-<<<<<<< HEAD
-      firebase.database().ref(ENDPOINTS.users).set(this.users);
-
-      this.pushProfileSavedMessage();
-=======
-      firebase.database().ref('users').set(this.users).then(() => {
+      firebase.database().ref(ENDPOINTS.users).set(this.users).then(() => {
         this.pushProfileSavedMessage();
       });
->>>>>>> 6de2de15bfc281f04dcfa37de829d32d7a662def
     },
   },
   watch: {
