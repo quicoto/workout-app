@@ -105,6 +105,7 @@
 <script>
 import firebase from 'firebase/app';
 import siteName from '@/components/siteName.vue';
+import ENDPOINTS from '@/endpoints';
 
 export default {
   components: {
@@ -135,7 +136,7 @@ export default {
     },
     updateCurrentDBUser() {
       // Search our Firebase users data and set it.
-      firebase.database().ref('users').once('value').then((snapshot) => {
+      firebase.database().ref(ENDPOINTS.users).once('value').then((snapshot) => {
         this.currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
       });
     },

@@ -23,6 +23,7 @@
 import firebase from 'firebase/app';
 import Loader from '@/components/Loader.vue';
 import ExerciseCard from '@/components/ExerciseCard.vue';
+import ENDPOINTS from '@/endpoints';
 
 export default {
   components: {
@@ -50,11 +51,11 @@ export default {
   mounted() {
     this.query = this.getQueryParam();
 
-    firebase.database().ref('exercises').once('value').then((snapshot) => {
+    firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
       this.exercises = snapshot.val();
     });
 
-    firebase.database().ref('exercise-tags').once('value').then((snapshot) => {
+    firebase.database().ref(ENDPOINTS.exerciseTags).once('value').then((snapshot) => {
       this.tags = snapshot.val();
     });
   },

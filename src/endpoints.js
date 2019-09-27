@@ -3,5 +3,5 @@ export default {
   exercises: 'exercises',
   users: 'users',
   workoutGoals: 'workout-goals',
-  workoutLevels: 'workout-levels',
+  workoutLevels: 'ENDPOINTS.workoutLevels',
 };

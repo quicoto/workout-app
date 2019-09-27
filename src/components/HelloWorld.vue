@@ -12,6 +12,7 @@
 <script>
 // import firebase from 'firebase/app';
 import db from '@/db';
+import ENDPOINTS from '@/endpoints';
 
 export default {
   name: 'HelloWorld',
@@ -21,7 +22,7 @@ export default {
     };
   },
   firebase: {
-    users: db.ref('users'),
+    users: db.ref(ENDPOINTS.users),
   },
 };
 </script>
