@@ -33,14 +33,6 @@ const router = new Router({
       },
     },
     {
-      path: '/styleguide',
-      name: 'styleguide',
-      component: () => import(/* webpackChunkName: "styleguide" */ './views/Styleguide.vue'),
-      meta: {
-        title: 'Styleguide',
-      },
-    },
-    {
       path: '/exercises',
       name: 'exercises',
       component: () => import(/* webpackChunkName: "excercises" */ './views/Exercises.vue'),

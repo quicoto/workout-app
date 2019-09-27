@@ -3,7 +3,9 @@
     <p>Current database users:</p>
     <ul>
       <li v-for="user in users" :key="user.id">
-        {{ user.name }}
+        <router-link :to="`/profile/${user.id}`">
+          {{ user.name }}
+        </router-link>
       </li>
     </ul>
   </div>
