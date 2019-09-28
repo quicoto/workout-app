@@ -2,7 +2,7 @@
   <div>
     <Loader v-show="levels.length === 0" />
     <div v-if="levels.length > 0">
-      <b-row class="mt-4 mb-3" align-v="center">
+      <b-row class="mt-3 mb-3" align-v="center">
         <b-col align-self="center">
           <h3>Levels List</h3>
         </b-col>
