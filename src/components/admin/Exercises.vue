@@ -74,6 +74,8 @@
               id="checkbox-group-1"
               v-model="form.tags"
               :options="tags"
+              value-field="id"
+              text-field="name"
               name="tags"
             ></b-form-checkbox-group>
           </b-form-group>
@@ -153,7 +155,6 @@
 
 <script>
 import Vue from 'vue';
-import firebase from 'firebase/app';
 import db from '@/db';
 import Loader from '@/components/Loader.vue';
 import TagsBadges from '@/components/TagsBadges.vue';
@@ -221,17 +222,7 @@ export default {
   },
   firebase: {
     exercises: db.ref(ENDPOINTS.exercises),
-  },
-  mounted() {
-    firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
-      /**
-       * We need to map this to the Vue Bootstrap Checkbox data structure
-       */
-      this.tags = snapshot.val().map(item => ({
-        value: item.id,
-        text: item.name,
-      }));
-    });
+    tags: db.ref(ENDPOINTS.exerciseTags),
   },
   methods: {
     exerciseDescription(description) {

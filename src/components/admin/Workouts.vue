@@ -22,28 +22,72 @@
           <b-form-select
             v-if="workoutTypes.length > 0"
             v-model="form.type"
+            value-field="id"
+            text-field="name"
             :options="workoutTypes"></b-form-select>
         </b-col>
       </b-row>
 
-      <b-button
-        type="submit"
-        :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
-        :disabled="!form.name || !form.type"
-        >
-          <span v-show="action === 'create'">Create Workout</span>
-          <span v-if="action !== 'create' && form.id">Update Workout</span>
-        </b-button>
+      <h4>Add Exercise</h4>
+      <ul v-if="this.form.exercises.length > 0">
+        <li v-for="exercise in this.form.exercises" v-bind:key="exercise">
+          {{ exerciseName(exercise) }}
+        </li>
+      </ul>
+
+      <b-row v-if="exercises.length > 0">
+        <b-col>
+          <b-form-select
+            v-if="exercises.length > 0"
+            value-field="id"
+            text-field="name"
+            v-model="selectedExercise"
+            :options="exercises"
+            @change="showExercise(selectedExercise)"></b-form-select>
+
+            <b-alert
+              :show="selectedExerciseDescription !== ''"
+              v-html="selectedExerciseDescription"
+              class="mt-3">
+              </b-alert>
+        </b-col>
+        <b-col>
+          <b-button
+            type="button"
+            variant="success"
+            :disabled="!selectedExercise"
+            @click="addExercise()"
+            >
+            Add to workout
+          </b-button>
+        </b-col>
+      </b-row>
+
+      <b-row class="mt-3">
+        <b-col>
+          {{ form }}
+          <b-button
+            type="submit"
+            :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
+            :disabled="!form.name || !form.type || form.exercises.length === 0"
+            >
+              <span v-show="action === 'create'">Create Workout</span>
+              <span v-if="action !== 'create' && form.id">Update Workout</span>
+            </b-button>
 
 
-      <b-button
-        type="reset"
-        variant="secondary"
-        v-if="action !== 'create' && form.id"
-        @click="resetForm()"
-        class="ml-2">
-          Cancel
-        </b-button>
+          <b-button
+            type="reset"
+            variant="secondary"
+            v-if="action !== 'create' && form.id"
+            @click="resetForm()"
+            class="ml-2">
+              Cancel
+          </b-button>
+        </b-col>
+      </b-row>
+
+
     </b-form>
 
     <h3 class="mt-4">List</h3>
@@ -95,6 +139,8 @@ export default {
   },
   data() {
     return {
+      exercises: [],
+      exercisesDropdown: [],
       action: 'create',
       workoutTypes: [],
       workouts: [],
@@ -121,8 +167,11 @@ export default {
         },
       ],
       form: {
+        exercises: [],
         type: null,
       },
+      selectedExercise: null,
+      selectedExerciseDescription: '',
     };
   },
   firebase: {
@@ -130,17 +179,30 @@ export default {
   },
   mounted() {
     db.ref(ENDPOINTS.workoutTypes).on('value', (snapshot) => {
-      /**
-       * We need to map this to the Vue Bootstrap Select data structure
-       */
-      this.workoutTypes = snapshot.val().map(item => ({
-        value: item.id,
-        text: item.name,
-      }));
-      this.workoutTypes.unshift({ value: null, text: 'Please select workout type' });
+      this.workoutTypes = snapshot.val();
+      this.workoutTypes.unshift({ id: null, name: 'Please select workout type', disabled: true });
+    });
+
+    db.ref(ENDPOINTS.exercises).on('value', (snapshot) => {
+      this.exercises = snapshot.val().sort((a, b) => ((a.name > b.name) ? 1 : -1));
+      this.exercises.unshift({ id: null, name: 'Please select an exercise', disabled: true });
     });
   },
   methods: {
+    exerciseName(exerciseId) {
+      const index = this.exercises.findIndex(i => i.id === exerciseId);
+
+      return this.exercises[index].name;
+    },
+    addExercise() {
+      this.form.exercises.push(this.selectedExercise);
+      this.selectedExercise = null;
+      this.selectedExerciseDescription = '';
+    },
+    showExercise(exerciseId) {
+      const index = this.exercises.findIndex(i => i.id === exerciseId);
+      this.selectedExerciseDescription = this.exercises[index].description.replace(/\n/g, '<br />');
+    },
     resetForm() {
       this.action = 'create';
       this.form = {};
@@ -154,9 +216,13 @@ export default {
 
       // Check if it's Create action
       if (this.action === 'create' && !this.form.id) {
+        this.form.id = 0;
+
         // Create the incremental id based on the last id
-        this.form.id = parseInt(this.workouts[0].id, 10) + 1;
-        updates.unshift(this.form);
+        if (this.workouts[0]) {
+          this.form.id = parseInt(this.workouts[0].id, 10) + 1;
+          updates.unshift(this.form);
+        }
       }
 
       // Update firebase with the copy
