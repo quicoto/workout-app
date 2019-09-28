@@ -142,7 +142,7 @@
           </template>
           <template v-slot:cell(delete)="data">
             <ConfirmDelete
-              :exercise="data.item"
+              :item="data.item"
               v-on:confirm-delete="onConfirmDelete" />
           </template>
         </b-table>
@@ -224,6 +224,9 @@ export default {
   },
   mounted() {
     firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
+      /**
+       * We need to map this to the Vue Bootstrap Checkbox data structure
+       */
       this.tags = snapshot.val().map(item => ({
         value: item.id,
         text: item.name,

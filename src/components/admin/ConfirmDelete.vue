@@ -30,7 +30,7 @@
 export default {
   name: 'ConfirmDelete',
   props: {
-    exercise: Object,
+    item: Object,
   },
   data() {
     return {
@@ -40,7 +40,7 @@ export default {
   methods: {
     emitMessage() {
       this.showConfirmation = false;
-      this.$emit('confirm-delete', this.exercise.id);
+      this.$emit('confirm-delete', this.item.id);
     },
   },
 };
