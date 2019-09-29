@@ -29,11 +29,36 @@
       </b-row>
 
       <h4>Add Exercise</h4>
-      <ul v-if="this.form.exercises.length > 0">
-        <li v-for="exercise in this.form.exercises" v-bind:key="exercise">
-          {{ exerciseName(exercise) }}
+      <ul>
+        <li v-for="(round, index) in form.rounds" :key="round">
+          <div class="d-flex">
+            <h5 class="mr-4">Round {{ index + 1 }}</h5>
+            <div class="d-flex">
+              <span class="mr-2">
+                <font-awesome-icon
+                  title="Reps"
+                  :icon="['fas', 'sync-alt']" />
+              </span>
+              <b-form-input
+                prepend="Reps:"
+                style="max-width: 50px;"
+                type="number"
+                size="sm"
+                v-model="form.rounds[index]"
+                placeholder="Reps">
+              </b-form-input>
+            </div>
+          </div>
+
+
+          <ul v-if="form.exercises.length > 0">
+            <li v-for="exercise in form.exercises" v-bind:key="exercise">
+              {{ exerciseName(exercise) }}
+            </li>
+          </ul>
         </li>
       </ul>
+
 
       <b-row v-if="exercises.length > 0">
         <b-col>
@@ -54,11 +79,21 @@
         <b-col>
           <b-button
             type="button"
-            variant="success"
+            variant="primary"
             :disabled="!selectedExercise"
             @click="addExercise()"
             >
-            Add to workout
+            Add Exercise
+          </b-button>
+
+          <b-button
+            class="ml-2"
+            type="button"
+            variant="primary"
+            :disabled="form.exercises.length === 0"
+            @click="addRound()"
+            >
+            Add Round
           </b-button>
         </b-col>
       </b-row>
@@ -168,6 +203,7 @@ export default {
       ],
       form: {
         exercises: [],
+        rounds: [1],
         type: null,
       },
       selectedExercise: null,
@@ -194,8 +230,17 @@ export default {
 
       return this.exercises[index].name;
     },
+    addRound() {
+      this.form.rounds.push(1);
+    },
     addExercise() {
-      this.form.exercises.push(this.selectedExercise);
+      if (this.form.exercises.length === 0) {
+        this.form.exercises.push([123]);
+      }
+
+      // Add the exercise to the Exercises array
+      // But on the correct round array
+      this.form.exercises[this.form.rounds.length].push(this.selectedExercise);
       this.selectedExercise = null;
       this.selectedExerciseDescription = '';
     },
