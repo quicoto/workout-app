@@ -1,31 +1,31 @@
 self.__precacheManifest = [
   {
-    "revision": "5f30d7aeb1bf335a1dfc",
+    "revision": "92e0564635d6c43a36f1",
     "url": "/css/admin.50aca2a1.css"
   },
   {
-    "revision": "5f30d7aeb1bf335a1dfc",
-    "url": "/js/admin.d7abbcf6.js"
+    "revision": "92e0564635d6c43a36f1",
+    "url": "/js/admin.f298b2b9.js"
   },
   {
-    "revision": "0935fa5496ec4781051b",
+    "revision": "cb537070c1dd85563666",
     "url": "/css/app.72a402d2.css"
   },
   {
-    "revision": "0935fa5496ec4781051b",
-    "url": "/js/app.2cd4fdf9.js"
+    "revision": "cb537070c1dd85563666",
+    "url": "/js/app.22f6ae41.js"
   },
   {
     "revision": "b9b78a9f82c3d4074102",
     "url": "/js/chunk-vendors.f8a2fc12.js"
   },
   {
-    "revision": "8f1e6eabc8b80b690932",
-    "url": "/css/excercises.41f7941c.css"
+    "revision": "632b6b47eaf204a4d161",
+    "url": "/css/exercises.41f7941c.css"
   },
   {
-    "revision": "8f1e6eabc8b80b690932",
-    "url": "/js/excercises.06300c5b.js"
+    "revision": "632b6b47eaf204a4d161",
+    "url": "/js/exercises.334d6704.js"
   },
   {
     "revision": "86dba545d17fd2dde14b",
@@ -40,12 +40,20 @@ self.__precacheManifest = [
     "url": "/js/profile.814c4e37.js"
   },
   {
-    "revision": "48840155f978d845f422",
+    "revision": "2c15743faa40096dce52",
     "url": "/css/search.41f7941c.css"
   },
   {
-    "revision": "48840155f978d845f422",
-    "url": "/js/search.47aecf61.js"
+    "revision": "2c15743faa40096dce52",
+    "url": "/js/search.8654df50.js"
+  },
+  {
+    "revision": "fabce24e233b9b11fe44",
+    "url": "/css/workouts.41f7941c.css"
+  },
+  {
+    "revision": "fabce24e233b9b11fe44",
+    "url": "/js/workouts.4896c0fe.js"
   },
   {
     "revision": "f3257d6bac0d2f59ca84f14514ab85f4",
@@ -92,7 +100,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "6e8cbafe025a082632fb53896fa2296d",
+    "revision": "6e852287e9577f2e26446622789fa92c",
     "url": "/index.html"
   },
   {
