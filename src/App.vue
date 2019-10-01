@@ -39,6 +39,7 @@
             <b-nav-item
               class="d-none d-lg-block"
               to="/">Home</b-nav-item>
+            <b-nav-item to="/workouts">Workouts</b-nav-item>
             <b-nav-item to="/exercises">Exercises</b-nav-item>
             <b-nav-item
               class="d-none d-md-block"
