@@ -1,19 +1,19 @@
 self.__precacheManifest = [
   {
-    "revision": "93e312d5a5e4e2fb3ff6",
+    "revision": "ec13092b73058384c045",
     "url": "/css/admin.9d311ac2.css"
   },
   {
-    "revision": "93e312d5a5e4e2fb3ff6",
-    "url": "/js/admin.cb1d541f.js"
+    "revision": "ec13092b73058384c045",
+    "url": "/js/admin.bcd1631c.js"
   },
   {
-    "revision": "0f79a027f12b1ff8138c",
+    "revision": "33b674722c0f81eb49d1",
     "url": "/css/app.c72208f9.css"
   },
   {
-    "revision": "0f79a027f12b1ff8138c",
-    "url": "/js/app.1ffc9df2.js"
+    "revision": "33b674722c0f81eb49d1",
+    "url": "/js/app.46c9499f.js"
   },
   {
     "revision": "33398f02e69f19e049ee",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "65a32b40ff7982c0f5dbaba4e0a751a7",
+    "revision": "c8eed5b5194cdccdc7e3047db2d40c8a",
     "url": "/index.html"
   },
   {
