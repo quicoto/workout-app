@@ -7,19 +7,22 @@
 
           <b-tabs content-class="mt-3">
             <b-tab title="Exercises" active>
-              <exercises />
+              <Exercises />
             </b-tab>
             <b-tab title="Tags">
-              <exerciseTags />
+              <ExerciseTags />
             </b-tab>
             <b-tab title="Levels">
-              <workoutLevels />
+              <WorkoutLevels />
             </b-tab>
             <b-tab title="Workouts">
-              <workouts />
+              <Workouts />
             </b-tab>
             <b-tab title="Workout Types">
-              <workoutTypes />
+              <WorkoutTypes />
+            </b-tab>
+            <b-tab title="Goals">
+              <WorkoutGoals />
             </b-tab>
           </b-tabs>
         </b-col>
@@ -34,6 +37,7 @@ import ExerciseTags from '@/components/admin/ExerciseTags.vue';
 import WorkoutLevels from '@/components/admin/WorkoutLevels.vue';
 import WorkoutTypes from '@/components/admin/WorkoutTypes.vue';
 import Workouts from '@/components/admin/Workouts.vue';
+import WorkoutGoals from '@/components/admin/WorkoutGoals.vue';
 
 export default {
   components: {
@@ -42,6 +46,7 @@ export default {
     WorkoutLevels,
     WorkoutTypes,
     Workouts,
+    WorkoutGoals,
   },
   data() {
     return {
