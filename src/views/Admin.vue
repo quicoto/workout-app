@@ -15,14 +15,14 @@
             <b-tab title="Levels">
               <WorkoutLevels />
             </b-tab>
-            <b-tab title="Workouts">
-              <Workouts />
+            <b-tab title="Goals">
+              <WorkoutGoals />
             </b-tab>
             <b-tab title="Workout Types">
               <WorkoutTypes />
             </b-tab>
-            <b-tab title="Goals">
-              <WorkoutGoals />
+            <b-tab title="Workouts">
+              <Workouts />
             </b-tab>
           </b-tabs>
         </b-col>
