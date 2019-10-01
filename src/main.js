@@ -11,6 +11,8 @@ import {
   faVideo,
   faExclamationTriangle,
   faSearch,
+  faPlus,
+  faMinus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import firebase from 'firebase/app';
@@ -50,6 +52,7 @@ import {
   BFormCheckboxGroup,
   VBTooltip,
   ToastPlugin,
+  BFormSelect,
   BProgress,
 } from 'bootstrap-vue';
 
@@ -66,6 +69,8 @@ library.add(faTrashAlt);
 library.add(faEdit);
 library.add(faExclamationTriangle);
 library.add(faSearch);
+library.add(faPlus);
+library.add(faMinus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = true;
 
@@ -104,6 +109,7 @@ Vue.component('b-badge', BBadge);
 Vue.component('b-tab', BTab);
 Vue.component('b-tabs', BTabs);
 Vue.component('b-table', BTable);
+Vue.component('b-form-select', BFormSelect);
 Vue.component('b-progress', BProgress);
 
 Vue.directive('b-tooltip', VBTooltip);

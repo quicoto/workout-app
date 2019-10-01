@@ -102,6 +102,7 @@
 import firebase from 'firebase/app';
 import db from '@/db';
 import Loader from '@/components/Loader.vue';
+import ENDPOINTS from '@/endpoints';
 
 export default {
   components: {
@@ -120,13 +121,14 @@ export default {
     };
   },
   firebase: {
-    workoutGoals: db.ref('workout-goals'),
-    workoutLevels: db.ref('workout-levels'),
+    users: db.ref(ENDPOINTS.users),
+    workoutGoals: db.ref(ENDPOINTS.workoutGoals),
+    workoutLevels: db.ref(ENDPOINTS.workoutLevel),
   },
   mounted() {
     const requestedUserId = parseInt(this.$route.params.user_id, 10);
     // Search our Firebase users data and set it.
-    firebase.database().ref('users').once('value').then((snapshot) => {
+    firebase.database().ref(ENDPOINTS.users).once('value').then((snapshot) => {
       this.users = snapshot.val();
 
       let currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
@@ -184,7 +186,7 @@ export default {
       });
 
       // Save the data to the server
-      firebase.database().ref('users').set(this.users).then(() => {
+      firebase.database().ref(ENDPOINTS.users).set(this.users).then(() => {
         this.pushProfileSavedMessage();
       });
     },

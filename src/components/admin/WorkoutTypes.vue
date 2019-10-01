@@ -5,7 +5,7 @@
         <h3 class="text-capitalize">{{ action }}</h3>
         <b-alert show variant="warning">
           <font-awesome-icon :icon="['fas', 'exclamation-triangle']" class="mr-1" />
-          Tags can not be deleted as their ID could be assigned to an exercise.
+          Types can not be deleted as their ID could be assigned to an workout.
           Instead of delete, rename it if needed.
         </b-alert>
         <b-form @submit="onSubmit" ref="form">
@@ -46,14 +46,14 @@
             </b-button>
         </b-form>
       </b-col>
-      <b-col v-if="tags">
+      <b-col v-if="types">
         <h3 class="mt-4">List</h3>
-        <Loader v-show="tags.length === 0" />
+        <Loader v-show="types.length === 0" />
         <b-table
-          v-if="tags.length > 0"
+          v-if="types.length > 0"
           striped
           hover
-          :items="tags"
+          :items="types"
           :fields="fields">
           <template v-slot:cell(edit)="data">
             <font-awesome-icon
@@ -76,13 +76,13 @@ import Loader from '@/components/Loader.vue';
 import ENDPOINTS from '@/endpoints';
 
 export default {
-  name: 'ExerciseTags',
+  name: 'WorkoutTypes',
   components: {
     Loader,
   },
   data() {
     return {
-      tags: [],
+      types: [],
       action: 'create',
       fields: [
         {
@@ -106,7 +106,7 @@ export default {
     };
   },
   firebase: {
-    tags: db.ref(ENDPOINTS.exerciseTags),
+    types: db.ref(ENDPOINTS.workoutTypes),
   },
   methods: {
     resetForm() {
@@ -118,18 +118,18 @@ export default {
       event.preventDefault();
 
       // Create a shallow copy, without the bindings
-      const updates = Vue.util.extend([], this.tags);
+      const updates = Vue.util.extend([], this.types);
 
       // Check if it's Create action
       if (this.action === 'create' && !this.form.id) {
         // Create the incremental id based on the last id
-        this.form.id = parseInt(this.tags[0].id, 10) + 1;
+        this.form.id = parseInt(this.types[0].id, 10) + 1;
         updates.unshift(this.form);
       }
 
       // Update firebase with the copy
-      // It will automatically push it to our this.tags
-      db.ref(ENDPOINTS.exerciseTags).set(updates);
+      // It will automatically push it to our this.types
+      db.ref(ENDPOINTS.workoutTypes).set(updates);
 
       // Clean the form
       this.resetForm();

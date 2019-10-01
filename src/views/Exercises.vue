@@ -16,6 +16,7 @@
 import firebase from 'firebase/app';
 import Loader from '@/components/Loader.vue';
 import ExerciseCard from '@/components/ExerciseCard.vue';
+import ENDPOINTS from '@/endpoints';
 
 export default {
   components: {
@@ -28,7 +29,7 @@ export default {
     };
   },
   mounted() {
-    firebase.database().ref('exercises').once('value').then((snapshot) => {
+    firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
       this.exercises = snapshot.val().sort((a, b) => ((a.name > b.name) ? 1 : -1));
     });
   },

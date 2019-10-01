@@ -30,7 +30,7 @@ $list-group-hover-bg: $dark;
 
 // Inputs
 $input-bg: $dark_secondary;
-$input-disabled-bg: $input-bg;
+$input-disabled-bg: $dark;
 
 $input-color: #ffffff;
 $input-border-color: $body-bg;
@@ -41,6 +41,9 @@ $input-focus-box-shadow: none;
 $input-focus-border-color: $primary;
 $input-placeholder-color: #95aac9;
 $input-plaintext-color: $input-color;
+
+// SELECT
+$custom-select-indicator-color: #ffffff;
 
 // Pagination
 $pagination-bg: $dark;
@@ -62,3 +65,6 @@ $thumbnail-bg: $dark_secondary;
 
 // HR
 $hr-border-color: $light;
+
+// PRE
+$pre-color: $danger;

@@ -14,6 +14,7 @@
 
 <script>
 import db from '@/db';
+import ENDPOINTS from '@/endpoints';
 
 export default {
   name: 'TagsBadges',
@@ -26,7 +27,7 @@ export default {
     };
   },
   firebase: {
-    tagsDB: db.ref('exercise-tags'),
+    tagsDB: db.ref(ENDPOINTS.exerciseTags),
   },
   methods: {
     getTagName(tagId) {
