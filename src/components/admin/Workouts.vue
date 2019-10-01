@@ -28,83 +28,117 @@
         </b-col>
       </b-row>
 
-      <h4>Add Exercise</h4>
-      <ul>
-        <li v-for="(round, index) in form.rounds" :key="round">
-          <div class="d-flex">
-            <h5 class="mr-4">Round {{ index + 1 }}</h5>
-            <div class="d-flex">
-              <span class="mr-2">
-                <font-awesome-icon
-                  title="Reps"
-                  :icon="['fas', 'sync-alt']" />
-              </span>
-              <b-form-input
-                prepend="Reps:"
-                style="max-width: 50px;"
-                type="number"
-                size="sm"
-                v-model="form.rounds[index]"
-                placeholder="Reps">
-              </b-form-input>
-            </div>
-          </div>
+      <b-row>
+        <b-col
+          sm="6">
+          <h4>Add Exercise</h4>
+          <ul class="list-unstyled mt-3 ml-4">
+            <li
+              v-for="(round, roundIndex) in form.rounds"
+              class="mb-4">
+              <div class="d-flex mb-3">
+                <h5 class="mr-4">Round {{ +roundIndex + 1 }}</h5>
+                <div class="d-flex">
+                  <b-form-input
+                    prepend="Reps:"
+                    style="max-width: 50px;"
+                    number
+                    type="number"
+                    size="sm"
+                    v-model="form.rounds[roundIndex].repeats"
+                    placeholder="Repeats">
+                  </b-form-input>
+                  <span class="mr-2">
+                    <b-button
+                      title="Remove Round"
+                      class="ml-2"
+                      size="sm"
+                      type="button"
+                      variant="danger"
+                      @click="removeRound(roundIndex)"
+                      >
+                      <font-awesome-icon
+                        :icon="['fas', 'minus']" />
+                    </b-button>
+                  </span>
+                </div>
+              </div>
+
+              <ul
+                v-if="form.rounds[roundIndex].exercises.length > 0"
+                class="list-unstyled ml-4">
+                <li
+                  v-for="(exercise, exerciseIndex) in form.rounds[roundIndex].exercises"
+                  class="mb-3">
+                  <b-form inline>
+                    <b-form-select
+                      v-if="exercises.length > 0"
+                      value-field="id"
+                      text-field="name"
+                      v-model="form.rounds[roundIndex].exercises[exerciseIndex]"
+                      :options="exercises"></b-form-select>
+
+                      <b-button
+                        title="Remove Exercise"
+                        class="ml-2"
+                        size="sm"
+                        type="button"
+                        variant="danger"
+                        @click="removeExercise(exerciseIndex)"
+                        >
+                        <font-awesome-icon
+                          :icon="['fas', 'minus']" />
+                      </b-button>
+                    </b-form>
+                </li>
+                <li>
+                  <b-button
+                    title="Add Exercise"
+                    size="sm"
+                    type="button"
+                    variant="success"
+                    :disabled="Object.keys(form.rounds).length === 0"
+                    @click="addExercise(roundIndex)"
+                    >
+                    <font-awesome-icon
+                      title="Add"
+                      :icon="['fas', 'plus']" /> Exercise
+                  </b-button>
+                </li>
+              </ul>
 
 
-          <ul v-if="form.exercises.length > 0">
-            <li v-for="exercise in form.exercises" v-bind:key="exercise">
-              {{ exerciseName(exercise) }}
             </li>
           </ul>
-        </li>
-      </ul>
+        </b-col>
+      </b-row>
 
 
       <b-row v-if="exercises.length > 0">
         <b-col>
-          <b-form-select
-            v-if="exercises.length > 0"
-            value-field="id"
-            text-field="name"
-            v-model="selectedExercise"
-            :options="exercises"
-            @change="showExercise(selectedExercise)"></b-form-select>
-
-            <b-alert
-              :show="selectedExerciseDescription !== ''"
-              v-html="selectedExerciseDescription"
-              class="mt-3">
-              </b-alert>
-        </b-col>
-        <b-col>
           <b-button
-            type="button"
-            variant="primary"
-            :disabled="!selectedExercise"
-            @click="addExercise()"
-            >
-            Add Exercise
-          </b-button>
-
-          <b-button
+            title="Add Round"
             class="ml-2"
             type="button"
-            variant="primary"
-            :disabled="form.exercises.length === 0"
+            variant="success"
             @click="addRound()"
             >
-            Add Round
+            <font-awesome-icon
+              title="Add"
+              :icon="['fas', 'plus']" /> Round
           </b-button>
         </b-col>
       </b-row>
 
       <b-row class="mt-3">
         <b-col>
-          {{ form }}
+          <pre>
+            {{ form }}
+          </pre>
           <b-button
             type="submit"
             :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
-            :disabled="!form.name || !form.type || form.exercises.length === 0"
+            :disabled="!form.name || !form.type"
             >
               <span v-show="action === 'create'">Create Workout</span>
               <span v-if="action !== 'create' && form.id">Update Workout</span>
@@ -129,17 +163,21 @@
     <b-row>
       <b-col>
         <Loader v-show="workouts.length === 0" />
-
-          <pre>
-          {{ workouts }}
-          </pre>
-
         <b-table
           v-if="workouts.length > 0"
           striped
           hover
           :items="workouts"
           :fields="fields">
+          <template v-slot:cell(type)="data">
+            <WorkoutType :type="+data.item.type" />
+          </template>
+          <template v-slot:cell(rounds)="data">
+            {{ data.item.rounds.length }}
+          </template>
+          <template v-slot:cell(exercises)="data">
+            {{ numberOfExercises(data.item) }}
+          </template>
           <template v-slot:cell(edit)="data">
             <font-awesome-icon
               @click="action = 'edit'; form = data.item"
@@ -163,6 +201,7 @@
 import Vue from 'vue';
 import db from '@/db';
 import Loader from '@/components/Loader.vue';
+import WorkoutType from '@/components/WorkoutType.vue';
 import ConfirmDelete from '@/components/admin/ConfirmDelete.vue';
 import ENDPOINTS from '@/endpoints';
 
@@ -171,6 +210,7 @@ export default {
   components: {
     Loader,
     ConfirmDelete,
+    WorkoutType,
   },
   data() {
     return {
@@ -189,6 +229,22 @@ export default {
           label: 'Name',
         },
         {
+          key: 'type',
+          label: 'Type',
+        },
+        {
+          key: 'rounds',
+          label: 'Rounds',
+          tdClass: 'text-center',
+          thClass: 'text-center',
+        },
+          {
+          key: 'exercises',
+          label: 'Exercises',
+          tdClass: 'text-center',
+          thClass: 'text-center',
+        },
+        {
           key: 'edit',
           label: 'Edit',
           tdClass: 'text-center',
@@ -202,12 +258,10 @@ export default {
         },
       ],
       form: {
-        exercises: [],
-        rounds: [1],
+        rounds: {},
         type: null,
       },
       selectedExercise: null,
-      selectedExerciseDescription: '',
     };
   },
   firebase: {
@@ -225,32 +279,43 @@ export default {
     });
   },
   methods: {
+    numberOfExercises(workout) {
+      let count = 0;
+
+      for (var round in workout.rounds) {
+        if (!workout.rounds.hasOwnProperty(round)) continue;
+
+        count += workout.rounds[round].exercises.length;
+      }
+
+      return count;
+    },
     exerciseName(exerciseId) {
       const index = this.exercises.findIndex(i => i.id === exerciseId);
 
       return this.exercises[index].name;
     },
     addRound() {
-      this.form.rounds.push(1);
-    },
-    addExercise() {
-      if (this.form.exercises.length === 0) {
-        this.form.exercises.push([123]);
-      }
+      let index = Object.keys(this.form.rounds).length;
 
-      // Add the exercise to the Exercises array
-      // But on the correct round array
-      this.form.exercises[this.form.rounds.length].push(this.selectedExercise);
-      this.selectedExercise = null;
-      this.selectedExerciseDescription = '';
+      if (!index) index = 0;
+
+      Vue.set(this.form.rounds, index, {
+        repeats: 1,
+        exercises: [null],
+      });
     },
-    showExercise(exerciseId) {
-      const index = this.exercises.findIndex(i => i.id === exerciseId);
-      this.selectedExerciseDescription = this.exercises[index].description.replace(/\n/g, '<br />');
+    addExercise(round) {
+      const index = round ? round : Object.keys(this.form.rounds).length - 1;
+
+      this.form.rounds[round].exercises.push(this.selectedExercise);
+      this.selectedExercise = null;
     },
     resetForm() {
       this.action = 'create';
       this.form = {};
+      Vue.set(this.form, 'rounds', {});
+      Vue.set(this.form, 'type', null);
       this.$refs.form.reset();
     },
     onSubmit(event) {
@@ -266,8 +331,9 @@ export default {
         // Create the incremental id based on the last id
         if (this.workouts[0]) {
           this.form.id = parseInt(this.workouts[0].id, 10) + 1;
-          updates.unshift(this.form);
         }
+
+        updates.unshift(this.form);
       }
 
       // Update firebase with the copy

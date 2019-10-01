@@ -11,7 +11,8 @@ import {
   faVideo,
   faExclamationTriangle,
   faSearch,
-  faSyncAlt,
+  faPlus,
+  faMinus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import firebase from 'firebase/app';
@@ -67,7 +68,8 @@ library.add(faTrashAlt);
 library.add(faEdit);
 library.add(faExclamationTriangle);
 library.add(faSearch);
-library.add(faSyncAlt);
+library.add(faPlus);
+library.add(faMinus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = true;
 

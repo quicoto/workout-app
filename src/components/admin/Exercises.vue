@@ -231,9 +231,8 @@ export default {
     resetForm() {
       this.action = 'create';
       this.form = {};
-      this.form.tags = [];
-      this.form.image = false;
-
+      Vue.set(this.form, 'tags', []);
+      Vue.set(this.form, 'image', false);
       this.$refs.form.reset();
     },
     onSubmit(event) {

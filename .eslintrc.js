@@ -14,6 +14,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'import/no-named-as-default-member': 'off',
     'import/no-named-as-default': 'off',
+    'vue/require-v-for-key': 'off',
   },
   parser: 'vue-eslint-parser',
   parserOptions: {
