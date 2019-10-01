@@ -74,6 +74,8 @@
               id="checkbox-group-1"
               v-model="form.tags"
               :options="tags"
+              value-field="id"
+              text-field="name"
               name="tags"
             ></b-form-checkbox-group>
           </b-form-group>
@@ -142,7 +144,7 @@
           </template>
           <template v-slot:cell(delete)="data">
             <ConfirmDelete
-              :exercise="data.item"
+              :item="data.item"
               v-on:confirm-delete="onConfirmDelete" />
           </template>
         </b-table>
@@ -153,7 +155,6 @@
 
 <script>
 import Vue from 'vue';
-import firebase from 'firebase/app';
 import db from '@/db';
 import Loader from '@/components/Loader.vue';
 import TagsBadges from '@/components/TagsBadges.vue';
@@ -221,14 +222,7 @@ export default {
   },
   firebase: {
     exercises: db.ref(ENDPOINTS.exercises),
-  },
-  mounted() {
-    firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
-      this.tags = snapshot.val().map(item => ({
-        value: item.id,
-        text: item.name,
-      }));
-    });
+    tags: db.ref(ENDPOINTS.exerciseTags),
   },
   methods: {
     exerciseDescription(description) {
@@ -237,9 +231,8 @@ export default {
     resetForm() {
       this.action = 'create';
       this.form = {};
-      this.form.tags = [];
-      this.form.image = false;
-
+      Vue.set(this.form, 'tags', []);
+      Vue.set(this.form, 'image', false);
       this.$refs.form.reset();
     },
     onSubmit(event) {

@@ -16,7 +16,10 @@
               <WorkoutLevels />
             </b-tab>
             <b-tab title="Workouts">
-
+              <Workouts />
+            </b-tab>
+            <b-tab title="Workout Types">
+              <WorkoutTypes />
             </b-tab>
             <b-tab title="Goals">
               <WorkoutGoals />
@@ -32,6 +35,8 @@
 import Exercises from '@/components/admin/Exercises.vue';
 import ExerciseTags from '@/components/admin/ExerciseTags.vue';
 import WorkoutLevels from '@/components/admin/WorkoutLevels.vue';
+import WorkoutTypes from '@/components/admin/WorkoutTypes.vue';
+import Workouts from '@/components/admin/Workouts.vue';
 import WorkoutGoals from '@/components/admin/WorkoutGoals.vue';
 
 export default {
@@ -39,6 +44,8 @@ export default {
     Exercises,
     ExerciseTags,
     WorkoutLevels,
+    WorkoutTypes,
+    Workouts,
     WorkoutGoals,
   },
   data() {
