@@ -1,51 +1,51 @@
 self.__precacheManifest = [
   {
-    "revision": "ec13092b73058384c045",
-    "url": "/css/admin.9d311ac2.css"
+    "revision": "5f30d7aeb1bf335a1dfc",
+    "url": "/css/admin.50aca2a1.css"
   },
   {
-    "revision": "ec13092b73058384c045",
-    "url": "/js/admin.bcd1631c.js"
+    "revision": "5f30d7aeb1bf335a1dfc",
+    "url": "/js/admin.d7abbcf6.js"
   },
   {
-    "revision": "33b674722c0f81eb49d1",
-    "url": "/css/app.c72208f9.css"
+    "revision": "0935fa5496ec4781051b",
+    "url": "/css/app.72a402d2.css"
   },
   {
-    "revision": "33b674722c0f81eb49d1",
-    "url": "/js/app.46c9499f.js"
+    "revision": "0935fa5496ec4781051b",
+    "url": "/js/app.2cd4fdf9.js"
   },
   {
-    "revision": "33398f02e69f19e049ee",
-    "url": "/js/chunk-vendors.630504be.js"
+    "revision": "b9b78a9f82c3d4074102",
+    "url": "/js/chunk-vendors.f8a2fc12.js"
   },
   {
-    "revision": "e0dac62331ea24bdbf09",
+    "revision": "8f1e6eabc8b80b690932",
     "url": "/css/excercises.41f7941c.css"
   },
   {
-    "revision": "e0dac62331ea24bdbf09",
-    "url": "/js/excercises.b0ac40e1.js"
+    "revision": "8f1e6eabc8b80b690932",
+    "url": "/js/excercises.06300c5b.js"
   },
   {
-    "revision": "cd55be96eb838950a689",
-    "url": "/js/login.8abb811b.js"
+    "revision": "86dba545d17fd2dde14b",
+    "url": "/js/login.d0080c67.js"
   },
   {
-    "revision": "1bde6116a0afdd3287ae",
+    "revision": "88f087c4be7e765a25d2",
     "url": "/css/profile.ed7acffa.css"
   },
   {
-    "revision": "1bde6116a0afdd3287ae",
-    "url": "/js/profile.ea8f5e6b.js"
+    "revision": "88f087c4be7e765a25d2",
+    "url": "/js/profile.814c4e37.js"
   },
   {
-    "revision": "d4fb26b1a5e66e2109fb",
+    "revision": "48840155f978d845f422",
     "url": "/css/search.41f7941c.css"
   },
   {
-    "revision": "d4fb26b1a5e66e2109fb",
-    "url": "/js/search.e6e92e92.js"
+    "revision": "48840155f978d845f422",
+    "url": "/js/search.47aecf61.js"
   },
   {
     "revision": "f3257d6bac0d2f59ca84f14514ab85f4",
@@ -92,7 +92,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "c8eed5b5194cdccdc7e3047db2d40c8a",
+    "revision": "6e8cbafe025a082632fb53896fa2296d",
     "url": "/index.html"
   },
   {
