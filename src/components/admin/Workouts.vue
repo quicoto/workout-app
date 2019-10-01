@@ -31,7 +31,7 @@
       <b-row>
         <b-col
           sm="6">
-          <h4>Add Exercise</h4>
+          <h4>Exercises</h4>
           <ul class="list-unstyled mt-3 ml-4">
             <li
               v-for="(round, roundIndex) in form.rounds"
@@ -84,13 +84,16 @@
                         size="sm"
                         type="button"
                         variant="danger"
-                        @click="removeExercise(exerciseIndex)"
+                        @click="removeExercise(roundIndex, exerciseIndex)"
                         >
                         <font-awesome-icon
                           :icon="['fas', 'minus']" />
                       </b-button>
                     </b-form>
                 </li>
+              </ul>
+
+              <ul class="list-unstyled ml-4">
                 <li>
                   <b-button
                     title="Add Exercise"
@@ -118,7 +121,6 @@
         <b-col>
           <b-button
             title="Add Round"
-            class="ml-2"
             type="button"
             variant="success"
             @click="addRound()"
@@ -132,9 +134,6 @@
 
       <b-row class="mt-3">
         <b-col>
-          <pre>
-            {{ form }}
-          </pre>
           <b-button
             type="submit"
             :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
@@ -238,7 +237,7 @@ export default {
           tdClass: 'text-center',
           thClass: 'text-center',
         },
-          {
+        {
           key: 'exercises',
           label: 'Exercises',
           tdClass: 'text-center',
@@ -282,10 +281,8 @@ export default {
     numberOfExercises(workout) {
       let count = 0;
 
-      for (var round in workout.rounds) {
-        if (!workout.rounds.hasOwnProperty(round)) continue;
-
-        count += workout.rounds[round].exercises.length;
+      for (let index = 0, len = Object.keys(workout.rounds).length; index < len; index++) {
+        count += workout.rounds[index].exercises.length;
       }
 
       return count;
@@ -294,6 +291,12 @@ export default {
       const index = this.exercises.findIndex(i => i.id === exerciseId);
 
       return this.exercises[index].name;
+    },
+    removeExercise(roundIndex, exerciseIndex) {
+      Vue.delete(this.form.rounds[roundIndex].exercises, exerciseIndex);
+    },
+    removeRound(index) {
+      Vue.delete(this.form.rounds, index);
     },
     addRound() {
       let index = Object.keys(this.form.rounds).length;
@@ -306,8 +309,6 @@ export default {
       });
     },
     addExercise(round) {
-      const index = round ? round : Object.keys(this.form.rounds).length - 1;
-
       this.form.rounds[round].exercises.push(this.selectedExercise);
       this.selectedExercise = null;
     },
