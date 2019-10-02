@@ -54,6 +54,7 @@
 // import firebase from 'firebase/app';
 // import db from '@/db';
 // import Loader from '@/components/Loader.vue';
+import { sleep } from '@/plugins/sleep';
 
 export default {
   components: {
@@ -70,7 +71,7 @@ export default {
         timerId: {},
         start: {},
         remaining: 10000,
-        paused: false,
+        paused: true,
       },
     };
   },
@@ -86,11 +87,9 @@ export default {
       return true;
     },
   },
-  mounted() {
-    this.resume();
-  },
   methods: {
     resume() {
+      sleep.prevent();
       this.timer.paused = false;
       this.timer.timerId = window.setTimeout(() => {
         if (this.timer.remaining > 0) {
@@ -105,6 +104,7 @@ export default {
       }, 1000);
     },
     pause() {
+      sleep.allow();
       this.timer.paused = true;
       window.clearTimeout(this.timer.timerId);
     },
