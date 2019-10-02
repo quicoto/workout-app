@@ -63,14 +63,14 @@ export default {
   data() {
     return {
       workout: {
-        totalTime: 60000,
+        totalTime: 120000,
         elapsed: 0,
       },
       currentExercise: 'Push ups',
       timer: {
         timerId: {},
         start: {},
-        remaining: 60000,
+        remaining: 120000,
         paused: true,
       },
     };
