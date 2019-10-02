@@ -63,7 +63,7 @@ export default {
   data() {
     return {
       workout: {
-        totalTime: 10000,
+        totalTime: 45000,
         elapsed: 0,
       },
       currentExercise: 'Push ups',
