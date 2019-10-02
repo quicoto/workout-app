@@ -43,6 +43,7 @@ export const sleep = {
   },
   _init: function() {
       this._video = document.createElement('video');
+      this._video.setAttribute('playsinline', true);
       this._video.setAttribute('width', '10');
       this._video.setAttribute('height', '10');
       this._video.style.position = 'absolute';
