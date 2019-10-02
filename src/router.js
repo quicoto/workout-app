@@ -35,9 +35,17 @@ const router = new Router({
     {
       path: '/exercises',
       name: 'exercises',
-      component: () => import(/* webpackChunkName: "excercises" */ './views/Exercises.vue'),
+      component: () => import(/* webpackChunkName: "exercises" */ './views/Exercises.vue'),
       meta: {
         title: 'Exercises',
+      },
+    },
+    {
+      path: '/workouts',
+      name: 'workouts',
+      component: () => import(/* webpackChunkName: "workouts" */ './views/Workouts.vue'),
+      meta: {
+        title: 'Workouts',
       },
     },
     {

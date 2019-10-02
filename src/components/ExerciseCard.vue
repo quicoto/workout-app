@@ -15,7 +15,7 @@
         <TagsBadges :tags="exercise.tags" />
       </div>
 
-      <span v-html="exerciseDescription"></span>
+      <span v-html="description"></span>
     </b-card-text>
 
     <b-button
@@ -42,7 +42,7 @@ export default {
     exercise: Object,
   },
   computed: {
-    exerciseDescription() {
+    description() {
       return this.exercise.description.replace(/\n/g, '<br />');
     },
   },
