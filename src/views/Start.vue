@@ -110,7 +110,7 @@ export default {
         paused: true,
       },
       noWorkoutFound: false,
-      user: {}
+      user: {},
     };
   },
   firebase: {
@@ -120,15 +120,15 @@ export default {
     const requestedWorkoutId = parseInt(this.$route.params.workout_id, 10);
 
     if (requestedWorkoutId) {
-      firebase.database().ref(ENDPOINTS.workouts).once('value').then((snapshot) => {
-        this.workout = snapshot.val().find(o => o.id === requestedWorkoutId);
+      firebase.database().ref(ENDPOINTS.workouts).once('value').then((workoutSnapshot) => {
+        this.workout = workoutSnapshot.val().find(o => o.id === requestedWorkoutId);
 
         if (!this.workout) {
           this.noWorkoutFound = true;
         }
 
-        firebase.database().ref(ENDPOINTS.users).once('value').then((snapshot) => {
-          this.user = snapshot.val().find(o => o.email === firebase.auth().currentUser.email);
+        firebase.database().ref(ENDPOINTS.users).once('value').then((usersSnapshot) => {
+          this.user = usersSnapshot.val().find(o => o.email === firebase.auth().currentUser.email);
         });
       });
     } else {
@@ -147,12 +147,10 @@ export default {
   },
   methods: {
     start() {
-      let hasRepeated = 1;
-
       // Prepare the flat exercises array
       for (let i = 0, len = this.workout.rounds.length; i < len; i++) {
-        for (let j = 1, len = this.workout.rounds[i].repeats; j <= len; j++) {
-          this.workout.rounds[i].exercises.forEach(exercise => {
+        for (let j = 1, repeatLen = this.workout.rounds[i].repeats; j <= repeatLen; j++) {
+          this.workout.rounds[i].exercises.forEach((exercise) => {
             // Find all the exercise information
             this.workoutExercises.push(this.exercises.find(o => o.id === exercise));
           });
