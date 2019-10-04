@@ -1,5 +1,9 @@
 <template>
   <div>
+    <pre>
+      {{ timer.elapsed }} - {{ timer.totalTime }}
+    </pre>
+
     <b-container
       v-if="noWorkoutFound">
       <b-row>
@@ -37,7 +41,7 @@
         <b-col
           v-if="isUserReady"
           class="text-center mb-3">
-          <b-row class="header">
+          <b-row class="header mb-4">
             <b-col>
               <b-button
                 @click="previous()"
@@ -49,10 +53,32 @@
                 variant="primary" size="lg" block>Next</b-button>
             </b-col>
           </b-row>
-          <div class="message">{{ currentExercise }}</div>
+          <h2
+            v-if="typeof timeline[currentItem] !== 'undefined' && timeline[currentItem].id"
+            class="text-warning">{{ timeline[currentItem].name }}</h2>
+          <h2
+            v-show="typeof timeline[currentItem] !== 'undefined' &&
+              !timeline[currentItem].id && currentItem < timeline.length"
+            class="text-success">Rest time</h2>
           <div
+            v-show="currentItem === timeline.length"
+            class="h2 text-success">
+              <p>
+                <font-awesome-icon
+                size="3x"
+                :icon="['far', 'grin-stars']" />
+              </p>
+              <p>
+                Congratulations
+              </p>
+              <p>
+                You're done!
+              </p>
+            </div>
+          <div
+            v-if="currentItem < timeline.length"
             class="timeLeft text-light h2"
-            :class="timer.remaining && timer.paused === false > 0 ? 'timeLeft--active' : ''">
+            :class="timer.remaining && timer.paused === false >= 0 ? 'timeLeft--active' : ''">
             {{ printTimeLeft() }}
           </div>
           <div class="footer">
@@ -96,17 +122,22 @@ export default {
   },
   data() {
     return {
+      currentItem: 0,
+      currentLevel: {},
+      currentGoal: {},
       isUserReady: false,
-      workout: {},
-      workoutExercises: [],
+      noWorkoutFound: false,
       timer: {
+        elapsed: 0,
+        totalTime: 0,
         timerId: {},
         start: {},
-        remaining: 110000,
+        remaining: null,
         paused: true,
       },
-      noWorkoutFound: false,
       user: {},
+      workout: {},
+      timeline: [],
     };
   },
   firebase: {
@@ -135,50 +166,82 @@ export default {
   },
   computed: {
     progress() {
-      return Math.floor((this.workout.elapsed * 100) / this.workout.totalTime);
+      return Math.floor((+this.timer.elapsed * 100) / +this.timer.totalTime);
     },
     progressAnimation() {
-      if (this.workout.totalTime === this.workout.elapsed) return false;
+      if (this.timer.totalTime === this.timer.elapsed) return false;
 
       return true;
     },
   },
   methods: {
     start() {
+      // Store the timings based on the profile Level and Goal
+      if (this.workout.type === 1) {
+        // HIIT
+        this.currentLevel = this.workoutLevels.find(o => o.id === this.user.level);
+      } else if (this.workout.type === 2) {
+        // Strength
+        this.currentGoal = this.workoutGoals.find(o => o.id === this.user.goal);
+      }
+
+
       // Prepare the flat exercises array
       for (let i = 0, len = this.workout.rounds.length; i < len; i++) {
         for (let j = 1, repeatLen = this.workout.rounds[i].repeats; j <= repeatLen; j++) {
           this.workout.rounds[i].exercises.forEach((exercise) => {
             // Find all the exercise information
-            this.workoutExercises.push(this.exercises.find(o => o.id === exercise));
+            // Push the item to the timeline
+            this.timeline.push(this.exercises.find(o => o.id === exercise));
+            this.timer.totalTime = this.timer.totalTime + this.currentLevel.activeTime;
+
+            // Add the rest time to the timeline
+            if (this.workout.type === 1) {
+              // HITT
+              this.timeline.push(this.currentLevel.restTime);
+              this.timer.totalTime = this.timer.totalTime + this.currentLevel.restTime;
+            }
           });
         }
       }
 
-      // Calculate the timings based on the profile Level and Goal
-      if (this.workout.type === 1) {
-        // HIIT
-        // Use the Levels
-      } else if (this.workout.type === 2) {
-        // Strength
-        // @TODO
-      }
+      // Delete the last rest time, as the workout is finished
+      this.timeline.pop();
 
-
-      // this.resume();
+      this.isUserReady = true;
+      this.resume();
     },
     resume() {
-      sleep.prevent();
       this.timer.paused = false;
+
+      // Start or next exercise
+      if (this.timer.remaining === null || this.timer.remaining === 0) {
+        // Check if we're on rest or active time
+        if (this.timeline[this.currentItem].id) {
+          // it's an object, it is an exercise
+          // @TODO difference between HIIT and Strength
+          this.timer.remaining = this.currentLevel.activeTime;
+        } else {
+          // It's a rest time
+          this.timer.remaining = this.timeline[this.currentItem];
+        }
+      }
+
       this.timer.timerId = window.setTimeout(() => {
         if (this.timer.remaining > 0) {
           this.resume();
           this.timer.remaining = this.timer.remaining - 1000;
-          this.workout.elapsed = this.workout.elapsed + 1000;
+          this.timer.elapsed = this.timer.elapsed + 1000;
         } else {
+          this.currentItem++;
+
           // Next exercise or is the workout done?
-          // TODO
-          this.pause();
+          if (this.currentItem < this.timeline.length) {
+            this.resume();
+          } else {
+            // No more items
+            this.stop();
+          }
         }
       }, 1000);
     },
@@ -187,13 +250,16 @@ export default {
       this.timer.paused = true;
       window.clearTimeout(this.timer.timerId);
     },
+    stop() {
+      sleep.prevent();
+
+      // eslint-disable-next-line no-console
+      console.log('STOP!');
+    },
     printTimeLeft() {
-      if (this.timer.remaining > 0) return `${this.timer.remaining / 1000}"`;
+      if (this.timer.remaining >= 0) return `${this.timer.remaining / 1000}"`;
 
       return '';
-    },
-    exerciseDone() {
-      this.currentExercise = 'Rest time!';
     },
   },
 };

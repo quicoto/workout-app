@@ -818,6 +818,22 @@
         "to-fast-properties": "^2.0.0"
       }
     },
+    "@firebase/analytics": {
+      "version": "0.2.0",
+      "resolved": "https://registry.npmjs.org/@firebase/analytics/-/analytics-0.2.0.tgz",
+      "integrity": "sha512-RbUmo3dn52gPASj7kVNAYzZc+kz5DNPpqKmki+cue/hJrUAyP5NNNjyyc2f2i6YYJNBWq+MW8gJMNT1q46KhPA==",
+      "requires": {
+        "@firebase/analytics-types": "0.2.0",
+        "@firebase/installations": "0.2.7",
+        "@firebase/util": "0.2.28",
+        "tslib": "1.10.0"
+      }
+    },
+    "@firebase/analytics-types": {
+      "version": "0.2.0",
+      "resolved": "https://registry.npmjs.org/@firebase/analytics-types/-/analytics-types-0.2.0.tgz",
+      "integrity": "sha512-AbK4ZPP0MMXMuUzfxQb3f71kA++kV9wao0ps5jOsvaHXk1SjS+0Cxsfae+wqfwyvy1oyF9N6Kl8zYqtJizQmjA=="
+    },
     "@firebase/app": {
       "version": "0.4.18",
       "resolved": "https://registry.npmjs.org/@firebase/app/-/app-0.4.18.tgz",
@@ -850,9 +866,9 @@
       "integrity": "sha512-foQHhvyB0RR+mb/+wmHXd/VOU+D8fruFEW1k79Q9wzyTPpovMBa1Mcns5fwEWBhUfi8bmoEtaGB8RSAHnTFzTg=="
     },
     "@firebase/database": {
-      "version": "0.5.5",
-      "resolved": "https://registry.npmjs.org/@firebase/database/-/database-0.5.5.tgz",
-      "integrity": "sha512-rsOQCXoNLSKw7V2RL7xJhGAMS5bj8d/Y4/KfRwoaMsKUdfaogbZEdSgxMjKd00PKIiYa7TSAch0KziEujtAfuA==",
+      "version": "0.5.6",
+      "resolved": "https://registry.npmjs.org/@firebase/database/-/database-0.5.6.tgz",
+      "integrity": "sha512-rIVLCju0LRFTmGy6OY9JK7If4Pn6yysh2IZn3Gau0HuzKXuy68b7Z92Kr9x/r5SxKgdPiDrZr+an4d9AIJrB0g==",
       "requires": {
         "@firebase/database-types": "0.4.4",
         "@firebase/logger": "0.1.25",
@@ -880,11 +896,11 @@
       }
     },
     "@firebase/firestore": {
-      "version": "1.5.4",
-      "resolved": "https://registry.npmjs.org/@firebase/firestore/-/firestore-1.5.4.tgz",
-      "integrity": "sha512-F3zVLTMVdCcUuQNlveVw6FsRBeZlMNQuaR/fXg5eGSidz5W3NdMgQCGd7fRUSP5SsHWlG6KPLh6j+A6LG3p5Xw==",
+      "version": "1.6.0",
+      "resolved": "https://registry.npmjs.org/@firebase/firestore/-/firestore-1.6.0.tgz",
+      "integrity": "sha512-SR4Z6cU+6rikueW+B9QCohH7qw0Q575PaQwNXbMbbvbkkb+rRh6tG32kzAs2AuHL8VN8LNoG3rhPw2kiiIjETg==",
       "requires": {
-        "@firebase/firestore-types": "1.5.0",
+        "@firebase/firestore-types": "1.6.0",
         "@firebase/logger": "0.1.25",
         "@firebase/util": "0.2.28",
         "@firebase/webchannel-wrapper": "0.2.26",
@@ -894,9 +910,9 @@
       }
     },
     "@firebase/firestore-types": {
-      "version": "1.5.0",
-      "resolved": "https://registry.npmjs.org/@firebase/firestore-types/-/firestore-types-1.5.0.tgz",
-      "integrity": "sha512-VhRHNbEbak+R2iK8e1ir2Lec7eaHMZpGTRy6LMtzATYthlkwNHF9tO8JU8l6d1/kYkI4+DWzX++i3HhTziHEWA=="
+      "version": "1.6.0",
+      "resolved": "https://registry.npmjs.org/@firebase/firestore-types/-/firestore-types-1.6.0.tgz",
+      "integrity": "sha512-goBuSzXUbnAuJr7qwdVzjVgTsQzN7rGbQdDjgXcMBY5omoxhUr9/GD0ONDWHahqXusctuoH1MdVp2r+DJ942OA=="
     },
     "@firebase/functions": {
       "version": "0.4.19",
@@ -1008,9 +1024,9 @@
       "integrity": "sha512-ER6MHeUBF74j20Jau1OtxCoN7DXigJwO3NPz3uax3CBsM/dLNHMjr9iywF1yCs4UnjkOFyDqb1EDWqAE12cGjg=="
     },
     "@firebase/storage": {
-      "version": "0.3.12",
-      "resolved": "https://registry.npmjs.org/@firebase/storage/-/storage-0.3.12.tgz",
-      "integrity": "sha512-8hXt3qPZlVH+yPF4W9Dc15/gBiTPGUJUgYs3dH9WnO41QWl1o4aNlZpZK/pdnpCIO1GmN0+PxJW9TCNb0H0Hqw==",
+      "version": "0.3.13",
+      "resolved": "https://registry.npmjs.org/@firebase/storage/-/storage-0.3.13.tgz",
+      "integrity": "sha512-3kDcV9VtMLGwFiYFp2MzWa/LyemnsTKHa8namcgt6J9MZzMBqpeu9GroRCR0D+r5hVwbcKj1r98Se7fuHCR1mQ==",
       "requires": {
         "@firebase/storage-types": "0.3.3",
         "@firebase/util": "0.2.28",
@@ -6849,22 +6865,23 @@
       }
     },
     "firebase": {
-      "version": "7.0.0",
-      "resolved": "https://registry.npmjs.org/firebase/-/firebase-7.0.0.tgz",
-      "integrity": "sha512-XLuIsv5IBNILZ1jKxvZah+2p+ZvA1jpAC45TUlobMKhpYp6TN9KkEK+8J11qNxkJG6PittHW3TjxJqejU8xg9Q==",
+      "version": "7.1.0",
+      "resolved": "https://registry.npmjs.org/firebase/-/firebase-7.1.0.tgz",
+      "integrity": "sha512-3fpwuNEqvGHNq8TvzXR3rLmHFphbLF4NNWcbUAZVw4HxZXfgR+TCNgwotDQKLoNhoW0siyWbyFuxohVaTgPjSQ==",
       "requires": {
+        "@firebase/analytics": "0.2.0",
         "@firebase/app": "0.4.18",
         "@firebase/app-types": "0.4.4",
         "@firebase/auth": "0.12.0",
-        "@firebase/database": "0.5.5",
-        "@firebase/firestore": "1.5.4",
+        "@firebase/database": "0.5.6",
+        "@firebase/firestore": "1.6.0",
         "@firebase/functions": "0.4.19",
         "@firebase/installations": "0.2.7",
         "@firebase/messaging": "0.5.0",
         "@firebase/performance": "0.2.19",
         "@firebase/polyfill": "0.3.23",
         "@firebase/remote-config": "0.1.0",
-        "@firebase/storage": "0.3.12",
+        "@firebase/storage": "0.3.13",
         "@firebase/util": "0.2.28"
       }
     },
@@ -7029,7 +7046,8 @@
         "ansi-regex": {
           "version": "2.1.1",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "aproba": {
           "version": "1.2.0",
@@ -7050,12 +7068,14 @@
         "balanced-match": {
           "version": "1.0.0",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "brace-expansion": {
           "version": "1.1.11",
           "bundled": true,
           "dev": true,
+          "optional": true,
           "requires": {
             "balanced-match": "^1.0.0",
             "concat-map": "0.0.1"
@@ -7070,17 +7090,20 @@
         "code-point-at": {
           "version": "1.1.0",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "concat-map": {
           "version": "0.0.1",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "console-control-strings": {
           "version": "1.1.0",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "core-util-is": {
           "version": "1.0.2",
@@ -7197,7 +7220,8 @@
         "inherits": {
           "version": "2.0.3",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "ini": {
           "version": "1.3.5",
@@ -7209,6 +7233,7 @@
           "version": "1.0.0",
           "bundled": true,
           "dev": true,
+          "optional": true,
           "requires": {
             "number-is-nan": "^1.0.0"
           }
@@ -7223,6 +7248,7 @@
           "version": "3.0.4",
           "bundled": true,
           "dev": true,
+          "optional": true,
           "requires": {
             "brace-expansion": "^1.1.7"
           }
@@ -7230,12 +7256,14 @@
         "minimist": {
           "version": "0.0.8",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "minipass": {
           "version": "2.3.5",
           "bundled": true,
           "dev": true,
+          "optional": true,
           "requires": {
             "safe-buffer": "^5.1.2",
             "yallist": "^3.0.0"
@@ -7254,6 +7282,7 @@
           "version": "0.5.1",
           "bundled": true,
           "dev": true,
+          "optional": true,
           "requires": {
             "minimist": "0.0.8"
           }
@@ -7334,7 +7363,8 @@
         "number-is-nan": {
           "version": "1.0.1",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "object-assign": {
           "version": "4.1.1",
@@ -7346,6 +7376,7 @@
           "version": "1.4.0",
           "bundled": true,
           "dev": true,
+          "optional": true,
           "requires": {
             "wrappy": "1"
           }
@@ -7431,7 +7462,8 @@
         "safe-buffer": {
           "version": "5.1.2",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "safer-buffer": {
           "version": "2.1.2",
@@ -7467,6 +7499,7 @@
           "version": "1.0.2",
           "bundled": true,
           "dev": true,
+          "optional": true,
           "requires": {
             "code-point-at": "^1.0.0",
             "is-fullwidth-code-point": "^1.0.0",
@@ -7486,6 +7519,7 @@
           "version": "3.0.1",
           "bundled": true,
           "dev": true,
+          "optional": true,
           "requires": {
             "ansi-regex": "^2.0.0"
           }
@@ -7529,12 +7563,14 @@
         "wrappy": {
           "version": "1.0.2",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         },
         "yallist": {
           "version": "3.0.3",
           "bundled": true,
-          "dev": true
+          "dev": true,
+          "optional": true
         }
       }
     },
@@ -8288,9 +8324,9 @@
       "dev": true
     },
     "handlebars": {
-      "version": "4.1.2",
-      "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.1.2.tgz",
-      "integrity": "sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==",
+      "version": "4.4.2",
+      "resolved": "https://registry.npmjs.org/handlebars/-/handlebars-4.4.2.tgz",
+      "integrity": "sha512-cIv17+GhL8pHHnRJzGu2wwcthL5sb8uDKBHvZ2Dtu5s1YNt0ljbzKbamnc+gr69y7bzwQiBdr5+hOpRd5pnOdg==",
       "dev": true,
       "requires": {
         "neo-async": "^2.6.0",
@@ -8728,9 +8764,9 @@
       "dev": true
     },
     "husky": {
-      "version": "3.0.7",
-      "resolved": "https://registry.npmjs.org/husky/-/husky-3.0.7.tgz",
-      "integrity": "sha512-fIrkaREoQk6DO8KnSX16Aq7Kg9SxqYYQZH/9b+4AxXyXNNgpJLsc8lWlQCShLus1nbujIyZ/WQZBHGwClohK/w==",
+      "version": "3.0.8",
+      "resolved": "https://registry.npmjs.org/husky/-/husky-3.0.8.tgz",
+      "integrity": "sha512-HFOsgcyrX3qe/rBuqyTt+P4Gxn5P0seJmr215LAZ/vnwK3jWB3r0ck7swbzGRUbufCf9w/lgHPVbF/YXQALgfQ==",
       "requires": {
         "chalk": "^2.4.2",
         "cosmiconfig": "^5.2.1",
@@ -13378,9 +13414,9 @@
       },
       "dependencies": {
         "@types/node": {
-          "version": "10.14.19",
-          "resolved": "https://registry.npmjs.org/@types/node/-/node-10.14.19.tgz",
-          "integrity": "sha512-j6Sqt38ssdMKutXBUuAcmWF8QtHW1Fwz/mz4Y+Wd9mzpBiVFirjpNQf363hG5itkG+yGaD+oiLyb50HxJ36l9Q=="
+          "version": "10.14.20",
+          "resolved": "https://registry.npmjs.org/@types/node/-/node-10.14.20.tgz",
+          "integrity": "sha512-An+MXSV8CGXz/BO9C1KKsoJ/8WDrvlNUaRMsm2h+IHZuSyQkM8U5bJJkb8ItLKA73VePG/nUK+t+EuW2IWuhsQ=="
         }
       }
     },
@@ -14118,7 +14154,8 @@
       "version": "4.0.8",
       "resolved": "https://registry.npmjs.org/rx-lite/-/rx-lite-4.0.8.tgz",
       "integrity": "sha1-Cx4Rr4vESDbwSmQH6S2kJGe3lEQ=",
-      "dev": true
+      "dev": true,
+      "optional": true
     },
     "rx-lite-aggregates": {
       "version": "4.0.8",
