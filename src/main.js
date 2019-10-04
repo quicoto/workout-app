@@ -71,6 +71,7 @@ library.add(faExclamationTriangle);
 library.add(faSearch);
 library.add(faPlus);
 library.add(faMinus);
+library.add(faMinus);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = true;
 

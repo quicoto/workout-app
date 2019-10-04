@@ -65,7 +65,7 @@ const router = new Router({
       },
     },
     {
-      path: '/start',
+      path: '/start/:workout_id',
       name: 'start',
       component: () => import(/* webpackChunkName: "start" */ './views/Start.vue'),
       meta: {

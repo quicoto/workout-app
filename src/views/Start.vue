@@ -1,9 +1,46 @@
 <template>
   <div>
-    <!-- <Loader /> -->
-    <b-container class="timer">
+    <b-container
+      v-if="noWorkoutFound">
       <b-row>
-        <b-col class="text-center mb-3">
+        <b-col class="text-center text-danger">
+          <h2>No workout was found</h2>
+          <font-awesome-icon
+            :icon="['far', 'frown']"
+            size="5x"
+            title="Sad face"
+            class="mt-4" />
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-container
+      v-if="!noWorkoutFound"
+      class="timer">
+      <Loader v-show="!workout.id" />
+      <b-row v-if="workout.id">
+        <b-col v-if="!isUserReady">
+          <h2 class="text-center mb-4 text-info"><em>{{ workout.name }}</em></h2>
+          <h3
+            class="text-center mb-4">Are you Ready?</h3>
+
+          <Loader v-show="!user.id" />
+          <b-button
+            v-if="user.id"
+            block
+            size="lg"
+            @click="start()"
+            variant="primary">
+              Start!
+            </b-button>
+
+            {{ user }}
+  <pre>{{ workout }}</pre>
+
+        </b-col>
+
+        <b-col
+          v-if="isUserReady"
+          class="text-center mb-3">
           <b-row class="header">
             <b-col>
               <b-button
@@ -51,31 +88,52 @@
 </template>
 
 <script>
-// import firebase from 'firebase/app';
-// import db from '@/db';
-// import Loader from '@/components/Loader.vue';
+import firebase from 'firebase/app';
+import db from '@/db';
+import Loader from '@/components/Loader.vue';
+import ENDPOINTS from '@/endpoints';
 import { sleep } from '@/plugins/sleep';
 
 export default {
   components: {
-    // Loader,
+    Loader,
   },
   data() {
     return {
-      workout: {
-        totalTime: 110000,
-        elapsed: 0,
-      },
-      currentExercise: 'Push ups',
+      isUserReady: false,
+      workout: {},
+      workoutExercises: [],
       timer: {
         timerId: {},
         start: {},
         remaining: 110000,
         paused: true,
       },
+      noWorkoutFound: false,
+      user: {}
     };
   },
   firebase: {
+    exercises: db.ref(ENDPOINTS.exercises),
+  },
+  mounted() {
+    const requestedWorkoutId = parseInt(this.$route.params.workout_id, 10);
+
+    if (requestedWorkoutId) {
+      firebase.database().ref(ENDPOINTS.workouts).once('value').then((snapshot) => {
+        this.workout = snapshot.val().find(o => o.id === requestedWorkoutId);
+
+        if (!this.workout) {
+          this.noWorkoutFound = true;
+        }
+
+        firebase.database().ref(ENDPOINTS.users).once('value').then((snapshot) => {
+          this.user = snapshot.val().find(o => o.email === firebase.auth().currentUser.email);
+        });
+      });
+    } else {
+      this.noWorkoutFound = true;
+    }
   },
   computed: {
     progress() {
@@ -88,6 +146,27 @@ export default {
     },
   },
   methods: {
+    start() {
+      let hasRepeated = 1;
+
+      // Prepare the flat exercises array
+      for (let i = 0, len = this.workout.rounds.length; i < len; i++) {
+        for (let j = 1, len = this.workout.rounds[i].repeats; j <= len; j++) {
+          this.workout.rounds[i].exercises.forEach(exercise => {
+            // Find all the exercise information
+            this.workoutExercises.push(this.exercises.find(o => o.id === exercise));
+          });
+        }
+      }
+
+      // eslint-disable-next-line no-console
+      console.log(this.workoutExercises);
+
+      // Calculate the timings based on the profile Level and Goal
+
+
+      // this.resume();
+    },
     resume() {
       sleep.prevent();
       this.timer.paused = false;
@@ -121,6 +200,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+@import '@/styles/_variables';
+
 .footer {
   bottom: 0;
   left: 0;
