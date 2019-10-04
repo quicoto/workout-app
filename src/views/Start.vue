@@ -32,10 +32,6 @@
             variant="primary">
               Start!
             </b-button>
-
-            {{ user }}
-  <pre>{{ workout }}</pre>
-
         </b-col>
 
         <b-col
@@ -115,6 +111,8 @@ export default {
   },
   firebase: {
     exercises: db.ref(ENDPOINTS.exercises),
+    workoutGoals: db.ref(ENDPOINTS.workoutGoals),
+    workoutLevels: db.ref(ENDPOINTS.workoutLevels),
   },
   mounted() {
     const requestedWorkoutId = parseInt(this.$route.params.workout_id, 10);
@@ -157,10 +155,14 @@ export default {
         }
       }
 
-      // eslint-disable-next-line no-console
-      console.log(this.workoutExercises);
-
       // Calculate the timings based on the profile Level and Goal
+      if (this.workout.type === 1) {
+        // HIIT
+        // Use the Levels
+      } else if (this.workout.type === 2) {
+        // Strength
+        // @TODO
+      }
 
 
       // this.resume();
