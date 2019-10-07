@@ -275,7 +275,7 @@ export default {
 
       // Easier to reload, for now.
       // @TODO actually stop and reset everything without reloading?
-      this.$router.go(this.$router.currentRoute)
+      this.$router.go(this.$router.currentRoute);
     },
     printTimeLeft() {
       if (this.timer.remaining >= 0) return `${this.timer.remaining / 1000}"`;
