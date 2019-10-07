@@ -8,12 +8,12 @@ self.__precacheManifest = [
     "url": "/js/admin.85fbad93.js"
   },
   {
-    "revision": "0272c9ab67f97f029777",
+    "revision": "2b5107e760966cf1c1b7",
     "url": "/css/app.72a402d2.css"
   },
   {
-    "revision": "0272c9ab67f97f029777",
-    "url": "/js/app.dbfa4367.js"
+    "revision": "2b5107e760966cf1c1b7",
+    "url": "/js/app.29efc275.js"
   },
   {
     "revision": "5d6de54f85af8d617e50",
@@ -48,12 +48,12 @@ self.__precacheManifest = [
     "url": "/js/search.8654df50.js"
   },
   {
-    "revision": "2cd4e25debc0852b7f6d",
-    "url": "/css/start.c33ddfbd.css"
+    "revision": "32514ca98c0cd7ad33a0",
+    "url": "/css/start.e082a9b6.css"
   },
   {
-    "revision": "2cd4e25debc0852b7f6d",
-    "url": "/js/start.e2b737e4.js"
+    "revision": "32514ca98c0cd7ad33a0",
+    "url": "/js/start.5f767a7a.js"
   },
   {
     "revision": "d68a65afa1f34a254160",
@@ -96,6 +96,10 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-700.39d93cf6.woff2"
   },
   {
+    "revision": "80f10bd382f0df1cd650fec59f3c9394",
+    "url": "/fonts/montserrat-v14-latin-700.80f10bd3.woff"
+  },
+  {
     "revision": "58cd789700850375b834e8b6776002eb",
     "url": "/fonts/montserrat-v14-latin-900.58cd7897.woff2"
   },
@@ -104,11 +108,7 @@ self.__precacheManifest = [
     "url": "/fonts/montserrat-v14-latin-900.26d42c94.woff"
   },
   {
-    "revision": "80f10bd382f0df1cd650fec59f3c9394",
-    "url": "/fonts/montserrat-v14-latin-700.80f10bd3.woff"
-  },
-  {
-    "revision": "dbb1102a660e39620d7b3277390eb8f8",
+    "revision": "105719b0b3161119157994a5e6242c01",
     "url": "/index.html"
   },
   {
