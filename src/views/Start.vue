@@ -195,6 +195,8 @@ export default {
       this.resume();
     },
     start() {
+      sleep.prevent();
+
       // Store the timings based on the profile Level and Goal
       if (this.workout.type === 1) {
         // HIIT
@@ -271,8 +273,6 @@ export default {
       window.clearTimeout(this.timer.timerId);
     },
     stop() {
-      sleep.prevent();
-
       // Easier to reload, for now.
       // @TODO actually stop and reset everything without reloading?
       this.$router.go(this.$router.currentRoute);
