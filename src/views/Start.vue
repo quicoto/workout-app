@@ -1,9 +1,5 @@
 <template>
   <div>
-    <pre>
-      {{ timer.elapsed }} - {{ timer.totalTime }}
-    </pre>
-
     <b-container
       v-if="noWorkoutFound">
       <b-row>
@@ -44,11 +40,13 @@
           <b-row class="header mb-4">
             <b-col>
               <b-button
+                v-show="currentItem - 1 >= 0"
                 @click="previous()"
                 variant="primary" size="lg" block>Previous</b-button>
             </b-col>
             <b-col>
               <b-button
+                v-show="currentItem + 1 < timeline.length"
                 @click="next()"
                 variant="primary" size="lg" block>Next</b-button>
             </b-col>
@@ -89,7 +87,11 @@
               :animated="progressAnimation"></b-progress>
             <div class="footerActions d-flex align-items-stretch">
               <div class="column align-self-center flex-fill">
-                <b-button variant="danger" size="lg" block>STOP</b-button>
+                <b-button
+                  variant="danger"
+                  size="lg"
+                  block
+                  @click="stop()">STOP</b-button>
               </div>
               <div class="column align-self-center flex-fill">
                 <b-button
@@ -175,6 +177,23 @@ export default {
     },
   },
   methods: {
+    pauseAndClear() {
+      this.timer.paused = true;
+      window.clearTimeout(this.timer.timerId);
+      this.timer.remaining = null;
+    },
+    next() {
+      this.pauseAndClear();
+      if (this.currentItem + 1 < this.timeline.length) {
+        this.currentItem++;
+      }
+      this.resume();
+    },
+    previous() {
+      this.pauseAndClear();
+      this.currentItem--;
+      this.resume();
+    },
     start() {
       // Store the timings based on the profile Level and Goal
       if (this.workout.type === 1) {
@@ -207,6 +226,7 @@ export default {
 
       // Delete the last rest time, as the workout is finished
       this.timeline.pop();
+      this.timer.totalTime = this.timer.totalTime - this.currentLevel.restTime;
 
       this.isUserReady = true;
       this.resume();
@@ -240,7 +260,7 @@ export default {
             this.resume();
           } else {
             // No more items
-            this.stop();
+            this.pauseAndClear();
           }
         }
       }, 1000);
@@ -253,8 +273,9 @@ export default {
     stop() {
       sleep.prevent();
 
-      // eslint-disable-next-line no-console
-      console.log('STOP!');
+      // Easier to reload, for now.
+      // @TODO actually stop and reset everything without reloading?
+      this.$router.go(this.$router.currentRoute)
     },
     printTimeLeft() {
       if (this.timer.remaining >= 0) return `${this.timer.remaining / 1000}"`;
