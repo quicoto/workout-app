@@ -1,12 +1,21 @@
 <template>
   <b-card
     v-if="workout"
-    :header="workout.name"
-    header-tag="h2"
+    header-tag="header"
     tag="article"
     bg-variant="dark"
     class="mb-3"
   >
+    <template v-slot:header>
+      <div class="d-flex justify-content-between">
+        <h3 class="mb-0">{{ workout.name }}</h3>
+        <b-button
+          :to="`/start/${workout.id}`"
+          variant="primary">
+          Start
+        </b-button>
+      </div>
+    </template>
     <b-card-text>
       <div class="pb-3">
         <WorkoutType :type="workout.type" />

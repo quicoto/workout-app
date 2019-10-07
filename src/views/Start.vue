@@ -1,25 +1,82 @@
 <template>
   <div>
-    <!-- <Loader /> -->
-    <b-container class="timer">
+    <b-container
+      v-if="noWorkoutFound">
       <b-row>
-        <b-col class="text-center mb-3">
-          <b-row class="header">
+        <b-col class="text-center text-danger">
+          <h2>No workout was found</h2>
+          <font-awesome-icon
+            :icon="['far', 'frown']"
+            size="5x"
+            title="Sad face"
+            class="mt-4" />
+        </b-col>
+      </b-row>
+    </b-container>
+    <b-container
+      v-if="!noWorkoutFound"
+      class="timer">
+      <Loader v-show="!workout.id" />
+      <b-row v-if="workout.id">
+        <b-col v-if="!isUserReady">
+          <h2 class="text-center mb-4 text-info"><em>{{ workout.name }}</em></h2>
+          <h3
+            class="text-center mb-4">Are you Ready?</h3>
+
+          <Loader v-show="!user.id" />
+          <b-button
+            v-if="user.id"
+            block
+            size="lg"
+            @click="start()"
+            variant="primary">
+              Start!
+            </b-button>
+        </b-col>
+
+        <b-col
+          v-if="isUserReady"
+          class="text-center mb-3">
+          <b-row class="header mb-4">
             <b-col>
               <b-button
+                v-show="currentItem - 1 >= 0"
                 @click="previous()"
                 variant="primary" size="lg" block>Previous</b-button>
             </b-col>
             <b-col>
               <b-button
+                v-show="currentItem + 1 < timeline.length"
                 @click="next()"
                 variant="primary" size="lg" block>Next</b-button>
             </b-col>
           </b-row>
-          <div class="message">{{ currentExercise }}</div>
+          <h2
+            v-if="typeof timeline[currentItem] !== 'undefined' && timeline[currentItem].id"
+            class="text-warning">{{ timeline[currentItem].name }}</h2>
+          <h2
+            v-show="typeof timeline[currentItem] !== 'undefined' &&
+              !timeline[currentItem].id && currentItem < timeline.length"
+            class="text-success">Rest time</h2>
           <div
+            v-show="currentItem === timeline.length"
+            class="h2 text-success">
+              <p>
+                <font-awesome-icon
+                size="3x"
+                :icon="['far', 'grin-stars']" />
+              </p>
+              <p>
+                Congratulations
+              </p>
+              <p>
+                You're done!
+              </p>
+            </div>
+          <div
+            v-if="currentItem < timeline.length"
             class="timeLeft text-light h2"
-            :class="timer.remaining && timer.paused === false > 0 ? 'timeLeft--active' : ''">
+            :class="timer.remaining && timer.paused === false >= 0 ? 'timeLeft--active' : ''">
             {{ printTimeLeft() }}
           </div>
           <div class="footer">
@@ -30,7 +87,11 @@
               :animated="progressAnimation"></b-progress>
             <div class="footerActions d-flex align-items-stretch">
               <div class="column align-self-center flex-fill">
-                <b-button variant="danger" size="lg" block>STOP</b-button>
+                <b-button
+                  variant="danger"
+                  size="lg"
+                  block
+                  @click="stop()">STOP</b-button>
               </div>
               <div class="column align-self-center flex-fill">
                 <b-button
@@ -51,55 +112,156 @@
 </template>
 
 <script>
-// import firebase from 'firebase/app';
-// import db from '@/db';
-// import Loader from '@/components/Loader.vue';
+import firebase from 'firebase/app';
+import db from '@/db';
+import Loader from '@/components/Loader.vue';
+import ENDPOINTS from '@/endpoints';
 import { sleep } from '@/plugins/sleep';
 
 export default {
   components: {
-    // Loader,
+    Loader,
   },
   data() {
     return {
-      workout: {
-        totalTime: 110000,
-        elapsed: 0,
-      },
-      currentExercise: 'Push ups',
+      currentItem: 0,
+      currentLevel: {},
+      currentGoal: {},
+      isUserReady: false,
+      noWorkoutFound: false,
       timer: {
+        elapsed: 0,
+        totalTime: 0,
         timerId: {},
         start: {},
-        remaining: 110000,
+        remaining: null,
         paused: true,
       },
+      user: {},
+      workout: {},
+      timeline: [],
     };
   },
   firebase: {
+    exercises: db.ref(ENDPOINTS.exercises),
+    workoutGoals: db.ref(ENDPOINTS.workoutGoals),
+    workoutLevels: db.ref(ENDPOINTS.workoutLevels),
+  },
+  mounted() {
+    const requestedWorkoutId = parseInt(this.$route.params.workout_id, 10);
+
+    if (requestedWorkoutId) {
+      firebase.database().ref(ENDPOINTS.workouts).once('value').then((workoutSnapshot) => {
+        this.workout = workoutSnapshot.val().find(o => o.id === requestedWorkoutId);
+
+        if (!this.workout) {
+          this.noWorkoutFound = true;
+        }
+
+        firebase.database().ref(ENDPOINTS.users).once('value').then((usersSnapshot) => {
+          this.user = usersSnapshot.val().find(o => o.email === firebase.auth().currentUser.email);
+        });
+      });
+    } else {
+      this.noWorkoutFound = true;
+    }
   },
   computed: {
     progress() {
-      return Math.floor((this.workout.elapsed * 100) / this.workout.totalTime);
+      return Math.floor((+this.timer.elapsed * 100) / +this.timer.totalTime);
     },
     progressAnimation() {
-      if (this.workout.totalTime === this.workout.elapsed) return false;
+      if (this.timer.totalTime === this.timer.elapsed) return false;
 
       return true;
     },
   },
   methods: {
+    pauseAndClear() {
+      this.timer.paused = true;
+      window.clearTimeout(this.timer.timerId);
+      this.timer.remaining = null;
+    },
+    next() {
+      this.pauseAndClear();
+      if (this.currentItem + 1 < this.timeline.length) {
+        this.currentItem++;
+      }
+      this.resume();
+    },
+    previous() {
+      this.pauseAndClear();
+      this.currentItem--;
+      this.resume();
+    },
+    start() {
+      // Store the timings based on the profile Level and Goal
+      if (this.workout.type === 1) {
+        // HIIT
+        this.currentLevel = this.workoutLevels.find(o => o.id === this.user.level);
+      } else if (this.workout.type === 2) {
+        // Strength
+        this.currentGoal = this.workoutGoals.find(o => o.id === this.user.goal);
+      }
+
+
+      // Prepare the flat exercises array
+      for (let i = 0, len = this.workout.rounds.length; i < len; i++) {
+        for (let j = 1, repeatLen = this.workout.rounds[i].repeats; j <= repeatLen; j++) {
+          this.workout.rounds[i].exercises.forEach((exercise) => {
+            // Find all the exercise information
+            // Push the item to the timeline
+            this.timeline.push(this.exercises.find(o => o.id === exercise));
+            this.timer.totalTime = this.timer.totalTime + this.currentLevel.activeTime;
+
+            // Add the rest time to the timeline
+            if (this.workout.type === 1) {
+              // HITT
+              this.timeline.push(this.currentLevel.restTime);
+              this.timer.totalTime = this.timer.totalTime + this.currentLevel.restTime;
+            }
+          });
+        }
+      }
+
+      // Delete the last rest time, as the workout is finished
+      this.timeline.pop();
+      this.timer.totalTime = this.timer.totalTime - this.currentLevel.restTime;
+
+      this.isUserReady = true;
+      this.resume();
+    },
     resume() {
-      sleep.prevent();
       this.timer.paused = false;
+
+      // Start or next exercise
+      if (this.timer.remaining === null || this.timer.remaining === 0) {
+        // Check if we're on rest or active time
+        if (this.timeline[this.currentItem].id) {
+          // it's an object, it is an exercise
+          // @TODO difference between HIIT and Strength
+          this.timer.remaining = this.currentLevel.activeTime;
+        } else {
+          // It's a rest time
+          this.timer.remaining = this.timeline[this.currentItem];
+        }
+      }
+
       this.timer.timerId = window.setTimeout(() => {
         if (this.timer.remaining > 0) {
           this.resume();
           this.timer.remaining = this.timer.remaining - 1000;
-          this.workout.elapsed = this.workout.elapsed + 1000;
+          this.timer.elapsed = this.timer.elapsed + 1000;
         } else {
+          this.currentItem++;
+
           // Next exercise or is the workout done?
-          // TODO
-          this.pause();
+          if (this.currentItem < this.timeline.length) {
+            this.resume();
+          } else {
+            // No more items
+            this.pauseAndClear();
+          }
         }
       }, 1000);
     },
@@ -108,19 +270,25 @@ export default {
       this.timer.paused = true;
       window.clearTimeout(this.timer.timerId);
     },
+    stop() {
+      sleep.prevent();
+
+      // Easier to reload, for now.
+      // @TODO actually stop and reset everything without reloading?
+      this.$router.go(this.$router.currentRoute);
+    },
     printTimeLeft() {
-      if (this.timer.remaining > 0) return `${this.timer.remaining / 1000}"`;
+      if (this.timer.remaining >= 0) return `${this.timer.remaining / 1000}"`;
 
       return '';
-    },
-    exerciseDone() {
-      this.currentExercise = 'Rest time!';
     },
   },
 };
 </script>
 
 <style scoped lang="scss">
+@import '@/styles/_variables';
+
 .footer {
   bottom: 0;
   left: 0;

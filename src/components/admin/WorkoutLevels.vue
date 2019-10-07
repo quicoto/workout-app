@@ -38,12 +38,14 @@
         </template>
         <template v-slot:cell(activeTime)="data">
           <b-form-input
+            number
             :disabled="!canEdit"
             v-model="data.item.activeTime">
           </b-form-input>
         </template>
         <template v-slot:cell(restTime)="data">
           <b-form-input
+            number
             :disabled="!canEdit"
             v-model="data.item.restTime">
           </b-form-input>

@@ -123,7 +123,7 @@ export default {
   firebase: {
     users: db.ref(ENDPOINTS.users),
     workoutGoals: db.ref(ENDPOINTS.workoutGoals),
-    workoutLevels: db.ref(ENDPOINTS.workoutLevel),
+    workoutLevels: db.ref(ENDPOINTS.workoutLevels),
   },
   mounted() {
     const requestedUserId = parseInt(this.$route.params.user_id, 10);

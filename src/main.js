@@ -5,6 +5,7 @@ import {
   faImage,
   faTrashAlt,
   faEdit,
+  faGrinStars,
 } from '@fortawesome/free-regular-svg-icons';
 import {
   faSignOutAlt,
@@ -71,6 +72,8 @@ library.add(faExclamationTriangle);
 library.add(faSearch);
 library.add(faPlus);
 library.add(faMinus);
+library.add(faMinus);
+library.add(faGrinStars);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = true;
 
