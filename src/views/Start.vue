@@ -51,13 +51,13 @@
                 variant="primary" size="lg" block>Next</b-button>
             </b-col>
           </b-row>
-          <h2
+          <div
             v-if="typeof timeline[currentItem] !== 'undefined' && timeline[currentItem].id"
-            class="text-warning">{{ timeline[currentItem].name }}</h2>
-          <h2
+            class="h1 pt-4 mb-4 itemName text-warning">{{ timeline[currentItem].name }}</div>
+          <div
             v-show="typeof timeline[currentItem] !== 'undefined' &&
               !timeline[currentItem].id && currentItem < timeline.length"
-            class="text-success">Rest time</h2>
+            class="h1 pt-4 mb-4 itemName text-success">Rest time</div>
           <div
             v-show="currentItem === timeline.length"
             class="h2 text-success">
@@ -75,7 +75,7 @@
             </div>
           <div
             v-if="currentItem < timeline.length"
-            class="timeLeft text-light h2"
+            class="h1 timeLeft text-light"
             :class="timer.remaining && timer.paused === false >= 0 ? 'timeLeft--active' : ''">
             {{ printTimeLeft() }}
           </div>
@@ -327,7 +327,7 @@ export default {
 }
 
 .timeLeft {
-  font-size: 7em;
+  font-size: 9em;
 
   &--active {
     animation: 1s pulse linear infinite;
@@ -336,5 +336,9 @@ export default {
 
 .progress {
   border-radius: 0;
+}
+
+.itemName {
+  font-size: 45px;
 }
 </style>
