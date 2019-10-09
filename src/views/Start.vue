@@ -57,7 +57,10 @@
           <div
             v-show="typeof timeline[currentItem] !== 'undefined' &&
               !timeline[currentItem].id && currentItem < timeline.length"
-            class="h1 pt-4 mb-4 itemName text-success">Rest time</div>
+            class="h1 pt-4 mb-4 itemName text-success"
+            >
+            Rest time
+          </div>
           <div
             v-show="currentItem === timeline.length"
             class="h2 text-success">
@@ -78,6 +81,14 @@
             class="h1 timeLeft text-light"
             :class="timer.remaining && timer.paused === false >= 0 ? 'timeLeft--active' : ''">
             {{ printTimeLeft() }}
+          </div>
+          <div
+            v-show="typeof timeline[currentItem] !== 'undefined' &&
+              !timeline[currentItem].id && currentItem < timeline.length
+              && timeline[currentItem+1] && timeline[currentItem+1].name"
+            class="h1 pt-4 text-muted"
+            >
+            Next up:<br>{{ timeline[currentItem+1].name }}
           </div>
           <div class="footer">
             <b-progress
