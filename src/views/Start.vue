@@ -79,6 +79,14 @@
             :class="timer.remaining && timer.paused === false >= 0 ? 'timeLeft--active' : ''">
             {{ printTimeLeft() }}
           </div>
+          <div
+            v-show="typeof timeline[currentItem] !== 'undefined' &&
+              !timeline[currentItem].id && currentItem < timeline.length
+              && timeline[currentItem+1] && timeline[currentItem+1].name"
+            class="h1 pt-4 text-muted"
+            >
+            Next up:<br>{{ timeline[currentItem+1].name }}
+          </div>
           <div class="footer">
             <b-progress
               :value="progress"
