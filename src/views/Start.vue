@@ -57,10 +57,7 @@
           <div
             v-show="typeof timeline[currentItem] !== 'undefined' &&
               !timeline[currentItem].id && currentItem < timeline.length"
-            class="h1 pt-4 mb-4 itemName text-success"
-            >
-            Rest time
-          </div>
+          class="h1 pt-4 mb-4 itemName text-success">Rest time</div>
           <div
             v-show="currentItem === timeline.length"
             class="h2 text-success">
