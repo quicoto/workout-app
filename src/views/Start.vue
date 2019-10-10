@@ -181,17 +181,17 @@ export default {
       let elapsed = 0;
 
       if (this.currentItem === this.timeline.length) {
-        return 100
+        return 100;
       }
 
       // Calculate based on the current item
       for (let i = 0; i < this.currentItem; i++) {
         if (this.timeline[this.currentItem].id) {
           // It's an exercise
-          elapsed = elapsed + this.currentLevel.activeTime;
+          elapsed += this.currentLevel.activeTime;
         } else {
           // It's a rest time
-          elapsed = elapsed + this.currentLevel.restTime;
+          elapsed += this.currentLevel.restTime;
         }
       }
 
