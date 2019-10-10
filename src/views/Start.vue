@@ -60,7 +60,7 @@
             class="h1 pt-4 mb-4 itemName text-success">Rest time</div>
           <div
             v-show="currentItem === timeline.length"
-            class="h2 text-success">
+            class="h2 text-success pt-5">
               <p>
                 <font-awesome-icon
                 size="3x"
@@ -80,12 +80,15 @@
             {{ printTimeLeft() }}
           </div>
           <div
-            v-show="typeof timeline[currentItem] !== 'undefined' &&
-              !timeline[currentItem].id && currentItem < timeline.length
-              && timeline[currentItem+1] && timeline[currentItem+1].name"
+            v-if="typeof timeline[currentItem+1] !== 'undefined' && timeline[currentItem+1].name"
             class="h1 pt-4 text-muted"
             >
             Next up:<br>{{ timeline[currentItem+1].name }}
+          </div>
+          <div
+            v-if="currentItem + 1 <= timeline.length"
+            class="text-muted mt-5">
+            {{ currentItem + 1 }} of {{ timeline.length }}
           </div>
           <div class="footer">
             <b-progress
@@ -138,7 +141,6 @@ export default {
       isUserReady: false,
       noWorkoutFound: false,
       timer: {
-        elapsed: 0,
         totalTime: 0,
         timerId: {},
         start: {},
@@ -176,10 +178,27 @@ export default {
   },
   computed: {
     progress() {
-      return Math.floor((+this.timer.elapsed * 100) / +this.timer.totalTime);
+      let elapsed = 0;
+
+      if (this.currentItem === this.timeline.length) {
+        return 100
+      }
+
+      // Calculate based on the current item
+      for (let i = 0; i < this.currentItem; i++) {
+        if (this.timeline[this.currentItem].id) {
+          // It's an exercise
+          elapsed = elapsed + this.currentLevel.activeTime;
+        } else {
+          // It's a rest time
+          elapsed = elapsed + this.currentLevel.restTime;
+        }
+      }
+
+      return Math.floor((elapsed * 100) / +this.timer.totalTime);
     },
     progressAnimation() {
-      if (this.timer.totalTime === this.timer.elapsed) return false;
+      if (this.currentItem === this.timeline.length) return false;
 
       return true;
     },
@@ -261,7 +280,6 @@ export default {
         if (this.timer.remaining > 0) {
           this.resume();
           this.timer.remaining = this.timer.remaining - 1000;
-          this.timer.elapsed = this.timer.elapsed + 1000;
         } else {
           this.currentItem++;
 
