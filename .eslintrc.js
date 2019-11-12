@@ -16,7 +16,6 @@ module.exports = {
     'import/no-named-as-default': 'off',
     'vue/require-v-for-key': 'off',
   },
-  parser: 'vue-eslint-parser',
   parserOptions: {
     parser: 'babel-eslint',
     ecmaVersion: 8,

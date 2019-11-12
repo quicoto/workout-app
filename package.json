@@ -23,7 +23,7 @@
     "@fortawesome/vue-fontawesome": "^0.1.8",
     "bootstrap": "^4.3.1",
     "bootstrap-vue": "^2.0.4",
-    "core-js": "^2.6.10",
+    "core-js": "^3.4.1",
     "firebase": "^7.3.0",
     "husky": "^3.0.9",
     "register-service-worker": "^1.6.2",
@@ -34,11 +34,12 @@
     "vuefire": "^2.2.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.11.0",
-    "@vue/cli-plugin-eslint": "^3.11.0",
-    "@vue/cli-plugin-pwa": "^3.11.0",
-    "@vue/cli-plugin-unit-jest": "^3.11.0",
-    "@vue/cli-service": "^3.11.0",
+    "@vue/cli": "^4.0.5",
+    "@vue/cli-plugin-babel": "^4.0.5",
+    "@vue/cli-plugin-eslint": "^4.0.5",
+    "@vue/cli-plugin-pwa": "^4.0.5",
+    "@vue/cli-plugin-unit-jest": "^4.0.5",
+    "@vue/cli-service": "^4.0.5",
     "@vue/eslint-config-airbnb": "^4.0.1",
     "@vue/test-utils": "1.0.0-beta.29",
     "babel-core": "7.0.0-bridge.0",
@@ -46,7 +47,7 @@
     "eslint": "^6.6.0",
     "eslint-plugin-vue": "^6.0.0",
     "node-sass": "^4.13.0",
-    "sass-loader": "^7.3.1",
+    "sass-loader": "^8.0.0",
     "vue-template-compiler": "^2.6.10"
   }
 }
