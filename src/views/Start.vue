@@ -127,6 +127,7 @@ import firebase from 'firebase/app';
 import db from '@/db';
 import Loader from '@/components/Loader.vue';
 import ENDPOINTS from '@/endpoints';
+import VALUES from '@/values';
 import { sleep } from '@/plugins/sleep';
 
 export default {
@@ -148,11 +149,13 @@ export default {
         paused: true,
       },
       user: {},
+      users: [],
       workout: {},
       timeline: [],
     };
   },
   firebase: {
+    users: db.ref(ENDPOINTS.users),
     exercises: db.ref(ENDPOINTS.exercises),
     workoutGoals: db.ref(ENDPOINTS.workoutGoals),
     workoutLevels: db.ref(ENDPOINTS.workoutLevels),
@@ -259,6 +262,33 @@ export default {
 
       this.isUserReady = true;
       this.resume();
+
+      this.updateUserWorkout();
+    },
+    updateUserWorkout() {
+      if (!this.user.recentWorkouts) {
+        this.user.recentWorkouts = [];
+      }
+
+      if (this.user.recentWorkouts
+        && this.user.recentWorkouts.length === VALUES.maxRecentWorkouts) {
+        this.user.recentWorkouts.pop();
+      }
+
+      this.user.recentWorkouts.unshift(this.workout.id);
+      this.saveProfile();
+    },
+    saveProfile() {
+      // Can't think of a better way to do this
+      // Since there's only 2 users, might not be so bad performance wise
+      this.users.forEach((user, index) => {
+        if (user.id === this.user.id) {
+          this.users[index] = this.user;
+        }
+      });
+
+      // Save the data to the server
+      firebase.database().ref(ENDPOINTS.users).set(this.users);
     },
     resume() {
       this.timer.paused = false;
