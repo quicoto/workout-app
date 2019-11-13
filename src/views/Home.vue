@@ -2,17 +2,17 @@
   <div class="home">
     <b-container>
       <h1 class="text-center">Workout like Thor</h1>
-      <HelloWorld />
+      <RecommendedWorkout />
     </b-container>
   </div>
 </template>
 
 <script>
-import HelloWorld from '@/components/HelloWorld.vue';
+import RecommendedWorkout from '@/components/RecommendedWorkout.vue';
 
 export default {
   components: {
-    HelloWorld,
+    RecommendedWorkout,
   },
 };
 
