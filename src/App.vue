@@ -104,7 +104,7 @@
     <footer class="container-fluid p-5 mt-5">
       <b-row>
         <b-col class="text-center">
-          <a href="https://github.com/quicoto/workout-app" title="Thorkout on Github"><small>v1.0.0</small></a>
+          <a href="https://github.com/quicoto/workout-app" title="Thorkout on Github"><small>v1.0.1</small></a>
         </b-col>
       </b-row>
     </footer>
