@@ -189,7 +189,7 @@ export default {
 
       // Calculate based on the current item
       for (let i = 0; i < this.currentItem; i++) {
-        if (this.timeline[this.currentItem].id) {
+        if (this.timeline[i].id) {
           // It's an exercise
           elapsed += this.currentLevel.activeTime;
         } else {
