@@ -1,22 +1,22 @@
 <template>
-  <div>
-    <Loader v-show="!query && !exercises" />
-    <b-container v-if="query">
-      <h2 class="view-header">
-        Search results for: <em>{{ query }}</em>
-      </h2>
+<div>
+  <Loader v-show="!query && !exercises" />
+  <b-container v-if="query">
+    <h2 class="view-header">
+      Search results for: <em>{{ query }}</em>
+    </h2>
 
-      <b-alert variant="danger" show>
-        I think we can use the Firebase filter capability to do these queries.
-      </b-alert>
+    <b-alert variant="danger" show v-if="!this.filterexercises.length">
+      No exercises found...
+    </b-alert>
 
-      <b-row>
-        <b-col cols="12" md="6" v-for="exercice in exercises" :key="exercice.id">
-          <ExerciseCard :exercise="exercice" :tags="tags" />
-        </b-col>
-      </b-row>
-    </b-container>
-  </div>
+    <b-row>
+      <b-col cols="12" md="6" v-for="exercice in filterexercises" :key="exercice.id">
+        <ExerciseCard :exercise="exercice" :tags="tags" />
+      </b-col>
+    </b-row>
+  </b-container>
+</div>
 </template>
 
 <script>
@@ -34,6 +34,7 @@ export default {
     return {
       tags: [],
       exercises: [],
+      filterexercises: [],
       query: '',
     };
   },
@@ -47,12 +48,21 @@ export default {
 
       return '';
     },
+    filterSearch() {
+      return this.exercises.filter(exercise => {
+        //console.log(exercise.name, this.query)
+        return !this.query || exercise.name.toLowerCase().indexOf(this.query.toLowerCase()) > -1
+      })
+    }
   },
   mounted() {
     this.query = this.getQueryParam();
+    //console.log("Search query:", this.query)
 
     firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
       this.exercises = snapshot.val();
+      this.filterexercises = this.filterSearch()
+      //console.log(this.filterexercises)
     });
 
     firebase.database().ref(ENDPOINTS.exerciseTags).once('value').then((snapshot) => {
