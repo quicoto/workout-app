@@ -6,12 +6,12 @@
         Search results for: <em>{{ query }}</em>
       </h2>
 
-      <b-alert variant="danger" show>
-        I think we can use the Firebase filter capability to do these queries.
+      <b-alert variant="danger" show v-if="!this.filterexercises.length">
+        No exercises found...
       </b-alert>
 
       <b-row>
-        <b-col cols="12" md="6" v-for="exercice in exercises" :key="exercice.id">
+        <b-col cols="12" md="6" v-for="exercice in filterexercises" :key="exercice.id">
           <ExerciseCard :exercise="exercice" :tags="tags" />
         </b-col>
       </b-row>
@@ -34,6 +34,7 @@ export default {
     return {
       tags: [],
       exercises: [],
+      filterexercises: [],
       query: '',
     };
   },
@@ -47,12 +48,17 @@ export default {
 
       return '';
     },
+    filterSearch() {
+      return this.exercises.filter(exercise => !this.query
+        || exercise.name.toLowerCase().indexOf(this.query.toLowerCase()) > -1);
+    },
   },
   mounted() {
     this.query = this.getQueryParam();
 
     firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
       this.exercises = snapshot.val();
+      this.filterexercises = this.filterSearch();
     });
 
     firebase.database().ref(ENDPOINTS.exerciseTags).once('value').then((snapshot) => {
