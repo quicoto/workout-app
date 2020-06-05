@@ -1,5 +1,7 @@
 # Thorkout - Workout like Thor <img src="https://cldup.com/CnxsnixssB.png" width="50"/>
 
+![Screenshot](https://cldup.com/yMHgse-Un7.png)
+
 ## Mission
 
 Don't worry about your workout rutines anymore, let the app work for you.
