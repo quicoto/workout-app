@@ -8,5 +8,5 @@ module.exports = {
   },
   outputDir: 'docs',
   productionSourceMap: false,
-  publicPath: '/',
+  publicPath: '/workout-app/',
 };
