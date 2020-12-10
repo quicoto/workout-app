@@ -16,6 +16,19 @@
               placeholder="Name"
             ></b-form-input>
           </b-form-group>
+
+          <b-form-group
+            id="input-group-1"
+            label-for="createdBy"
+          >
+            <b-form-input
+              id="createdBy"
+              v-model="form.createdBy"
+              type="text"
+              required
+              placeholder="Created by"
+            ></b-form-input>
+          </b-form-group>
         </b-col>
 
         <b-col>
@@ -255,12 +268,24 @@ export default {
         type: null,
       },
       selectedExercise: null,
+      data: this.$storage.get('data'),
     };
   },
   mounted() {
-
+    if (this.data?.workouts) {
+      this.workouts = this.data.workouts;
+      this.workoutTypes = this.data.['workout-types'];
+      this.exercises = this.data.exercises.sort((a, b) => ((a.name > b.name) ? 1 : -1));
+    }
   },
   methods: {
+    getNewId() {
+      const workouts = Vue.util.extend([], this.workouts);
+
+      workouts.sort((a, b) => +(a.id) - +(b.id));
+
+      return workouts[workouts.length - 1].id + 1;
+    },
     numberOfExercises(workout) {
       let count = 0;
 
@@ -305,20 +330,15 @@ export default {
     onSubmit(event) {
       event.preventDefault();
 
-      // Create a shallow copy, without the bindings
-      const updates = Vue.util.extend([], this.workouts);
-
       // Check if it's Create action
       if (this.action === 'create' && !this.form.id) {
-        this.form.id = 0;
-
-        // Create the incremental id based on the last id
-        if (this.workouts[0]) {
-          this.form.id = parseInt(this.workouts[0].id, 10) + 1;
-        }
-
-        updates.unshift(this.form);
+        this.form.id = this.getNewId();
+        this.workouts.push(this.form);
       }
+
+      this.$storage.set('data', this.data);
+
+      this.$emit('update-output', true);
 
       // Clean the form
       this.resetForm();

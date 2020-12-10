@@ -215,9 +215,23 @@ export default {
         image: false,
       },
       publicPath: process.env.BASE_URL,
+      data: this.$storage.get('data'),
     };
   },
+  mounted() {
+    if (this.data?.exercises) {
+      this.exercises = this.data.exercises;
+      this.tags = this.data.['exercise-tags'];
+    }
+  },
   methods: {
+    getNewId() {
+      const exercises = Vue.util.extend([], this.exercises);
+
+      exercises.sort((a, b) => +(a.id) - +(b.id));
+
+      return exercises[exercises.length - 1].id + 1;
+    },
     exerciseDescription(description) {
       return description.replace(/\n/g, '<br />');
     },
@@ -231,25 +245,24 @@ export default {
     onSubmit(event) {
       event.preventDefault();
 
-      // Create a shallow copy, without the bindings
-      const updates = Vue.util.extend([], this.exercises);
-
       // Check if it's Create action
       if (this.action === 'create' && !this.form.id) {
         // Create the incremental id based on the last id
-        this.form.id = parseInt(this.exercises[0].id, 10) + 1;
-        updates.unshift(this.form);
+        this.form.id = this.getNewId();
+        this.exercises.push(this.form);
       }
+
+      this.$storage.set('data', this.data);
+
+      this.$emit('update-output', true);
 
       // Clean the form
       this.resetForm();
     },
-    onConfirmDelete(exerciseId) {
-      // Create a shallow copy, without the bindings
-      const updates = Vue.util.extend([], this.exercises);
+    onConfirmDelete() {
+      this.$storage.set('data', this.data);
 
-      // Find by the id propierty and remove it from the array
-      updates.splice(updates.findIndex((i) => i.id === exerciseId), 1);
+      this.$emit('update-output', true);
 
       // Clean the form
       this.resetForm();

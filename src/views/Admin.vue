@@ -7,22 +7,32 @@
 
           <b-tabs content-class="mt-3">
             <b-tab title="Exercises" active>
-              <Exercises />
+              <Exercises v-on:update-output="updateOutput" />
             </b-tab>
             <b-tab title="Tags">
-              <ExerciseTags />
+              <ExerciseTags v-on:update-output="updateOutput" />
             </b-tab>
             <b-tab title="Levels">
-              <WorkoutLevels />
+              <WorkoutLevels v-on:update-output="updateOutput" />
             </b-tab>
             <b-tab title="Goals">
-              <WorkoutGoals />
+              <WorkoutGoals v-on:update-output="updateOutput" />
             </b-tab>
             <b-tab title="Workout Types">
-              <WorkoutTypes />
+              <WorkoutTypes v-on:update-output="updateOutput" />
             </b-tab>
             <b-tab title="Workouts">
-              <Workouts />
+              <Workouts v-on:update-output="updateOutput" />
+            </b-tab>
+            <b-tab title="Output">
+              <h3>Output</h3>
+              <b-form-textarea
+                id="output"
+                name="output"
+                :value="JSON.stringify(data)"
+                rows="3"
+                max-rows="6"
+              ></b-form-textarea>
             </b-tab>
           </b-tabs>
         </b-col>
@@ -50,10 +60,16 @@ export default {
   },
   data() {
     return {
+      data: {},
     };
   },
   mounted() {
-
+    this.updateOutput();
+  },
+  methods: {
+    updateOutput() {
+      this.data = this.$storage.get('data');
+    },
   },
 };
 </script>

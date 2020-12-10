@@ -20,6 +20,33 @@
       <b-row v-if="workout.id">
         <b-col v-if="!isUserReady">
           <h2 class="text-center mb-4 text-info"><em>{{ workout.name }}</em></h2>
+          <div class="text-center">
+            <div class="d-flex align-items-center justify-content-center">
+
+              <ul class="text-left pl-0 mr-4">
+                <li>Active time: {{ workoutLevels[user.level - 1].activeTime / 1000 }}"</li>
+                <li>Rest time: {{ workoutLevels[user.level - 1].restTime / 1000 }}"</li>
+              </ul>
+
+              <img
+                class="icon mb-4"
+                :src="`${publicPath}img/icons/levels/${user.level}.svg`"
+                :alt="`Level: ${levelName(user.level)}`"
+                :title="`Level: ${levelName(user.level)}`">
+            </div>
+
+            <b-form>
+              <b-form-group
+                :label="levelName(user.level)">
+                <b-form-input id="level-range"
+                  number
+                  v-model="user.level"
+                  type="range"
+                  :min="workoutLevels[0].id"
+                  :max="workoutLevels[workoutLevels.length - 1].id"></b-form-input>
+              </b-form-group>
+            </b-form>
+          </div>
           <h3
             class="text-center mb-4">Are you Ready?</h3>
 
@@ -148,6 +175,7 @@ export default {
         goal: 2, // This needs to be configurable
       },
       timeline: [],
+      publicPath: process.env.BASE_URL,
     };
   },
   mounted() {
@@ -199,6 +227,28 @@ export default {
     },
   },
   methods: {
+    goalName(id) {
+      if (this.workoutGoals) {
+        const goal = this.workoutGoals.find((o) => o.id === parseInt(id, 10));
+
+        if (goal) {
+          return goal.name;
+        }
+      }
+
+      return '';
+    },
+    levelName(id) {
+      if (this.workoutLevels) {
+        const level = this.workoutLevels.find((o) => o.id === parseInt(id, 10));
+
+        if (level) {
+          return level.name;
+        }
+      }
+
+      return '';
+    },
     pauseAndClear() {
       this.timer.paused = true;
       window.clearTimeout(this.timer.timerId);
@@ -223,9 +273,6 @@ export default {
       if (this.workout.type === 1) {
         // HIIT
         this.currentLevel = this.workoutLevels.find((o) => o.id === this.user.level);
-      } else if (this.workout.type === 2) {
-        // Strength
-        this.currentGoal = this.workoutGoals.find((o) => o.id === this.user.goal);
       }
 
       // Prepare the flat exercises array
@@ -360,5 +407,9 @@ export default {
 
 .itemName {
   font-size: 45px;
+}
+
+.icon {
+  height: 50px;
 }
 </style>

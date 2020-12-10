@@ -8,13 +8,14 @@
   >
     <template v-slot:header>
       <div class="d-flex justify-content-between">
-        <h3 class="mb-0">{{ workout.name }}</h3>
+        <h3>{{ workout.name }}</h3>
         <b-button
           :to="`/start/${workout.id}`"
           variant="primary">
           Start
         </b-button>
       </div>
+      <small class="d-block">Created by {{ workout.createdBy }}</small>
     </template>
     <b-card-text>
       <div class="pb-3">

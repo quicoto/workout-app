@@ -102,6 +102,13 @@ export default {
       },
     };
   },
+  mounted() {
+    const data = this.$storage.get('data');
+
+    if (data?.['exercise-tags']) {
+      this.tags = data.['exercise-tags'];
+    }
+  },
   methods: {
     resetForm() {
       this.action = 'create';
@@ -120,6 +127,8 @@ export default {
         this.form.id = parseInt(this.tags[0].id, 10) + 1;
         updates.unshift(this.form);
       }
+
+      this.$emit('update-output', true);
 
       // Clean the form
       this.resetForm();

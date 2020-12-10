@@ -82,11 +82,18 @@ export default {
       goals: [],
     };
   },
+  mounted() {
+    const data = this.$storage.get('data');
+
+    if (data?.['workout-goals']) {
+      this.goals = data.['workout-goals'];
+    }
+  },
   methods: {
     onUpdateEditClick() {
       if (this.canEdit) {
         // const updates = Vue.util.extend([], this.goals);
-
+        this.$emit('update-output', true);
         this.canEdit = false;
       } else {
         this.canEdit = true;

@@ -84,14 +84,17 @@ export default {
       levels: [],
     };
   },
+  mounted() {
+    const data = this.$storage.get('data');
+
+    if (data?.['workout-levels']) {
+      this.levels = data.['workout-levels'];
+    }
+  },
   methods: {
     onUpdateEditClick() {
       if (this.canEdit) {
-        // const updates = Vue.util.extend([], this.levels);
-
-        // // Update firebase with the copy
-        // // It will automatically push it to our this.levels
-        // db.ref(ENDPOINTS.workoutLevels).set(updates);
+        this.$emit('update-output', true);
         this.canEdit = false;
       } else {
         this.canEdit = true;
