@@ -1,25 +1,29 @@
-name: Node CI
-
-on: [push, pull_request]
-
+name: Build and Deploy
+on:
+  # Trigger the workflow on push
+  # but only for the master branch
+  push:
+    branches:
+      - master
 jobs:
-  build:
-
+  build-and-deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
-    - uses: actions/checkout@v1
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v1
-      with:
-        node-version: ${{ matrix.node-version }}
-    - name: npm install, build, and test
-      run: |
-        npm install
-        npm run lint
-      env:
-        CI: true
+      - name: Checkout 🛎️
+        uses: actions/checkout@v2
+        with:
+            persist-credentials: false
+
+      - name: Install and Build
+        run: |
+          npm install
+          npm run ci
+          npm run build
+
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh_pages # The branch the action should deploy to.
+          FOLDER: docs # The folder the action should deploy.
+
