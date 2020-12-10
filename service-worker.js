@@ -14,10 +14,10 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.16eaee4676a04f7eacace704b2c5bf5a.js"
+  "/workout-app/precache-manifest.8d53ac9178f8a55d02d4735a2ff0fd3a.js"
 );
 
-workbox.core.setCacheNameDetails({prefix: "thorkout"});
+workbox.core.setCacheNameDetails({prefix: "workoutapp"});
 
 self.addEventListener('message', (event) => {
   if (event.data && event.data.type === 'SKIP_WAITING') {
