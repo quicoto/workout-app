@@ -1,5 +1,5 @@
 {
-  "exercise-tags" : [ null, {
+  "exercise-tags" : [ {
     "id" : 16,
     "name" : "Forearms"
   }, {
@@ -351,24 +351,6 @@
     "tags" : [ 3, 5, 14 ],
     "video" : "https://www.youtube.com/watch?v=IODxDxX7oi4"
   } ],
-  "users" : [ {
-    "email" : "torres.rick@gmail.com",
-    "goal" : 2,
-    "gravatar" : "3b6f2d380f8fcf8cd6f61031d2ff8e8b",
-    "id" : 1,
-    "lastname" : "Torres",
-    "level" : 2,
-    "name" : "Ricard",
-    "recentWorkouts" : [ 5, 3, 6 ]
-  }, {
-    "email" : "cornet.roger@gmail.com",
-    "goal" : 3,
-    "gravatar" : "d3c128285ac9aa295aa87776d3f18114",
-    "id" : 2,
-    "lastname" : "Cornet",
-    "level" : 99,
-    "name" : "Roger"
-  } ],
   "workout-goals" : [ {
     "id" : 1,
     "name" : "Spider Man ",
@@ -411,6 +393,7 @@
   "workouts" : [ {
     "id" : 6,
     "name" : "Good morning!",
+    "createdBy": "Ricard",
     "rounds" : [ {
       "exercises" : [ 19, 44, 45 ],
       "repeats" : 3
@@ -425,6 +408,7 @@
   }, {
     "id" : 5,
     "name" : "Friday Hell",
+    "createdBy": "Ricard",
     "rounds" : [ {
       "exercises" : [ 20, 38, 39 ],
       "repeats" : 3
@@ -442,6 +426,7 @@
   }, {
     "id" : 4,
     "name" : "Hotel Room",
+    "createdBy": "Ricard",
     "rounds" : [ {
       "exercises" : [ 34, 2, 1 ],
       "repeats" : 3
@@ -456,6 +441,7 @@
   }, {
     "id" : 3,
     "name" : "Da Rock",
+    "createdBy": "Ricard",
     "rounds" : [ {
       "exercises" : [ 43, 27, 25 ],
       "repeats" : 3
@@ -470,6 +456,7 @@
   }, {
     "id" : 2,
     "name" : "The Element",
+    "createdBy": "Ricard",
     "rounds" : [ {
       "exercises" : [ 2, 13, 20 ],
       "repeats" : 3
