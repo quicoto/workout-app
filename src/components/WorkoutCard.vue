@@ -41,8 +41,6 @@
 </template>
 
 <script>
-import db from '@/db';
-import ENDPOINTS from '@/endpoints';
 import WorkoutType from '@/components/WorkoutType.vue';
 
 export default {
@@ -54,17 +52,21 @@ export default {
     types: Array,
     workout: Object,
   },
-  firebase: {
-    exercises: db.ref(ENDPOINTS.exercises),
-  },
   data() {
     return {
       exercises: [],
     };
   },
+  mounted() {
+    const data = this.$storage.get('data');
+
+    if (data?.exercises) {
+      this.exercises = data.exercises;
+    }
+  },
   methods: {
     exerciseName(id) {
-      const index = this.exercises.findIndex(i => i.id === id);
+      const index = this.exercises.findIndex((i) => i.id === id);
 
       return this.exercises[index].name;
     },

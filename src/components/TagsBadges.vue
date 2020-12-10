@@ -13,9 +13,6 @@
 </template>
 
 <script>
-import db from '@/db';
-import ENDPOINTS from '@/endpoints';
-
 export default {
   name: 'TagsBadges',
   props: {
@@ -26,12 +23,9 @@ export default {
       tagsDB: [],
     };
   },
-  firebase: {
-    tagsDB: db.ref(ENDPOINTS.exerciseTags),
-  },
   methods: {
     getTagName(tagId) {
-      const tag = this.tagsDB.find(obj => obj.id === tagId);
+      const tag = this.tagsDB.find((obj) => obj.id === tagId);
 
       if (tag) {
         return tag.name;

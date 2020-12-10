@@ -110,12 +110,10 @@
                 </li>
               </ul>
 
-
             </li>
           </ul>
         </b-col>
       </b-row>
-
 
       <b-row v-if="exercises.length > 0">
         <b-col>
@@ -143,7 +141,6 @@
               <span v-if="action !== 'create' && form.id">Update Workout</span>
             </b-button>
 
-
           <b-button
             type="reset"
             variant="secondary"
@@ -154,7 +151,6 @@
           </b-button>
         </b-col>
       </b-row>
-
 
     </b-form>
 
@@ -198,11 +194,9 @@
 
 <script>
 import Vue from 'vue';
-import db from '@/db';
 import Loader from '@/components/Loader.vue';
 import WorkoutType from '@/components/WorkoutType.vue';
 import ConfirmDelete from '@/components/admin/ConfirmDelete.vue';
-import ENDPOINTS from '@/endpoints';
 
 export default {
   name: 'Workouts',
@@ -263,19 +257,8 @@ export default {
       selectedExercise: null,
     };
   },
-  firebase: {
-    workouts: db.ref(ENDPOINTS.workouts),
-  },
   mounted() {
-    db.ref(ENDPOINTS.workoutTypes).on('value', (snapshot) => {
-      this.workoutTypes = snapshot.val();
-      this.workoutTypes.unshift({ id: null, name: 'Please select workout type', disabled: true });
-    });
 
-    db.ref(ENDPOINTS.exercises).on('value', (snapshot) => {
-      this.exercises = snapshot.val().sort((a, b) => ((a.name > b.name) ? 1 : -1));
-      this.exercises.unshift({ id: null, name: 'Please select an exercise', disabled: true });
-    });
   },
   methods: {
     numberOfExercises(workout) {
@@ -288,7 +271,7 @@ export default {
       return count;
     },
     exerciseName(exerciseId) {
-      const index = this.exercises.findIndex(i => i.id === exerciseId);
+      const index = this.exercises.findIndex((i) => i.id === exerciseId);
 
       return this.exercises[index].name;
     },
@@ -337,10 +320,6 @@ export default {
         updates.unshift(this.form);
       }
 
-      // Update firebase with the copy
-      // It will automatically push it to our this.workouts
-      db.ref(ENDPOINTS.workouts).set(updates);
-
       // Clean the form
       this.resetForm();
     },
@@ -349,11 +328,7 @@ export default {
       const updates = Vue.util.extend([], this.workouts);
 
       // Find by the id propierty and remove it from the array
-      updates.splice(updates.findIndex(i => i.id === workoutId), 1);
-
-      // Update firebase with the copy
-      // It will automatically push it to our this.workouts
-      db.ref(ENDPOINTS.workouts).set(updates);
+      updates.splice(updates.findIndex((i) => i.id === workoutId), 1);
 
       // Clean the form
       this.resetForm();

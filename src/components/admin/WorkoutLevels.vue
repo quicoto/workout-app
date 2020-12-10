@@ -56,10 +56,8 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import db from '@/db';
+// import Vue from 'vue';
 import Loader from '@/components/Loader.vue';
-import ENDPOINTS from '@/endpoints';
 
 export default {
   name: 'WorkoutLevels',
@@ -86,17 +84,14 @@ export default {
       levels: [],
     };
   },
-  firebase: {
-    levels: db.ref(ENDPOINTS.workoutLevels),
-  },
   methods: {
     onUpdateEditClick() {
       if (this.canEdit) {
-        const updates = Vue.util.extend([], this.levels);
+        // const updates = Vue.util.extend([], this.levels);
 
-        // Update firebase with the copy
-        // It will automatically push it to our this.levels
-        db.ref(ENDPOINTS.workoutLevels).set(updates);
+        // // Update firebase with the copy
+        // // It will automatically push it to our this.levels
+        // db.ref(ENDPOINTS.workoutLevels).set(updates);
         this.canEdit = false;
       } else {
         this.canEdit = true;

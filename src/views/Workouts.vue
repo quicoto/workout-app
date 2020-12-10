@@ -13,10 +13,8 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
 import Loader from '@/components/Loader.vue';
 import WorkoutCard from '@/components/WorkoutCard.vue';
-import ENDPOINTS from '@/endpoints';
 
 export default {
   components: {
@@ -29,9 +27,11 @@ export default {
     };
   },
   mounted() {
-    firebase.database().ref(ENDPOINTS.workouts).once('value').then((snapshot) => {
-      this.workouts = snapshot.val().sort((a, b) => ((a.name > b.name) ? 1 : -1));
-    });
+    const data = this.$storage.get('data');
+
+    if (data?.workouts) {
+      this.workouts = data.workouts;
+    }
   },
 };
 </script>

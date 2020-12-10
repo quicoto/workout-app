@@ -54,10 +54,8 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import db from '@/db';
+// import Vue from 'vue';
 import Loader from '@/components/Loader.vue';
-import ENDPOINTS from '@/endpoints';
 
 export default {
   name: 'WorkoutGoals',
@@ -84,17 +82,11 @@ export default {
       goals: [],
     };
   },
-  firebase: {
-    goals: db.ref(ENDPOINTS.workoutGoals),
-  },
   methods: {
     onUpdateEditClick() {
       if (this.canEdit) {
-        const updates = Vue.util.extend([], this.goals);
+        // const updates = Vue.util.extend([], this.goals);
 
-        // Update firebase with the copy
-        // It will automatically push it to our this.levels
-        db.ref(ENDPOINTS.workoutGoals).set(updates);
         this.canEdit = false;
       } else {
         this.canEdit = true;

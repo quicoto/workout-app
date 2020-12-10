@@ -91,7 +91,6 @@
           <span v-if="action !== 'create' && form.id">Update Exercise</span>
         </b-button>
 
-
       <b-button
         type="reset"
         variant="secondary"
@@ -155,11 +154,9 @@
 
 <script>
 import Vue from 'vue';
-import db from '@/db';
 import Loader from '@/components/Loader.vue';
 import TagsBadges from '@/components/TagsBadges.vue';
 import ConfirmDelete from '@/components/admin/ConfirmDelete.vue';
-import ENDPOINTS from '@/endpoints';
 
 export default {
   name: 'Exercises',
@@ -220,10 +217,6 @@ export default {
       publicPath: process.env.BASE_URL,
     };
   },
-  firebase: {
-    exercises: db.ref(ENDPOINTS.exercises),
-    tags: db.ref(ENDPOINTS.exerciseTags),
-  },
   methods: {
     exerciseDescription(description) {
       return description.replace(/\n/g, '<br />');
@@ -248,10 +241,6 @@ export default {
         updates.unshift(this.form);
       }
 
-      // Update firebase with the copy
-      // It will automatically push it to our this.exercises
-      db.ref(ENDPOINTS.exercises).set(updates);
-
       // Clean the form
       this.resetForm();
     },
@@ -260,11 +249,7 @@ export default {
       const updates = Vue.util.extend([], this.exercises);
 
       // Find by the id propierty and remove it from the array
-      updates.splice(updates.findIndex(i => i.id === exerciseId), 1);
-
-      // Update firebase with the copy
-      // It will automatically push it to our this.exercises
-      db.ref(ENDPOINTS.exercises).set(updates);
+      updates.splice(updates.findIndex((i) => i.id === exerciseId), 1);
 
       // Clean the form
       this.resetForm();

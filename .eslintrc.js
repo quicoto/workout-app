@@ -8,6 +8,10 @@ module.exports = {
     '@vue/airbnb',
   ],
   rules: {
+    indent: ['error', 2, {
+      ignoredNodes: ['TemplateLiteral'],
+    }],
+    'template-curly-spacing': 'off',
     'prefer-destructuring': 'off',
     'no-plusplus': 'off',
     'func-names': 'off',
@@ -15,6 +19,7 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
     'import/no-named-as-default-member': 'off',
     'import/no-named-as-default': 'off',
+    'import/prefer-default-export': 'off',
     'vue/require-v-for-key': 'off',
   },
   parserOptions: {

@@ -1,4 +1,4 @@
-# Thorkout - Workout like Thor <img src="https://cldup.com/CnxsnixssB.png" width="50"/>
+# Workout like Thor <img src="https://cldup.com/CnxsnixssB.png" width="50"/>
 
 ![Screenshot](https://cldup.com/yMHgse-Un7.png)
 
@@ -6,14 +6,12 @@
 
 Don't worry about your workout rutines anymore, let the app work for you.
 
-## Development
+## No backend
 
-Workout tracking app with VUE and Firebase.
+From 2.0.0 onwards we've removed Firebase and we're doing a static json database file.
 
-![Dependencies](https://img.shields.io/david/quicoto/workout-app?color=#4bc51d)
-![Last commit](https://img.shields.io/github/last-commit/quicoto/workout-app)
+The file has to be updated from the output generated in the admin.
 
-## Milestones
+### Rationale
 
-[![1.0](https://img.shields.io/badge/Milestone-1.0-red?style=for-the-badge)](https://github.com/quicoto/workout-app/milestone/1)
-[![2.0](https://img.shields.io/badge/Milestone-2.0-red?style=for-the-badge)](https://github.com/quicoto/workout-app/milestone/2)
+Remove the firebase dependency, forget about quotas, billings... just serve static content.

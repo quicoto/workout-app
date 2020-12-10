@@ -4,30 +4,13 @@
       toggleable="md"
       type="dark"
       variant="dark"
-      sticky
-      v-if="currentUser && currentUser.uid">
+      sticky>
       <b-container>
         <b-navbar-brand
           to="/"
           @click="hideNavigation()">
           <siteName variant="short" :image="true" />
         </b-navbar-brand>
-
-        <b-navbar-nav
-          class="d-block d-md-none ml-auto mr-3">
-          <b-nav-item
-            :to="`/profile/${currentDBUser.id}`"
-            :title="`${currentDBUser.name} ${currentDBUser.lastname} Profile`"
-            @click="hideNavigation()">
-            <b-img
-              thumbnail
-              fluid
-              rounded="circle"
-              :src="`https://www.gravatar.com/avatar/${currentDBUser.gravatar}?s=200`"
-              :alt="`${currentDBUser.name} ${currentDBUser.lastname} Profile`"
-              class="nav-avatar"></b-img>
-          </b-nav-item>
-        </b-navbar-nav>
 
         <b-navbar-toggle target="mobile-navigation"></b-navbar-toggle>
 
@@ -66,31 +49,6 @@
                   <font-awesome-icon :icon="['fas', 'search']" />
                 </b-button>
             </b-nav-form>
-
-            <b-nav-item
-            :to="`/profile/${currentDBUser.id}`"
-            class="d-none d-md-block"
-            :title="`${currentDBUser.name} ${currentDBUser.lastname} Profile`">
-              <b-img
-                thumbnail
-                fluid
-                rounded="circle"
-                :src="`https://www.gravatar.com/avatar/${currentDBUser.gravatar}?s=200`"
-                :alt="`${currentDBUser.name} ${currentDBUser.lastname} Profile`"
-                class="nav-avatar"></b-img>
-            </b-nav-item>
-
-            <b-nav-item
-              @click="logout">
-              <span class="d-none d-md-block">
-                <font-awesome-icon
-                  :icon="['fas', 'sign-out-alt']"
-                  size="lg"
-                  title="Logout"
-                  class="mt-2" />
-              </span>
-              <span class="d-md-none">Logout</span>
-            </b-nav-item>
           </b-navbar-nav>
         </b-collapse>
       </b-container>
@@ -104,7 +62,7 @@
     <footer class="container-fluid p-5 mt-5">
       <b-row>
         <b-col class="text-center">
-          <a href="https://github.com/quicoto/workout-app" title="Thorkout on Github"><small>v1.1.0</small></a>
+          <a href="https://github.com/quicoto/workout-app" title="Workout App on Github"><small>v2.0.0</small></a>
         </b-col>
       </b-row>
     </footer>
@@ -112,9 +70,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
 import siteName from '@/components/siteName.vue';
-import ENDPOINTS from '@/endpoints';
 
 export default {
   components: {
@@ -122,32 +78,20 @@ export default {
   },
   data() {
     return {
-      currentUser: firebase.auth().currentUser,
-      currentDBUser: {},
       query: '',
     };
   },
   mounted() {
-    // When user has just logged in, populate the current user.
-    // Event listener
-    firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        this.currentUser = user;
-        this.updateCurrentDBUser();
-      }
-    });
-
-    this.updateCurrentDBUser();
+    // Load the data
+    fetch('data.json')
+      .then((response) => response.json())
+      .then((data) => {
+        this.$storage.set('data', data);
+      });
   },
   methods: {
     hideNavigation() {
       this.$refs.mobileNavigation.show = false;
-    },
-    updateCurrentDBUser() {
-      // Search our Firebase users data and set it.
-      firebase.database().ref(ENDPOINTS.users).once('value').then((snapshot) => {
-        this.currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
-      });
     },
     onSubmit() {
       if (this.$router.history.current.path === 'search') {
@@ -156,15 +100,6 @@ export default {
         // Go to the search with the query
         this.$router.push({ name: 'search', query: { query: this.query } });
       }
-    },
-    logout() {
-      firebase.auth().signOut().then(() => {
-        this.currentUser = {};
-        this.$router.replace({ path: '/login' });
-      }).catch((error) => {
-        // eslint-disable-next-line no-console
-        console.log(error);
-      });
     },
   },
 };

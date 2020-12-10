@@ -10,9 +10,6 @@
 </template>
 
 <script>
-import db from '@/db';
-import ENDPOINTS from '@/endpoints';
-
 export default {
   name: 'WorkoutType',
   props: {
@@ -23,12 +20,16 @@ export default {
       types: [],
     };
   },
-  firebase: {
-    types: db.ref(ENDPOINTS.workoutTypes),
+  mounted() {
+    const data = this.$storage.get('data');
+
+    if (data?.['workout-types']) {
+      this.types = data.['workout-types'];
+    }
   },
   methods: {
     getName(id) {
-      const type = this.types.find(obj => obj.id === id);
+      const type = this.types.find((obj) => obj.id === id);
 
       if (type) {
         return type.name;

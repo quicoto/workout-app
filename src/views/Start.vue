@@ -23,9 +23,7 @@
           <h3
             class="text-center mb-4">Are you Ready?</h3>
 
-          <Loader v-show="!user.id" />
           <b-button
-            v-if="user.id"
             block
             size="lg"
             @click="start()"
@@ -37,7 +35,7 @@
         <b-col
           v-if="isUserReady"
           class="text-center mb-3">
-          <b-row class="header mb-4">
+          <b-row class="header mb-4" v-show="progress < 100">
             <b-col>
               <b-button
                 v-show="currentItem - 1 >= 0"
@@ -90,7 +88,7 @@
             class="text-muted mt-5">
             {{ currentItem + 1 }} of {{ timeline.length }}
           </div>
-          <div class="footer">
+          <div class="footer" v-show="progress < 100">
             <b-progress
               :value="progress"
               variant="success"
@@ -123,11 +121,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import db from '@/db';
 import Loader from '@/components/Loader.vue';
-import ENDPOINTS from '@/endpoints';
-import VALUES from '@/values';
 import { sleep } from '@/plugins/sleep';
 
 export default {
@@ -148,35 +142,33 @@ export default {
         remaining: null,
         paused: true,
       },
-      user: {},
-      users: [],
       workout: {},
+      user: {
+        level: 2, // This needs to be configurable
+        goal: 2, // This needs to be configurable
+      },
       timeline: [],
     };
   },
-  firebase: {
-    users: db.ref(ENDPOINTS.users),
-    exercises: db.ref(ENDPOINTS.exercises),
-    workoutGoals: db.ref(ENDPOINTS.workoutGoals),
-    workoutLevels: db.ref(ENDPOINTS.workoutLevels),
-  },
   mounted() {
+    const data = this.$storage.get('data');
     const requestedWorkoutId = parseInt(this.$route.params.workout_id, 10);
 
-    if (requestedWorkoutId) {
-      firebase.database().ref(ENDPOINTS.workouts).once('value').then((workoutSnapshot) => {
-        this.workout = workoutSnapshot.val().find(o => o.id === requestedWorkoutId);
-
-        if (!this.workout) {
-          this.noWorkoutFound = true;
-        }
-
-        firebase.database().ref(ENDPOINTS.users).once('value').then((usersSnapshot) => {
-          this.user = usersSnapshot.val().find(o => o.email === firebase.auth().currentUser.email);
-        });
-      });
-    } else {
+    if (!data?.workouts || !requestedWorkoutId) {
       this.noWorkoutFound = true;
+      return;
+    }
+
+    this.workoutLevels = data.['workout-levels'];
+    this.workoutGoals = data.['workout-goals'];
+    this.exercises = data.exercises;
+
+    if (requestedWorkoutId) {
+      this.workout = data.workouts.find((o) => o.id === requestedWorkoutId);
+
+      if (!this.workout) {
+        this.noWorkoutFound = true;
+      }
     }
   },
   computed: {
@@ -230,12 +222,11 @@ export default {
       // Store the timings based on the profile Level and Goal
       if (this.workout.type === 1) {
         // HIIT
-        this.currentLevel = this.workoutLevels.find(o => o.id === this.user.level);
+        this.currentLevel = this.workoutLevels.find((o) => o.id === this.user.level);
       } else if (this.workout.type === 2) {
         // Strength
-        this.currentGoal = this.workoutGoals.find(o => o.id === this.user.goal);
+        this.currentGoal = this.workoutGoals.find((o) => o.id === this.user.goal);
       }
-
 
       // Prepare the flat exercises array
       for (let i = 0, len = this.workout.rounds.length; i < len; i++) {
@@ -243,14 +234,14 @@ export default {
           this.workout.rounds[i].exercises.forEach((exercise) => {
             // Find all the exercise information
             // Push the item to the timeline
-            this.timeline.push(this.exercises.find(o => o.id === exercise));
-            this.timer.totalTime = this.timer.totalTime + this.currentLevel.activeTime;
+            this.timeline.push(this.exercises.find((o) => o.id === exercise));
+            this.timer.totalTime += this.currentLevel.activeTime;
 
             // Add the rest time to the timeline
             if (this.workout.type === 1) {
               // HITT
               this.timeline.push(this.currentLevel.restTime);
-              this.timer.totalTime = this.timer.totalTime + this.currentLevel.restTime;
+              this.timer.totalTime += this.currentLevel.restTime;
             }
           });
         }
@@ -258,37 +249,10 @@ export default {
 
       // Delete the last rest time, as the workout is finished
       this.timeline.pop();
-      this.timer.totalTime = this.timer.totalTime - this.currentLevel.restTime;
+      this.timer.totalTime -= this.currentLevel.restTime;
 
       this.isUserReady = true;
       this.resume();
-
-      this.updateUserWorkout();
-    },
-    updateUserWorkout() {
-      if (!this.user.recentWorkouts) {
-        this.user.recentWorkouts = [];
-      }
-
-      if (this.user.recentWorkouts
-        && this.user.recentWorkouts.length === VALUES.maxRecentWorkouts) {
-        this.user.recentWorkouts.pop();
-      }
-
-      this.user.recentWorkouts.unshift(this.workout.id);
-      this.saveProfile();
-    },
-    saveProfile() {
-      // Can't think of a better way to do this
-      // Since there's only 2 users, might not be so bad performance wise
-      this.users.forEach((user, index) => {
-        if (user.id === this.user.id) {
-          this.users[index] = this.user;
-        }
-      });
-
-      // Save the data to the server
-      firebase.database().ref(ENDPOINTS.users).set(this.users);
     },
     resume() {
       this.timer.paused = false;
@@ -309,7 +273,7 @@ export default {
       this.timer.timerId = window.setTimeout(() => {
         if (this.timer.remaining > 0) {
           this.resume();
-          this.timer.remaining = this.timer.remaining - 1000;
+          this.timer.remaining -= 1000;
         } else {
           this.currentItem++;
 

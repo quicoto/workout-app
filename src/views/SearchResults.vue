@@ -20,10 +20,8 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
 import Loader from '@/components/Loader.vue';
 import ExerciseCard from '@/components/ExerciseCard.vue';
-import ENDPOINTS from '@/endpoints';
 
 export default {
   components: {
@@ -49,21 +47,21 @@ export default {
       return '';
     },
     filterSearch() {
-      return this.exercises.filter(exercise => !this.query
+      return this.exercises.filter((exercise) => !this.query
         || exercise.name.toLowerCase().indexOf(this.query.toLowerCase()) > -1);
     },
   },
   mounted() {
     this.query = this.getQueryParam();
 
-    firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
-      this.exercises = snapshot.val();
-      this.filterexercises = this.filterSearch();
-    });
+    // firebase.database().ref(ENDPOINTS.exercises).once('value').then((snapshot) => {
+    //   this.exercises = snapshot.val();
+    //   this.filterexercises = this.filterSearch();
+    // });
 
-    firebase.database().ref(ENDPOINTS.exerciseTags).once('value').then((snapshot) => {
-      this.tags = snapshot.val();
-    });
+    // firebase.database().ref(ENDPOINTS.exerciseTags).once('value').then((snapshot) => {
+    //   this.tags = snapshot.val();
+    // });
   },
 };
 </script>

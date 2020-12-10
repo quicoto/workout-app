@@ -99,10 +99,7 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import db from '@/db';
 import Loader from '@/components/Loader.vue';
-import ENDPOINTS from '@/endpoints';
 
 export default {
   components: {
@@ -131,14 +128,14 @@ export default {
     firebase.database().ref(ENDPOINTS.users).once('value').then((snapshot) => {
       this.users = snapshot.val();
 
-      let currentDBUser = snapshot.val().find(o => o.email === this.currentUser.email);
+      let currentDBUser = snapshot.val().find((o) => o.email === this.currentUser.email);
 
       if (requestedUserId !== currentDBUser.id) {
         // The requested profile is not the logged in user
         this.viewOnlyProfile = true;
 
         // Find the requested user
-        currentDBUser = snapshot.val().find(o => o.id === requestedUserId);
+        currentDBUser = snapshot.val().find((o) => o.id === requestedUserId);
       }
 
       this.currentDBUser = currentDBUser;
@@ -156,7 +153,7 @@ export default {
     },
     goalName(id) {
       if (this.workoutGoals) {
-        const goal = this.workoutGoals.find(o => o.id === parseInt(id, 10));
+        const goal = this.workoutGoals.find((o) => o.id === parseInt(id, 10));
 
         if (goal) {
           return goal.name;
@@ -167,7 +164,7 @@ export default {
     },
     levelName(id) {
       if (this.workoutLevels) {
-        const level = this.workoutLevels.find(o => o.id === parseInt(id, 10));
+        const level = this.workoutLevels.find((o) => o.id === parseInt(id, 10));
 
         if (level) {
           return level.name;

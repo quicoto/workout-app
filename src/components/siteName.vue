@@ -1,6 +1,6 @@
 <template>
   <span>
-    <span v-if="variant === 'short'">Thorkout</span>
+    <span v-if="variant === 'short'">Workout</span>
     <span v-if="variant !== 'short'">Workout like Thor</span>
     <img
       v-if="image"

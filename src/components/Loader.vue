@@ -2,7 +2,6 @@
   <div class="loader"></div>
 </template>
 
-
 <style scoped lang="scss">
 .loader {
   width: 100px;

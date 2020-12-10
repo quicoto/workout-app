@@ -1,5 +1,4 @@
 import Vue from 'vue';
-import firebase from 'firebase/app';
 import Router from 'vue-router';
 import Home from './views/Home.vue';
 
@@ -13,15 +12,7 @@ const router = new Router({
       name: 'home',
       component: Home,
       meta: {
-        title: 'Thorkout',
-      },
-    },
-    {
-      path: '/login',
-      name: 'login',
-      component: () => import(/* webpackChunkName: "login" */ './views/Login.vue'),
-      meta: {
-        title: 'Login',
+        title: 'Home',
       },
     },
     {
@@ -57,14 +48,6 @@ const router = new Router({
       },
     },
     {
-      path: '/profile/:user_id',
-      name: 'profile',
-      component: () => import(/* webpackChunkName: "profile" */ './views/Profile.vue'),
-      meta: {
-        title: 'Profile',
-      },
-    },
-    {
       path: '/start/:workout_id',
       name: 'start',
       component: () => import(/* webpackChunkName: "start" */ './views/Start.vue'),
@@ -73,19 +56,6 @@ const router = new Router({
       },
     },
   ],
-});
-
-router.beforeEach((to, from, next) => {
-  // Is the user logged in?
-  if (to.name !== 'login' && !firebase.auth().currentUser) {
-    // eslint-disable-next-line no-console
-    console.log('redirecting....');
-
-    // No, redirect to login
-    next('login');
-  } else {
-    next();
-  }
 });
 
 router.afterEach((to) => {

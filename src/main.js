@@ -1,3 +1,5 @@
+import { Vue2Storage } from 'vue2-storage';
+
 // https://github.com/FortAwesome/vue-fontawesome
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
@@ -17,10 +19,8 @@ import {
   faMinus,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import firebase from 'firebase/app';
 
 import Vue from 'vue';
-import { rtdbPlugin } from 'vuefire';
 
 // Register global Bootstrap VUE components
 import {
@@ -79,9 +79,6 @@ library.add(faThumbsDown);
 Vue.component('font-awesome-icon', FontAwesomeIcon);
 Vue.config.productionTip = true;
 
-// Firebase
-Vue.use(rtdbPlugin);
-
 // VUE Bootrap Toast
 Vue.use(ToastPlugin);
 
@@ -119,16 +116,17 @@ Vue.component('b-progress', BProgress);
 
 Vue.directive('b-tooltip', VBTooltip);
 
+Vue.use(Vue2Storage, {
+  prefix: 'workout_',
+  driver: 'local',
+  ttl: 0,
+});
+
 let app = '';
 
-// Make sure Firebase has finished its calls before initiating our app
-// Otherwise we have an incomplete authentication check.
-// It is fine if the user is not authenticated, the app will init in any case.
-firebase.auth().onAuthStateChanged(() => {
-  if (!app) {
-    app = new Vue({
-      router,
-      render: h => h(App),
-    }).$mount('#app');
-  }
-});
+if (!app) {
+  app = new Vue({
+    router,
+    render: (h) => h(App),
+  }).$mount('#app');
+}
