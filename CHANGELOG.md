@@ -1,3 +1,7 @@
+# 2.1.0
+
+Add difficulty selector before starting the workout
+
 # 2.0.0
 
 Remove Firebase and use a local file as a database.
