@@ -47,8 +47,6 @@ export default {
     const data = this.$storage.get('data');
     const recommendedWorkout = [];
 
-    console.log(data);
-
     if (data?.workouts) {
       const workouts = shuffleArray(data.workouts);
 
