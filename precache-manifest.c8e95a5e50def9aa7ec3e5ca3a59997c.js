@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-app/css/admin.6a396e59.css"
   },
   {
-    "revision": "6093d0a22c6d3c694ca0",
+    "revision": "5c4bf6220e5d11321a86",
     "url": "/workout-app/css/app.d1ccdf0e.css"
   },
   {
@@ -136,7 +136,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-app/img/logo.f3257d6b.svg"
   },
   {
-    "revision": "e9c23f45af56718b5370440eb39648c1",
+    "revision": "4c3f497958f0adfb37e0828d4010448d",
     "url": "/workout-app/index.html"
   },
   {
@@ -144,24 +144,16 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-app/js/admin.033c0d4c.js"
   },
   {
-    "revision": "6093d0a22c6d3c694ca0",
-    "url": "/workout-app/js/app.09641b02.js"
+    "revision": "5c4bf6220e5d11321a86",
+    "url": "/workout-app/js/app.41bba54a.js"
   },
   {
-    "revision": "8827b2affa8c37aa7b74",
-    "url": "/workout-app/js/chunk-vendors.a922f8d5.js"
+    "revision": "9e1fdc95de5abc429f27",
+    "url": "/workout-app/js/chunk-vendors.69af0324.js"
   },
   {
-    "revision": "ab12b909b3bbae338196",
-    "url": "/workout-app/js/exercises.27fae620.js"
-  },
-  {
-    "revision": "41b8392b960527399ee4",
-    "url": "/workout-app/js/exercises~search.083e2517.js"
-  },
-  {
-    "revision": "b489fee1b408126f5d04",
-    "url": "/workout-app/js/search.8172b64c.js"
+    "revision": "fe4562d83d8b86af4f6d",
+    "url": "/workout-app/js/exercises.7e006bf4.js"
   },
   {
     "revision": "2cef68cc1e51e6981f46",
