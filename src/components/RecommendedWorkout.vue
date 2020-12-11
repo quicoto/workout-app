@@ -40,21 +40,22 @@ export default {
   },
   data() {
     return {
-      workouts: [],
       recommendedWorkout: {},
     };
   },
-  mounted() {
+  created() {
     const data = this.$storage.get('data');
     const recommendedWorkout = [];
 
-    if (!data?.workouts) {
+    console.log(data);
+
+    if (data?.workouts) {
+      const workouts = shuffleArray(data.workouts);
+
+      this.recommendedWorkout = workouts[0];
+    } else {
       this.recommendedWorkout = recommendedWorkout;
     }
-
-    const workouts = shuffleArray(data.workouts);
-
-    this.recommendedWorkout = workouts[0];
   },
 };
 </script>

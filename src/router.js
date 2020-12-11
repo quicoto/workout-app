@@ -40,14 +40,6 @@ const router = new Router({
       },
     },
     {
-      path: '/search',
-      name: 'search',
-      component: () => import(/* webpackChunkName: "search" */ './views/SearchResults.vue'),
-      meta: {
-        title: 'Search',
-      },
-    },
-    {
       path: '/start/:workout_id',
       name: 'start',
       component: () => import(/* webpackChunkName: "start" */ './views/Start.vue'),

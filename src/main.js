@@ -124,9 +124,17 @@ Vue.use(Vue2Storage, {
 
 let app = '';
 
-if (!app) {
-  app = new Vue({
-    router,
-    render: (h) => h(App),
-  }).$mount('#app');
-}
+fetch('data.json')
+  .then((response) => response.json())
+  .then((data) => {
+    if (!app) {
+      app = new Vue({
+        router,
+        render: (h) => h(App),
+        created() {
+          // Load the data
+          this.$storage.set('data', data);
+        },
+      }).$mount('#app');
+    }
+  });

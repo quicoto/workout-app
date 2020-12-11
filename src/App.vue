@@ -28,28 +28,6 @@
               class="d-none d-md-block"
               to="/admin">Admin</b-nav-item>
           </b-navbar-nav>
-
-          <!-- Right aligned nav items -->
-          <b-navbar-nav class="mt-2 mt-md-0 ml-auto">
-            <b-nav-form
-              inline
-              class="mr-4"
-              @submit.prevent="onSubmit">
-              <b-form-input
-                size="sm"
-                class="mr-sm-2"
-                v-model="query"
-                placeholder="Search"
-                required></b-form-input>
-              <b-button
-                size="sm"
-                class="d-none d-md-block my-2 my-sm-0"
-                type="submit"
-                variant="primary">
-                  <font-awesome-icon :icon="['fas', 'search']" />
-                </b-button>
-            </b-nav-form>
-          </b-navbar-nav>
         </b-collapse>
       </b-container>
     </b-navbar>
@@ -80,14 +58,6 @@ export default {
     return {
       query: '',
     };
-  },
-  mounted() {
-    // Load the data
-    fetch('data.json')
-      .then((response) => response.json())
-      .then((data) => {
-        this.$storage.set('data', data);
-      });
   },
   methods: {
     hideNavigation() {
