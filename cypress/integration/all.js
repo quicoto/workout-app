@@ -8,9 +8,31 @@ describe('All', () => {
     });
   });
 
-  it('Find out if the list works', () => {
+  it('List all the workouts', () => {
     cy.visit('workouts');
 
     cy.get('article.card').its('length').should('be.gt', 1);
+  });
+
+  it('List all the exercises', () => {
+    cy.visit('exercises');
+
+    cy.get('article.card').its('length').should('be.gt', 1);
+  });
+
+  it('Admin > List Exercises', () => {
+    cy.visit('admin');
+
+    cy.get('.tab-pane.active').find('table').find('tr').its('length')
+      .should('be.gt', 1);
+  });
+
+  it('Admin > List Tags', () => {
+    cy.visit('admin');
+
+    cy.get('.nav-tabs').find('.nav-item').contains('Tags').click();
+
+    cy.get('.tab-pane.active').find('table').find('tr').its('length')
+      .should('be.gt', 1);
   });
 });
