@@ -13,13 +13,11 @@
           lg="4"
           offset-lg="4">
           <b-button
-            :to="{ name: 'workouts' }"
+            name="newWorkout"
+            @click="newWorkout()"
             block
             variant="primary">
-              <font-awesome-icon
-                :icon="['far', 'thumbs-down']"
-                title="Delete?" />
-              I don't like it, show me more workouts
+              Show me another workout
           </b-button>
         </b-col>
       </b-row>
@@ -41,19 +39,24 @@ export default {
   data() {
     return {
       recommendedWorkout: {},
+      data: this.$storage.get('data'),
     };
   },
-  created() {
-    const data = this.$storage.get('data');
-    const recommendedWorkout = [];
+  mounted() {
+    this.newWorkout();
+  },
+  methods: {
+    newWorkout() {
+      const recommendedWorkout = [];
 
-    if (data?.workouts) {
-      const workouts = shuffleArray(data.workouts);
+      if (this.data?.workouts) {
+        const workouts = shuffleArray(this.data.workouts);
 
-      this.recommendedWorkout = workouts[0];
-    } else {
-      this.recommendedWorkout = recommendedWorkout;
-    }
+        this.recommendedWorkout = workouts[0];
+      } else {
+        this.recommendedWorkout = recommendedWorkout;
+      }
+    },
   },
 };
 </script>

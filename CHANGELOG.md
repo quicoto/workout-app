@@ -1,3 +1,10 @@
+# 2.3.0
+
+- Shuffle home workouts on demand.
+# 2.1.5
+
+- Refactor Screen Wake Lock API
+
 # 2.1.2
 
 Move E2E testing to dev dependencies.
