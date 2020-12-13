@@ -40,7 +40,7 @@
     <footer class="container-fluid p-5 mt-5">
       <b-row>
         <b-col class="text-center">
-          <a href="https://github.com/quicoto/workout-app" title="Workout App on Github"><small><version/></small></a>
+          <a href="https://github.com/quicoto/workout-app" title="Workout App on Github"><small>v{{ version }}</small></a>
         </b-col>
       </b-row>
     </footer>
@@ -49,16 +49,16 @@
 
 <script>
 import siteName from '@/components/siteName.vue';
-import version from '@/components/version.vue';
+import { version } from '@/values';
 
 export default {
   components: {
     siteName,
-    version,
   },
   data() {
     return {
       query: '',
+      version,
     };
   },
   methods: {

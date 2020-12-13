@@ -57,6 +57,7 @@ import {
   BFormSelect,
   BProgress,
 } from 'bootstrap-vue';
+import { version } from './values';
 
 import App from './App.vue';
 import './registerServiceWorker';
@@ -124,7 +125,7 @@ Vue.use(Vue2Storage, {
 
 let app = '';
 
-fetch('data.json')
+fetch(`data.json?ver=${version}`)
   .then((response) => response.json())
   .then((data) => {
     if (!app) {

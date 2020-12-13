@@ -1,3 +1,1 @@
-export default {
-  maxRecentWorkouts: 3,
-};
+export const version = '2.3.0';

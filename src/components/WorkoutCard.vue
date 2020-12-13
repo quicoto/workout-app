@@ -15,13 +15,16 @@
           Start
         </b-button>
       </div>
-      <small class="d-block">Created by {{ workout.createdBy }}</small>
+      <p>
+        <small class="d-block">Created by {{ workout.createdBy }}</small>
+      </p>
+      <ul class="list-inline">
+          <li v-for="level in levels">
+            {{ level.name }}: {{ workoutTotalTime(level.id) }}'
+          </li>
+        </ul>
     </template>
     <b-card-text>
-      <div class="pb-3">
-        <WorkoutType :type="workout.type" />
-      </div>
-
       <ul
         class="list-unstyled mt-3"
         v-if="exercises.length > 0">
@@ -42,13 +45,8 @@
 </template>
 
 <script>
-import WorkoutType from '@/components/WorkoutType.vue';
-
 export default {
   name: 'WorkoutCard',
-  components: {
-    WorkoutType,
-  },
   props: {
     types: Array,
     workout: Object,
@@ -56,13 +54,14 @@ export default {
   data() {
     return {
       exercises: [],
+      levels: [],
+      data: this.$storage.get('data'),
     };
   },
   mounted() {
-    const data = this.$storage.get('data');
-
-    if (data?.exercises) {
-      this.exercises = data.exercises;
+    if (this.data?.exercises) {
+      this.exercises = this.data.exercises;
+      this.levels = this.data.['workout-levels'];
     }
   },
   methods: {
@@ -70,6 +69,28 @@ export default {
       const index = this.exercises.findIndex((i) => i.id === id);
 
       return this.exercises[index].name;
+    },
+    workoutTotalTime(levelId) {
+      let totalTime = 0;
+      const level = this.levels.find((i) => i.id === levelId);
+
+      if (level) {
+        let rounds = this.workout.rounds;
+
+        if (!Array.isArray(rounds)) {
+          rounds = [this.workout.rounds[0]];
+        }
+
+        rounds.forEach((round) => {
+          const roundExercies = round.exercises.length + 1;
+          const roundActiveTime = roundExercies * level.activeTime;
+          const roundRestTime = (roundExercies - 1) * level.restTime;
+
+          totalTime += (roundActiveTime + roundRestTime) * round.repeats;
+        });
+      }
+
+      return Math.floor(totalTime / 1000 / 60);
     },
   },
 };
