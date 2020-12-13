@@ -171,8 +171,8 @@ export default {
       },
       workout: {},
       user: {
-        level: 2, // This needs to be configurable
-        goal: 2, // This needs to be configurable
+        level: 2,
+        goal: 2,
       },
       timeline: [],
       publicPath: process.env.BASE_URL,

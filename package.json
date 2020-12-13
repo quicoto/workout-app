@@ -1,6 +1,6 @@
 {
   "name": "workoutapp",
-  "version": "2.1.0",
+  "version": "2.1.1",
   "private": true,
   "homepage": "https://quicoto.github.io/workout-app/",
   "scripts": {
@@ -26,7 +26,7 @@
     "bootstrap-vue": "^2.20.1",
     "core-js": "^3.8.1",
     "cypress": "^6.1.0",
-    "husky": "^4.3.5",
+    "husky": "^4.3.6",
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.12",
     "vue-class-component": "^7.2.6",
