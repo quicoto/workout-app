@@ -19,6 +19,7 @@
       <Loader v-show="!workout.id" />
       <b-row v-if="workout.id">
         <b-col v-if="!isUserReady">
+          <div>{{ wakeError }}</div>
           <h2 class="text-center mb-4 text-info"><em>{{ workout.name }}</em></h2>
           <div class="text-center">
             <div class="d-flex align-items-center justify-content-center">
@@ -157,6 +158,7 @@ export default {
   },
   data() {
     return {
+      wakeError: '',
       currentItem: 0,
       currentLevel: {},
       currentGoal: {},
@@ -269,8 +271,44 @@ export default {
     start() {
       // sleep.prevent();
 
-      if ('wakeLock' in navigator) {
-        navigator.wakeLock.request();
+      if ('WakeLock' in window && 'request' in window.WakeLock) {
+        // const wakeLock = null;
+
+        const requestWakeLock = () => {
+          const controller = new AbortController();
+          const signal = controller.signal;
+          window.WakeLock.request('screen', {
+            signal,
+          })
+            .catch((e) => {
+              this.wakeError = `${e}`;
+            });
+
+          return controller;
+        };
+
+        // wakeLock = requestWakeLock();
+        requestWakeLock();
+
+        // wakeLock.abort();
+        // wakeLock = null;
+      } else if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {
+        // let wakeLock = null;
+
+        const requestWakeLock = async () => {
+          try {
+            // wakeLock = await navigator.wakeLock.request('screen');
+            await navigator.wakeLock.request('screen');
+          } catch (e) {
+            this.wakeError = `${e}`;
+          }
+        };
+
+        // wakeLock = requestWakeLock();
+        requestWakeLock();
+
+        // wakeLock.release();
+        // wakeLock = null;
       }
 
       // Store the timings based on the profile Level and Goal
