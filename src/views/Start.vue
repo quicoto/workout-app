@@ -19,7 +19,6 @@
       <Loader v-show="!workout.id" />
       <b-row v-if="workout.id">
         <b-col v-if="!isUserReady">
-          <div>{{ wakeError }}</div>
           <h2 class="text-center mb-4 text-info"><em>{{ workout.name }}</em></h2>
           <div class="text-center">
             <div class="d-flex align-items-center justify-content-center">
@@ -150,7 +149,6 @@
 
 <script>
 import Loader from '@/components/Loader.vue';
-import { sleep } from '@/plugins/sleep';
 
 export default {
   components: {
@@ -158,7 +156,6 @@ export default {
   },
   data() {
     return {
-      wakeError: '',
       currentItem: 0,
       currentLevel: {},
       currentGoal: {},
@@ -178,6 +175,7 @@ export default {
       },
       timeline: [],
       publicPath: process.env.BASE_URL,
+      wakeLock: null,
     };
   },
   mounted() {
@@ -268,9 +266,7 @@ export default {
       this.currentItem--;
       this.resume();
     },
-    start() {
-      // sleep.prevent();
-
+    lockScreen() {
       if ('WakeLock' in window && 'request' in window.WakeLock) {
         // const wakeLock = null;
 
@@ -279,37 +275,31 @@ export default {
           const signal = controller.signal;
           window.WakeLock.request('screen', {
             signal,
-          })
-            .catch((e) => {
-              this.wakeError = `${e}`;
-            });
+          });
 
           return controller;
         };
 
-        // wakeLock = requestWakeLock();
-        requestWakeLock();
-
-        // wakeLock.abort();
-        // wakeLock = null;
+        this.wakeLock = requestWakeLock();
       } else if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {
-        // let wakeLock = null;
-
         const requestWakeLock = async () => {
-          try {
-            // wakeLock = await navigator.wakeLock.request('screen');
-            await navigator.wakeLock.request('screen');
-          } catch (e) {
-            this.wakeError = `${e}`;
-          }
+          await navigator.wakeLock.request('screen');
         };
 
-        // wakeLock = requestWakeLock();
-        requestWakeLock();
-
-        // wakeLock.release();
-        // wakeLock = null;
+        this.wakeLock = requestWakeLock();
       }
+    },
+    unlockScreen() {
+      if ('WakeLock' in window && 'request' in window.WakeLock) {
+        this.wakeLock.abort();
+      } else if ('wakeLock' in navigator && 'request' in navigator.wakeLock) {
+        this.wakeLock.release();
+      }
+
+      this.wakeLock = null;
+    },
+    start() {
+      this.lockScreen();
 
       // Store the timings based on the profile Level and Goal
       if (this.workout.type === 1) {
@@ -377,7 +367,7 @@ export default {
       }, 1000);
     },
     pause() {
-      sleep.allow();
+      this.unlockScreen();
       this.timer.paused = true;
       window.clearTimeout(this.timer.timerId);
     },
