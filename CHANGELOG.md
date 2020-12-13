@@ -1,3 +1,9 @@
+# 2.1.2
+
+Move E2E testing to dev dependencies.
+# 2.1.1
+
+Use Screen Wake Lock API
 # 2.1.0
 
 Add difficulty selector before starting the workout

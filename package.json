@@ -1,6 +1,6 @@
 {
   "name": "workoutapp",
-  "version": "2.1.1",
+  "version": "2.1.2",
   "private": true,
   "homepage": "https://quicoto.github.io/workout-app/",
   "scripts": {
@@ -14,7 +14,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run ci"
+      "pre-push": "npm run lint && npm run test"
     }
   },
   "dependencies": {
@@ -25,7 +25,6 @@
     "bootstrap": "^4.5.3",
     "bootstrap-vue": "^2.20.1",
     "core-js": "^3.8.1",
-    "cypress": "^6.1.0",
     "husky": "^4.3.6",
     "register-service-worker": "^1.7.2",
     "vue": "^2.6.12",
@@ -44,6 +43,7 @@
     "@vue/eslint-config-airbnb": "^5.3.0",
     "@vue/test-utils": "1.1.1",
     "babel-core": "7.0.0-bridge.0",
+    "cypress": "^6.1.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.15.0",
     "eslint-plugin-vue": "^7.2.0",

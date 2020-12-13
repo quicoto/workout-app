@@ -267,7 +267,11 @@ export default {
       this.resume();
     },
     start() {
-      sleep.prevent();
+      // sleep.prevent();
+
+      if ('wakeLock' in navigator) {
+        navigator.wakeLock.request();
+      }
 
       // Store the timings based on the profile Level and Goal
       if (this.workout.type === 1) {
