@@ -1,4 +1,4 @@
 {
-  "baseUrl": "http://localhost:8080/workout-app/#/",
+  "baseUrl": "http://localhost:8081/workout-app/#/",
   "video": false
 }

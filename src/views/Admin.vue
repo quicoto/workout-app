@@ -9,20 +9,14 @@
             <b-tab title="Exercises" active>
               <Exercises v-on:update-output="updateOutput" />
             </b-tab>
-            <b-tab title="Tags">
-              <ExerciseTags v-on:update-output="updateOutput" />
+            <b-tab title="Workouts">
+              <Workouts v-on:update-output="updateOutput" />
             </b-tab>
             <b-tab title="Levels">
               <WorkoutLevels v-on:update-output="updateOutput" />
             </b-tab>
             <b-tab title="Goals">
               <WorkoutGoals v-on:update-output="updateOutput" />
-            </b-tab>
-            <b-tab title="Workout Types">
-              <WorkoutTypes v-on:update-output="updateOutput" />
-            </b-tab>
-            <b-tab title="Workouts">
-              <Workouts v-on:update-output="updateOutput" />
             </b-tab>
             <b-tab title="Output">
               <h3>Output</h3>
@@ -43,18 +37,14 @@
 
 <script>
 import Exercises from '@/components/admin/Exercises.vue';
-import ExerciseTags from '@/components/admin/ExerciseTags.vue';
 import WorkoutLevels from '@/components/admin/WorkoutLevels.vue';
-import WorkoutTypes from '@/components/admin/WorkoutTypes.vue';
 import Workouts from '@/components/admin/Workouts.vue';
 import WorkoutGoals from '@/components/admin/WorkoutGoals.vue';
 
 export default {
   components: {
     Exercises,
-    ExerciseTags,
     WorkoutLevels,
-    WorkoutTypes,
     Workouts,
     WorkoutGoals,
   },

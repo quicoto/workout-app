@@ -16,7 +16,9 @@
               placeholder="Name"
             ></b-form-input>
           </b-form-group>
+        </b-col>
 
+        <b-col>
           <b-form-group
             id="input-group-1"
             label-for="createdBy"
@@ -29,15 +31,6 @@
               placeholder="Created by"
             ></b-form-input>
           </b-form-group>
-        </b-col>
-
-        <b-col>
-          <b-form-select
-            v-if="workoutTypes.length > 0"
-            v-model="form.type"
-            value-field="id"
-            text-field="name"
-            :options="workoutTypes"></b-form-select>
         </b-col>
       </b-row>
 
@@ -86,6 +79,7 @@
                   <b-form inline>
                     <b-form-select
                       v-if="exercises.length > 0"
+                      name="exerciseList"
                       value-field="id"
                       text-field="name"
                       v-model="form.rounds[roundIndex].exercises[exerciseIndex]"
@@ -131,6 +125,7 @@
       <b-row v-if="exercises.length > 0">
         <b-col>
           <b-button
+            name="addRound"
             title="Add Round"
             type="button"
             variant="success"
@@ -148,7 +143,7 @@
           <b-button
             type="submit"
             :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
-            :disabled="!form.name || !form.type"
+            :disabled="!form.name || !form.createdBy"
             >
               <span v-show="action === 'create'">Create Workout</span>
               <span v-if="action !== 'create' && form.id">Update Workout</span>
@@ -177,9 +172,6 @@
           hover
           :items="workouts"
           :fields="fields">
-          <template v-slot:cell(type)="data">
-            <WorkoutType :type="+data.item.type" />
-          </template>
           <template v-slot:cell(rounds)="data">
             {{ data.item.rounds.length }}
           </template>
@@ -208,7 +200,6 @@
 <script>
 import Vue from 'vue';
 import Loader from '@/components/Loader.vue';
-import WorkoutType from '@/components/WorkoutType.vue';
 import ConfirmDelete from '@/components/admin/ConfirmDelete.vue';
 
 export default {
@@ -216,14 +207,12 @@ export default {
   components: {
     Loader,
     ConfirmDelete,
-    WorkoutType,
   },
   data() {
     return {
       exercises: [],
       exercisesDropdown: [],
       action: 'create',
-      workoutTypes: [],
       workouts: [],
       fields: [
         {
@@ -233,10 +222,6 @@ export default {
         {
           key: 'name',
           label: 'Name',
-        },
-        {
-          key: 'type',
-          label: 'Type',
         },
         {
           key: 'rounds',
@@ -264,8 +249,7 @@ export default {
         },
       ],
       form: {
-        rounds: {},
-        type: null,
+        rounds: [],
       },
       selectedExercise: null,
       data: this.$storage.get('data'),
@@ -274,7 +258,6 @@ export default {
   mounted() {
     if (this.data?.workouts) {
       this.workouts = this.data.workouts;
-      this.workoutTypes = this.data.['workout-types'];
       this.exercises = this.data.exercises.sort((a, b) => ((a.name > b.name) ? 1 : -1));
     }
   },
@@ -307,11 +290,7 @@ export default {
       Vue.delete(this.form.rounds, index);
     },
     addRound() {
-      let index = Object.keys(this.form.rounds).length;
-
-      if (!index) index = 0;
-
-      Vue.set(this.form.rounds, index, {
+      this.form.rounds.push({
         repeats: 1,
         exercises: [null],
       });
@@ -324,11 +303,20 @@ export default {
       this.action = 'create';
       this.form = {};
       Vue.set(this.form, 'rounds', {});
-      Vue.set(this.form, 'type', null);
       this.$refs.form.reset();
     },
     onSubmit(event) {
       event.preventDefault();
+      // eslint-disable-next-line no-console
+      console.log(this.form);
+
+      // Check if only 1 round and set a proper array
+      if (!Array.isArray(this.form.rounds)) {
+        // eslint-disable-next-line
+        debugger
+
+        this.form.rounds = [this.form.rounds[0]];
+      }
 
       // Check if it's Create action
       if (this.action === 'create' && !this.form.id) {

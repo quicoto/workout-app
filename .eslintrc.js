@@ -1,4 +1,10 @@
 module.exports = {
+  globals: {
+    cy: true,
+    expect: true,
+    describe: true,
+    it: true,
+  },
   root: true,
   env: {
     node: true,

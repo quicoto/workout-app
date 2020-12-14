@@ -11,10 +11,6 @@
     class="mb-3"
   >
     <b-card-text>
-      <div class="pb-3">
-        <TagsBadges :tags="exercise.tags" />
-      </div>
-
       <span v-html="description"></span>
     </b-card-text>
 
@@ -30,15 +26,9 @@
 </template>
 
 <script>
-import TagsBadges from '@/components/TagsBadges.vue';
-
 export default {
   name: 'ExerciseCard',
-  components: {
-    TagsBadges,
-  },
   props: {
-    tags: Array,
     exercise: Object,
   },
   computed: {

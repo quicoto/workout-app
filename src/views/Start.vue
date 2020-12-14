@@ -301,11 +301,7 @@ export default {
     start() {
       this.lockScreen();
 
-      // Store the timings based on the profile Level and Goal
-      if (this.workout.type === 1) {
-        // HIIT
-        this.currentLevel = this.workoutLevels.find((o) => o.id === this.user.level);
-      }
+      this.currentLevel = this.workoutLevels.find((o) => o.id === this.user.level);
 
       // Prepare the flat exercises array
       for (let i = 0, len = this.workout.rounds.length; i < len; i++) {
@@ -317,11 +313,8 @@ export default {
             this.timer.totalTime += this.currentLevel.activeTime;
 
             // Add the rest time to the timeline
-            if (this.workout.type === 1) {
-              // HITT
-              this.timeline.push(this.currentLevel.restTime);
-              this.timer.totalTime += this.currentLevel.restTime;
-            }
+            this.timeline.push(this.currentLevel.restTime);
+            this.timer.totalTime += this.currentLevel.restTime;
           });
         }
       }
@@ -341,7 +334,6 @@ export default {
         // Check if we're on rest or active time
         if (this.timeline[this.currentItem].id) {
           // it's an object, it is an exercise
-          // @TODO difference between HIIT and Strength
           this.timer.remaining = this.currentLevel.activeTime;
         } else {
           // It's a rest time

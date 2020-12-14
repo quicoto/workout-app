@@ -55,10 +55,10 @@
         <b-col>
           <b-form-group
             id="input-group-2"
-            label-for="textarea"
+            label-for="description"
           >
              <b-form-textarea
-              id="textarea"
+              id="description"
               name="description"
               v-model="form.description"
               placeholder="Description"
@@ -68,24 +68,12 @@
             ></b-form-textarea>
           </b-form-group>
         </b-col>
-        <b-col>
-           <b-form-group label="Tags">
-            <b-form-checkbox-group
-              id="checkbox-group-1"
-              v-model="form.tags"
-              :options="tags"
-              value-field="id"
-              text-field="name"
-              name="tags"
-            ></b-form-checkbox-group>
-          </b-form-group>
-        </b-col>
       </b-row>
 
       <b-button
         type="submit"
         :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
-        :disabled="form.tags.length === 0 || !form.name || !form.description"
+        :disabled="!form.name || !form.description"
         >
           <span v-show="action === 'create'">Create Exercise</span>
           <span v-if="action !== 'create' && form.id">Update Exercise</span>
@@ -113,9 +101,6 @@
           :fields="fields">
           <template v-slot:cell(description)="data">
             <span v-html="exerciseDescription(data.item.description)"></span>
-          </template>
-          <template v-slot:cell(tags)="data">
-            <TagsBadges :tags="data.item.tags" />
           </template>
           <template v-slot:cell(video)="data">
             <a v-if="data.item.video"
@@ -155,20 +140,17 @@
 <script>
 import Vue from 'vue';
 import Loader from '@/components/Loader.vue';
-import TagsBadges from '@/components/TagsBadges.vue';
 import ConfirmDelete from '@/components/admin/ConfirmDelete.vue';
 
 export default {
   name: 'Exercises',
   components: {
     Loader,
-    TagsBadges,
     ConfirmDelete,
   },
   data() {
     return {
       action: 'create',
-      tags: [],
       exercises: [],
       fields: [
         {
@@ -178,10 +160,6 @@ export default {
         {
           key: 'name',
           label: 'Name',
-        },
-        {
-          key: 'tags',
-          label: 'Tags',
         },
         {
           key: 'description',
@@ -211,7 +189,6 @@ export default {
         },
       ],
       form: {
-        tags: [],
         image: false,
       },
       publicPath: process.env.BASE_URL,
@@ -221,7 +198,6 @@ export default {
   mounted() {
     if (this.data?.exercises) {
       this.exercises = this.data.exercises;
-      this.tags = this.data.['exercise-tags'];
     }
   },
   methods: {
@@ -238,7 +214,6 @@ export default {
     resetForm() {
       this.action = 'create';
       this.form = {};
-      Vue.set(this.form, 'tags', []);
       Vue.set(this.form, 'image', false);
       this.$refs.form.reset();
     },
