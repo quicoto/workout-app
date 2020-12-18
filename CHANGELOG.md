@@ -1,3 +1,6 @@
+# 2.4.0
+
+- Remove tags
 # 2.3.0
 
 - Shuffle home workouts on demand.
