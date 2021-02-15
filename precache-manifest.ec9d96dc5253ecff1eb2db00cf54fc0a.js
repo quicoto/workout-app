@@ -4,7 +4,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-app/css/admin.6a396e59.css"
   },
   {
-    "revision": "5141ed4dc876b69bc71d",
+    "revision": "720e35b8c92c85abb819",
     "url": "/workout-app/css/app.24efd9aa.css"
   },
   {
@@ -12,7 +12,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-app/css/start.ff6635fa.css"
   },
   {
-    "revision": "67d88f8ee66b853317b8d8059aa7861f",
+    "revision": "bf09b31295535d834e5c9a92914f2355",
     "url": "/workout-app/data.json"
   },
   {
@@ -136,7 +136,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-app/img/logo.f3257d6b.svg"
   },
   {
-    "revision": "d55da70a040930d4d2048c0d93b241d9",
+    "revision": "485f1cd8379305dd3b6e1a4e2b2ea6ef",
     "url": "/workout-app/index.html"
   },
   {
@@ -144,8 +144,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-app/js/admin.c5327c8d.js"
   },
   {
-    "revision": "5141ed4dc876b69bc71d",
-    "url": "/workout-app/js/app.9ccfcc47.js"
+    "revision": "720e35b8c92c85abb819",
+    "url": "/workout-app/js/app.3580b351.js"
   },
   {
     "revision": "33f37f77756b0c732d45",

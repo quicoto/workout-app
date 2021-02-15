@@ -74,6 +74,11 @@
     "name": "Bear Crawl",
     "tags": [13, 2, 1, 4, 14, 15]
   }, {
+    "image": false,
+    "description": "Lie on your back, extend your legs and hold them just above the ground. Bring one knee up towards your chest and twist your torso so that the opposite elbow comes over towards it.",
+    "name": "Bicycle Abs",
+    "id": 61
+  }, {
     "description": "Begin in a standing position. >Move into a squat position with your hands on the ground. > Kick your feet back into a plank position > Perform a push up > Return  your feet into squat position >Stand up from the squat position > Do a vertical jump",
     "id": 19,
     "image": false,
@@ -85,6 +90,11 @@
     "image": false,
     "name": "Butt kicks",
     "tags": [1]
+  }, {
+    "image": false,
+    "name": "Crab Walk",
+    "description": "Sit on the floor, knees bent and feet flat. Place your hands on the floor under your shoulders, fingers pointing forward. Lift your hips off the floor and walk forwards and backwards.",
+    "id": 63
   }, {
     "description": "The diamond push up is an pretty advanced form of this classic exercise. It's commonly used as a warm-up in the Army. You place your hands in a diamond shape, lower yourself to the ground and push back up. This targets your chest as well as your abs.",
     "id": 3,
@@ -179,6 +189,11 @@
     "name": "Lateral ankle abs",
     "tags": [7, 13]
   }, {
+    "image": false,
+    "description": "Lie down flat on your back on the ground. Keeping your legs as straight as possible, raise them until they’re vertical or as close as you can get. Lower them without touching the ground and repeat.",
+    "name": "Leg raise",
+    "id": 62
+  }, {
     "description": "1)  Standing with your feet shoulder-width apart, take one generous stride backwards into a deep lunge and hold for a few seconds.\n\n2) Drive the same leg in an upwards motion towards your chest into a knee raise, straightening your standing leg. After pausing, lunge leg back again for next rep.",
     "id": 7,
     "image": true,
@@ -210,6 +225,11 @@
     "name": "Mountain Climbers",
     "tags": [7, 13],
     "video": "https://www.youtube.com/watch?v=ZhiCSdOVJp0"
+  }, {
+    "image": false,
+    "name": "Plane Pushup",
+    "description": "Having your legs open perform a pushup while moving forwards or backwards. ",
+    "id": 60
   }, {
     "description": "Regular static plank",
     "id": 9,
@@ -399,36 +419,16 @@
     "name": "Wide to Diamond Pushup",
     "tags": [3, 2, 14]
   }, {
-    "tags": [8],
-    "image": false,
-    "description": "A cuatro patas realizar patada de empuje lateral sin bajar la rodilla",
-    "name": "Yop Chagui",
-    "id": 52
-  }, {
     "image": false,
     "name": "Wide to narrow Squat",
     "description": "Do squats alternating the separation between your legs. ",
     "id": 59
   }, {
+    "tags": [8],
     "image": false,
-    "name": "Plane Pushup",
-    "description": "Having your legs open perform a pushup while moving forwards or backwards. ",
-    "id": 60
-  }, {
-    "image": false,
-    "description": "Lie on your back, extend your legs and hold them just above the ground. Bring one knee up towards your chest and twist your torso so that the opposite elbow comes over towards it.",
-    "name": "Bicycle Abs",
-    "id": 61
-  }, {
-    "image": false,
-    "description": "Lie down flat on your back on the ground. Keeping your legs as straight as possible, raise them until they’re vertical or as close as you can get. Lower them without touching the ground and repeat.",
-    "name": "Leg raise",
-    "id": 62
-  }, {
-    "image": false,
-    "name": "Crab Walk",
-    "description": "Sit on the floor, knees bent and feet flat. Place your hands on the floor under your shoulders, fingers pointing forward. Lift your hips off the floor and walk forwards and backwards.",
-    "id": 63
+    "description": "A cuatro patas realizar patada de empuje lateral sin bajar la rodilla",
+    "name": "Yop Chagui",
+    "id": 52
   }],
   "workout-goals": [{
     "id": 1,
@@ -556,5 +556,16 @@
     "name": "Back to School - Part 2",
     "createdBy": "Kwanjangnim",
     "id": 10
+  }, {
+    "rounds": [{
+      "repeats": 2,
+      "exercises": [53, 59, 61]
+    }, {
+      "repeats": 2,
+      "exercises": [63, 60, 62]
+    }],
+    "name": "Chill day",
+    "createdBy": "Maria",
+    "id": 11
   }]
 }
