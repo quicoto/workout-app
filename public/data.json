@@ -567,5 +567,19 @@
     "name": "Chill day",
     "createdBy": "Maria",
     "id": 11
+  }, {
+    "rounds": [{
+      "repeats": 2,
+      "exercises": [19, 7, 1]
+    }, {
+      "repeats": 2,
+      "exercises": [6, 49, 4]
+    }, {
+      "repeats": 2,
+      "exercises": [16, 61, 22]
+    }],
+    "name": "Earn the dinner",
+    "createdBy": "Maria",
+    "id": 12
   }]
 }
