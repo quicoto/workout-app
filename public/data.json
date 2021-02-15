@@ -404,6 +404,31 @@
     "description": "A cuatro patas realizar patada de empuje lateral sin bajar la rodilla",
     "name": "Yop Chagui",
     "id": 52
+  }, {
+    "image": false,
+    "name": "Wide to narrow Squat",
+    "description": "Do squats alternating the separation between your legs. ",
+    "id": 59
+  }, {
+    "image": false,
+    "name": "Plane Pushup",
+    "description": "Having your legs open perform a pushup while moving forwards or backwards. ",
+    "id": 60
+  }, {
+    "image": false,
+    "description": "Lie on your back, extend your legs and hold them just above the ground. Bring one knee up towards your chest and twist your torso so that the opposite elbow comes over towards it.",
+    "name": "Bicycle Abs",
+    "id": 61
+  }, {
+    "image": false,
+    "description": "Lie down flat on your back on the ground. Keeping your legs as straight as possible, raise them until they’re vertical or as close as you can get. Lower them without touching the ground and repeat.",
+    "name": "Leg raise",
+    "id": 62
+  }, {
+    "image": false,
+    "name": "Crab Walk",
+    "description": "Sit on the floor, knees bent and feet flat. Place your hands on the floor under your shoulders, fingers pointing forward. Lift your hips off the floor and walk forwards and backwards.",
+    "id": 63
   }],
   "workout-goals": [{
     "id": 1,
