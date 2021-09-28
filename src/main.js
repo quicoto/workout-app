@@ -57,7 +57,7 @@ import {
   BFormSelect,
   BProgress,
 } from 'bootstrap-vue';
-import { version } from './values';
+import { version } from './version';
 
 import App from './App.vue';
 import './registerServiceWorker';

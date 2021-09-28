@@ -49,7 +49,7 @@
 
 <script>
 import siteName from '@/components/siteName.vue';
-import { version } from '@/values';
+import { version } from '@/version';
 
 export default {
   components: {
