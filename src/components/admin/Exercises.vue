@@ -64,7 +64,6 @@
               placeholder="Description"
               rows="3"
               max-rows="6"
-              required
             ></b-form-textarea>
           </b-form-group>
         </b-col>
@@ -73,7 +72,7 @@
       <b-button
         type="submit"
         :variant="action !== 'create' && form.id ? 'warning' : 'primary'"
-        :disabled="!form.name || !form.description"
+        :disabled="!form.name"
         >
           <span v-show="action === 'create'">Create Exercise</span>
           <span v-if="action !== 'create' && form.id">Update Exercise</span>

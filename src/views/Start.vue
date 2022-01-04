@@ -79,6 +79,9 @@
           <div
             v-if="typeof timeline[currentItem] !== 'undefined' && timeline[currentItem].id"
             class="h1 pt-4 mb-4 itemName text-warning">{{ timeline[currentItem].name }}</div>
+          <div class="h4">
+            {{ timeline[currentItem].description }}
+          </div>
           <div
             v-show="typeof timeline[currentItem] !== 'undefined' &&
               !timeline[currentItem].id && currentItem < timeline.length"
