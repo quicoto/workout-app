@@ -20,7 +20,7 @@
         <small class="d-block">Created by {{ workout.createdBy }}</small>
       </p>
       <ul class="list-inline levelTimes mb-0">
-          <li v-for="level in levels">
+          <li v-for="level in levels" :key="level.id">
             {{ level.name }}: {{ workoutTotalTime(level.id) }}'
           </li>
         </ul>
@@ -31,11 +31,12 @@
         v-if="exercises.length > 0">
         <li
           v-for="(round, roundIndex) in workout.rounds"
+          :key="roundIndex"
           class="mb-4">
           <h5 class="mr-4">Round {{ +roundIndex + 1 }} (x{{round.repeats}})</h5>
 
           <ul v-if="round.exercises.length > 0">
-            <li v-for="exercise in round.exercises">
+            <li v-for="(exercise, index) in round.exercises" :key="index">
                 {{ exerciseName(exercise) }}
             </li>
           </ul>
@@ -62,7 +63,7 @@ export default {
   mounted() {
     if (this.data?.exercises) {
       this.exercises = this.data.exercises;
-      this.levels = this.data.['workout-levels'];
+      this.levels = this.data['workout-levels'];
     }
   },
   methods: {

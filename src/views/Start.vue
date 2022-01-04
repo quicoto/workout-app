@@ -187,8 +187,8 @@ export default {
       return;
     }
 
-    this.workoutLevels = data.['workout-levels'];
-    this.workoutGoals = data.['workout-goals'];
+    this.workoutLevels = data['workout-levels'];
+    this.workoutGoals = data['workout-goals'];
     this.exercises = data.exercises;
 
     if (requestedWorkoutId) {

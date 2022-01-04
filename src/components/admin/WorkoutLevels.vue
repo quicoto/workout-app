@@ -88,7 +88,7 @@ export default {
     const data = this.$storage.get('data');
 
     if (data?.['workout-levels']) {
-      this.levels = data.['workout-levels'];
+      this.levels = data['workout-levels'];
     }
   },
   methods: {

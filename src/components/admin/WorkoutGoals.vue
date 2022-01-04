@@ -86,7 +86,7 @@ export default {
     const data = this.$storage.get('data');
 
     if (data?.['workout-goals']) {
-      this.goals = data.['workout-goals'];
+      this.goals = data['workout-goals'];
     }
   },
   methods: {
