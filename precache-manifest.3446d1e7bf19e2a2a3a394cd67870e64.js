@@ -1,18 +1,18 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e6ee8c4717a1f1a9ac6f",
+    "revision": "4d450ea0ab1c70758a75",
     "url": "/workout-app/css/admin.6a396e59.css"
   },
   {
-    "revision": "1c057a98b96b6c5d07a2",
-    "url": "/workout-app/css/app.27fac7cd.css"
+    "revision": "65c23354bf906bc58a19",
+    "url": "/workout-app/css/app.d287a130.css"
   },
   {
-    "revision": "0c915aac0f57f0e91172",
-    "url": "/workout-app/css/start.e5f253e3.css"
+    "revision": "e0ddaa1b9281564299cf",
+    "url": "/workout-app/css/start.e80d9f71.css"
   },
   {
-    "revision": "13664f4f336a2ce4566b1f909cbcf522",
+    "revision": "c6a8898c263cd61addddbbd02673fe90",
     "url": "/workout-app/data.json"
   },
   {
@@ -136,32 +136,36 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/workout-app/img/logo.f3257d6b.svg"
   },
   {
-    "revision": "32a2632ee94aed4383d4221da74088a8",
+    "revision": "f529609186691b1fe6a7ef0c7869b650",
     "url": "/workout-app/index.html"
   },
   {
-    "revision": "e6ee8c4717a1f1a9ac6f",
-    "url": "/workout-app/js/admin.38981dba.js"
+    "revision": "4d450ea0ab1c70758a75",
+    "url": "/workout-app/js/admin.b793e33f.js"
   },
   {
-    "revision": "1c057a98b96b6c5d07a2",
-    "url": "/workout-app/js/app.3a9b9810.js"
+    "revision": "97def1fe505e198f5cde",
+    "url": "/workout-app/js/admin~exercises.03fa13ef.js"
   },
   {
-    "revision": "d9625227cec41904ac8c",
-    "url": "/workout-app/js/chunk-vendors.be9b9632.js"
+    "revision": "65c23354bf906bc58a19",
+    "url": "/workout-app/js/app.c9534e2f.js"
   },
   {
-    "revision": "6d859ee5f06ca5f15d0c",
-    "url": "/workout-app/js/exercises.559e5e09.js"
+    "revision": "2f0ce767f4d9b8897a6a",
+    "url": "/workout-app/js/chunk-vendors.db87b472.js"
   },
   {
-    "revision": "0c915aac0f57f0e91172",
-    "url": "/workout-app/js/start.1f645c6c.js"
+    "revision": "abbd3c3a341ceb38c7b9",
+    "url": "/workout-app/js/exercises.a00e04ea.js"
   },
   {
-    "revision": "daacf9a7ab9b7f920b48",
-    "url": "/workout-app/js/workouts.b32bca1a.js"
+    "revision": "e0ddaa1b9281564299cf",
+    "url": "/workout-app/js/start.c60b8390.js"
+  },
+  {
+    "revision": "ace5a51ef60c41607d21",
+    "url": "/workout-app/js/workouts.6ce6000c.js"
   },
   {
     "revision": "1a71e805db98fbc640bcdcc5aba7a7ec",
